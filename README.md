@@ -2,4 +2,4 @@
 ## 저자: slykid
 ## 내용
 - Software Engineering
-- 
+- Data Science

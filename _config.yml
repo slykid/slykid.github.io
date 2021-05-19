@@ -28,9 +28,9 @@ title:                 지극히<br>개인적인<br>블로그
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
 description:           >
-  A Jekyll theme with JavaScript powers. "Best Theme by a Mile".
-  Combines the best of static sites and modern web apps.
-  Open `_config.yml` to edit this text.
+  slykid 의 개발 연구소<br>
+  - Software Engineering
+  - Data Science
 
 # A shorter description for the sidebar.
 tagline:               >

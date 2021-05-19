@@ -3,7 +3,7 @@ layout: list
 title: Data Science
 slug: data science
 menu: true
-order: 3
+order: 2
 description: >
   test - data science overview
 ---

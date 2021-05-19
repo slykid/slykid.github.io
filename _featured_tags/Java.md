@@ -1,11 +1,11 @@
 ---
 layout: list
 title: Java
-slug: java_basic
+slug: java
 menu: true
-order: 2
+order: 1
 description: >
-  Java Basic
+  Java
 accent_color: '#268bd2'
 accent_image:
   background: '#202020'

@@ -16,7 +16,7 @@ _site*
 
 # OS or Editor folders
 .DS_Store
-# ._*
+._*
 Thumbs.db
 .cache
 .project

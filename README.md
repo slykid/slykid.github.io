@@ -9,4 +9,6 @@
   - 블로그 초기 설정 완료
     - Git Repository 생성 완료
     - Jekyll 설정 완료
+
+  - 프로필 수정 완료
   

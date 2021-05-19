@@ -33,8 +33,8 @@ description:           >
 # A shorter description for the sidebar.
 tagline:               >
   slykid 의 개발 연구소<br>
-  - Software Engineering
-  - Data Science
+  - Software Engineering<br>
+  - Data Science<br>
 
 # A list of keywords for your blog
 keywords:              []

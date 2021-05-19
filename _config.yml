@@ -5,7 +5,7 @@
 # Set to https://<username>.github.io when hosting on GitHub Pages
 # (unless you are using a custom domain).
 # url:                   https://domain.tld
-url:                   slykid_dev.github.io
+url:                   slykid.github.io
 
 # IMPORTANT: Set The "base URL" of your site.
 #
@@ -23,7 +23,7 @@ baseurl:               ''
 lang:                  en
 
 # The title of your blog. Used in the sidebar and the browser tab.
-title:                 지극히 개인적인 블로그
+title:                 지극히<br>개인적인<br>블로그
 
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)

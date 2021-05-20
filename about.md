@@ -2,10 +2,12 @@
 layout: about
 title: About
 description: >
-  slykid 의 개발 연구소
+
 menu: true
 order: 1
 ---
+
+slykid의 개발 연구소
 
 <!-- **Hydejack** is the complete package for professionals on the web.
 It features a blog suitable for both prose and technical documentation,

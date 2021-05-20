@@ -2,14 +2,12 @@
 layout: about
 title: About
 description: >
-  **Hydejack** is a Jekyll theme with JavaScript powers, combining the best of static sites and modern web apps.
-  It features a suite of JavaScript that makes the page feel like an app, without sacrificing backwards-compatibility,
-  page-load speed or SEO.
+  slykid 의 개발 연구소
 menu: true
-order: 4
+order: 1
 ---
 
-**Hydejack** is the complete package for professionals on the web.
+<!-- **Hydejack** is the complete package for professionals on the web.
 It features a blog suitable for both prose and technical documentation,
 a showcase for your projects, and a resume that is well-integrated with the design.
 
@@ -156,4 +154,4 @@ built-in support for [Tinyletter], and from element styles so you can build arbi
 [katex]: https://khan.github.io/KaTeX/
 [tinyletter]: https://tinyletter.com/
 
-*[FLIP]: First-Last-Invert-Play. A coding technique to achieve performant page transition animations.
+*[FLIP]: First-Last-Invert-Play. A coding technique to achieve performant page transition animations. -->

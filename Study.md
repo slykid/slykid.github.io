@@ -1,9 +1,9 @@
 ---
 layout: list
-title: Data Science
-slug: data science
+title: Study
+slug: study
 menu: true
 order: 3
 description: >
-  
+
 ---

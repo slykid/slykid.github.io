@@ -1,7 +1,7 @@
 ---
 layout: list
-title: Java
-slug: java
+title: Project
+slug: project
 menu: true
 order: 2
 description: >

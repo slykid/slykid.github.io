@@ -22,8 +22,8 @@ author1:
     srcset:
       # 1x:            https://placehold.it/128x128
       # 2x:            https://placehold.it/256x256
-      1x:            /assets/img/baymax.jpg/128x128
-      2x:            /assets/img/baymax.jpg/256x256
+      1x:            /assets/img/baymax.jpg
+      2x:            /assets/img/baymax.jpg
 
 
   # Social media icons in sidebar

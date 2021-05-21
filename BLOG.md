@@ -1,7 +1,7 @@
 ---
 layout: list
-title: IT Issue
-slug: IT columns
+title: BLOG
+slug: blog
 menu: true
 order: 4
 description: >

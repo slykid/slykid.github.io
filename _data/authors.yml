@@ -8,9 +8,7 @@ author1:
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
-    slykid의 개발 블로그 <br>
-
-    Topics <br>
+    ## Topics <br>
     - Software Engineer & Data Scientist <br>
     - ADP(Advanced Data analystics Professional, 2018) <br>
 

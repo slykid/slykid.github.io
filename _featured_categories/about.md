@@ -24,3 +24,7 @@ order: 1
 
 - 2019.04 ~ 현재    : Nice ZiniData
   - 신성장사업실 운영팀 / 개발자
+
+## Qualifications
+- ADP(Advanced Data analytics Professional, 2018)
+- SQLD (SQL Developer, 2020)

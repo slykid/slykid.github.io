@@ -12,6 +12,13 @@
     <div class="sidebar-sticky">
       <div class="sidebar-about">
         <h2 class="h1"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h2>
+
+        <div class="sidebar-box">
+                {% if author.picture %}
+                  {% include srcset-img.html class="avatar" img=author.picture alt=author.name %}
+                {% endif %}
+        </div>
+
         {% assign text = site.tagline | default:site.description %}
         {% if text %}
           <p class="{% if text.size > 100 %}fine{% endif %}">
@@ -19,12 +26,8 @@
           </p>
         {% endif %}
       </div>
-      
-      <div class="sidebar-box">
-              {% if author.picture %}
-                {% include srcset-img.html class="avatar" img=author.picture alt=author.name %}
-              {% endif %}
-      </div>
+
+
 
       <nav class="sidebar-nav heading" role="navigation">
         {% include nav.html %}

@@ -8,9 +8,10 @@ author1:
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
-    ## Topics <br>
+    ## Career <br>
     - Software Engineer & Data Scientist <br>
     - ADP(Advanced Data analystics Professional, 2018) <br>
+    - 現 NICE ZiniData, 운영팀
 
   avatar:            /assets/img/baymax.jpg
 

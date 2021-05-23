@@ -22,12 +22,16 @@ baseurl:               ''
 lang:                  ko
 
 # The title of your blog. Used in the sidebar and the browser tab.
-title:                 지극히 개인적인 블로그
+title:                 지극히 <br>
+                       개인적인 <br>
+                       블로그 <br>
 
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
 description:           >
-
+  Topics <br>
+  - Software Engineering
+  - Data Science
 
 # A shorter description for the sidebar.
 tagline:               >

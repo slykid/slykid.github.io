@@ -16,8 +16,8 @@ author1:
     path:            /assets/img/baymax.jpg
     # srcset is optional, but can be used to provide higher res versions for retina displays
     srcset:
-      1x:            /assets/img/baymax.jpg/128x128
-      2x:            /assets/img/baymax.jpg/256x256
+      1x:            /assets/img/baymax.jpg
+      2x:            /assets/img/baymax.jpg
 
   # Social media icons in sidebar
   # Comment/uncommet to show/hide

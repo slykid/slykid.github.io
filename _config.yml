@@ -30,8 +30,10 @@ title:                 지극히 <br>
 # Can use markdown, but no more than one paragraph (enforced by `>`)
 description:           >
   Topics <br>
-  - Software Engineering
-  - Data Science
+  - Software Engineering <br>
+  - Data Science <br>
+  - IT issues <br>
+  - Daily Life <br>
 
 # A shorter description for the sidebar.
 tagline:               >

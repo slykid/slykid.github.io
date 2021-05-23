@@ -1,6 +1,6 @@
 ---
 layout: list
-title: "Data Science"
+title: "Blog"
 menu: true
-order: 4
+order: 3
 ---

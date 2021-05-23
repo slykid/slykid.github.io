@@ -1,24 +1,16 @@
-<footer id="footer" class="site-footer">
-  {% include footer-custom.html %}
-
-  {%- if site.footer_links -%}
-    <div class="social-icons">
-      {%- for footer_link in site.footer_links -%}
-        {%- if footer_link.url contains "://" -%}
-          {%- assign url = footer_link.url -%}
-        {%- else -%}
-          {%- assign url = footer_link.url | relative_url -%}
-        {%- endif -%}
-        <a class="social-icon" href="{{ url }}"><i class="{{ footer_link.icon | default: 'fas fa-link' }} fa-2x" title="{{ footer_link.title }}"></i></a>
-      {%- endfor -%}
-    </div>
-  {%- endif -%}
-
-  <div class="copyright">
-    {% if site.copyright %}
-      {{ site.copyright | markdownify }}
-    {% else %}
-      <p>&copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}. {{ site.data.text[site.locale].powered_by | default: "Powered by" }} <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/mmistakes/so-simple-theme" rel="nofollow">So Simple</a>.</p>
-    {% endif %}
-  </div>
+<footer role="contentinfo">
+  <hr/>
+  {% if site.copyright.size > 0 %}
+    <p><small class="copyright">{{ site.copyright | markdownify | replace:'<p>','' | replace:'</p>','' }}</small></p>
+  {% endif %}
+  {% if site.legal.size > 0 %}
+    <nav class="legal"><small>
+    {% for le in site.legal %}
+      <a href="{% include smart-url url=le.href %}">{{ le.name | default:le.title }}</a>
+      {% unless forloop.last %}{{ site.data.strings.separator | default:'|' }}{% endunless %}
+    {% endfor %}
+    </small></nav>
+  {% endif %}
+  <p><small>Powered by <a class="external" href="https://qwtel.com/hydejack/">Hydejack</a> v<span id="_version">7.5.2</span></small></p>
+  <hr class="sr-only"/>
 </footer>

@@ -1,30 +1,32 @@
 ---
-layout: default
+# Copyright (c) 2017 Florian Klampfer <https://qwtel.com/>
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+layout: base
 ---
 
-<main id="main" class="main-content" aria-label="Content">
-  <article>
-    {% include page-image.html %}
-    <div class="page-wrapper">
-      <header class="page-header">
-        {% if page.id %}
-          {% assign title = page.title | markdownify | strip_html %}
-        {% else %}
-          {% assign title = page.title %}
-        {% endif %}
-        {% if page.link %}
-          <h1 id="page-title" class="page-title"><a href="{{ page.link }}">{{ title }} <span class="link-arrow">&rarr;</span></a></h1>
-        {% else %}
-          <h1 id="page-title" class="page-title">{{ title }}</h1>
-        {% endif %}
-      </header>
-      <div class="page-content">
-        {{ content }}
+<article class="page" role="article">
+  <header>
+    <h1 class="page-title">{{ page.title }}</h1>
+    {% include message.html text=page.description hide=page.hide_description %}
+  </header>
 
-        {% if page.share %}
-          {% include social-share.html %}
-        {% endif %}
-      </div>
-    </div>
-  </article>
-</main>
+  {{ content }}
+</article>

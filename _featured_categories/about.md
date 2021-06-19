@@ -22,7 +22,7 @@ order: 1
 <br>
 
 - 2019.04 ~ 현재    : Nice ZiniData
-  - 신성장사업실 운영팀 / 개발자
+  - 신성장사업실 운영팀 / 개발자 & 데이터 엔지니어
 
 ## Qualifications
 - ADP(Advanced Data analytics Professional, 2018)

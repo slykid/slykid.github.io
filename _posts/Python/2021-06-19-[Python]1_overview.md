@@ -4,7 +4,7 @@ title: "[Python] 1. Python"
 tags: [blog]
 ---
 
-!["python_template"](_posts/img/template/python.png)
+!["python_template"](https://slykid.github.io/_posts/img/template/python.png)
 
 # 1. Python
 1991년 귀도 반 로섬이 발표한 고급 프로그래밍 언어로 플랫폼에 독립적이며 인터프리터식,객체 지향적, 동적 타이핑의 대화형 언어이다.

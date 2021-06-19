@@ -33,15 +33,15 @@ tags: [blog]
 
 순서는 아래 그림 순서대로 진행하면 된다.
 
-![아나콘다 설치 1](/_posts/img/Python/basic/1_overview/install-1.png)
-![아나콘다 설치 2](/_posts/img/Python/basic/1_overview/install-2.png)
-![아나콘다 설치 3](/_posts/img/Python/basic/1_overview/install-3.png)
-![아나콘다 설치 4](/_posts/img/Python/basic/1_overview/install-4.png)
-![아나콘다 설치 5](/_posts/img/Python/basic/1_overview/install-5.png)
-![아나콘다 설치 6](/_posts/img/Python/basic/1_overview/install-6.png)
-![아나콘다 설치 7](/_posts/img/Python/basic/1_overview/install-7.png)
-![아나콘다 설치 8](/_posts/img/Python/basic/1_overview/install-8.png)
-![아나콘다 설치 9](/_posts/img/Python/basic/1_overview/install-9.png)
+![아나콘다 설치 1]({{"/_posts/img/Python/basic/1_overview/install-1.png" | relative_url}})
+![아나콘다 설치 2]({{"/_posts/img/Python/basic/1_overview/install-2.png" | relative_url}})
+![아나콘다 설치 3]({{"/_posts/img/Python/basic/1_overview/install-3.png" | relative_url}})
+![아나콘다 설치 4]({{"/_posts/img/Python/basic/1_overview/install-4.png" | relative_url}})
+![아나콘다 설치 5]({{"/_posts/img/Python/basic/1_overview/install-5.png" | relative_url}})
+![아나콘다 설치 6]({{"/_posts/img/Python/basic/1_overview/install-6.png" | relative_url}})
+![아나콘다 설치 7]({{"/_posts/img/Python/basic/1_overview/install-7.png" | relative_url}})
+![아나콘다 설치 8]({{"/_posts/img/Python/basic/1_overview/install-8.png" | relative_url}})
+![아나콘다 설치 9]({{"/_posts/img/Python/basic/1_overview/install-9.png" | relative_url}})
 
 ## 2) Pycharm 설치
 Pycharm 은 Jetbrain 사에서 제작했으며, 같은 회사 제품인 IntelliJ 와 달리 Community 버전을 기한제한 없이 배포하고 있다.

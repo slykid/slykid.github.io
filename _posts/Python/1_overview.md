@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Overview
-tags: [archive]
+tags: [blog]
 ---
 
 # 1. Python 이란

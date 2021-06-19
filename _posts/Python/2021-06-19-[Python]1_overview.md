@@ -4,7 +4,9 @@ title: "[Python] 1. Python"
 tags: [blog]
 ---
 
-![python_template](/_posts/img/template/python.png)
+<img src="/_posts/img/template/python.png">
+<br>
+<!-- ![python_template](/_posts/img/template/python.png) -->
 
 
 # 1. Python

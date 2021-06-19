@@ -5,7 +5,7 @@ tags: [blog]
 ---
 
 ![python_template]("https://user-images.githubusercontent.com/25294147/122635942-93e02b80-d121-11eb-8c7b-a1804301e07a.png")
-)
+
 
 # 1. Python
 1991년 귀도 반 로섬이 발표한 고급 프로그래밍 언어로 플랫폼에 독립적이며 인터프리터식,객체 지향적, 동적 타이핑의 대화형 언어이다.

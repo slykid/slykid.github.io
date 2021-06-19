@@ -4,7 +4,7 @@ title: "[Python] 1. Python"
 tags: [blog]
 ---
 
-!["python_template"](https://slykid.github.io/_posts/img/template/python.png)
+![python_template](https://slykid.github.io/_posts/img/template/python.png)
 
 # 1. Python
 1991년 귀도 반 로섬이 발표한 고급 프로그래밍 언어로 플랫폼에 독립적이며 인터프리터식,객체 지향적, 동적 타이핑의 대화형 언어이다.
@@ -32,31 +32,31 @@ tags: [blog]
 
 순서는 아래 그림 순서대로 진행하면 된다.
 
-!["아나콘다 설치 1"]("_posts/img/Python/basic/1_overview/install-1.png")
-!["아나콘다 설치 2"]("_posts/img/Python/basic/1_overview/install-2.png")
-!["아나콘다 설치 3"]("_posts/img/Python/basic/1_overview/install-3.png")
-!["아나콘다 설치 4"]("_posts/img/Python/basic/1_overview/install-4.png")
-!["아나콘다 설치 5"]("_posts/img/Python/basic/1_overview/install-5.png")
-!["아나콘다 설치 6"]("_posts/img/Python/basic/1_overview/install-6.png")
-!["아나콘다 설치 7"]("_posts/img/Python/basic/1_overview/install-7.png")
-!["아나콘다 설치 8"]("_posts/img/Python/basic/1_overview/install-8.png")
-!["아나콘다 설치 9"]("_posts/img/Python/basic/1_overview/install-9.png")
+![아나콘다 설치 1]("_posts/img/Python/basic/1_overview/install-1.png")
+![아나콘다 설치 2]("_posts/img/Python/basic/1_overview/install-2.png")
+![아나콘다 설치 3]("_posts/img/Python/basic/1_overview/install-3.png")
+![아나콘다 설치 4]("_posts/img/Python/basic/1_overview/install-4.png")
+![아나콘다 설치 5]("_posts/img/Python/basic/1_overview/install-5.png")
+![아나콘다 설치 6]("_posts/img/Python/basic/1_overview/install-6.png")
+![아나콘다 설치 7]("_posts/img/Python/basic/1_overview/install-7.png")
+![아나콘다 설치 8]("_posts/img/Python/basic/1_overview/install-8.png")
+![아나콘다 설치 9]("_posts/img/Python/basic/1_overview/install-9.png")
 
 ## 2) Pycharm 설치
 Pycharm 은 Jetbrain 사에서 제작했으며, 같은 회사 제품인 IntelliJ 와 달리 Community 버전을 기한제한 없이 배포하고 있다.
 
 설치 순서는 다음과 같다.
 
-!["Pycharm 설치 1"]("_posts/img/Python/basic/1_overview/install_pycharm-1.png")
-!["Pycharm 설치 2"]("_posts/img/Python/basic/1_overview/install_pycharm-2.png")
-!["Pycharm 설치 3"]("_posts/img/Python/basic/1_overview/install_pycharm-3.png")
-!["Pycharm 설치 4"]("_posts/img/Python/basic/1_overview/install_pycharm-4.png")
-!["Pycharm 설치 5"]("_posts/img/Python/basic/1_overview/install_pycharm-5.png")
-!["Pycharm 설치 6"]("_posts/img/Python/basic/1_overview/install_pycharm-6.png")
-!["Pycharm 설치 7"]("_posts/img/Python/basic/1_overview/install_pycharm-7.png")
+![Pycharm 설치 1]("_posts/img/Python/basic/1_overview/install_pycharm-1.png")
+![Pycharm 설치 2]("_posts/img/Python/basic/1_overview/install_pycharm-2.png")
+![Pycharm 설치 3]("_posts/img/Python/basic/1_overview/install_pycharm-3.png")
+![Pycharm 설치 4]("_posts/img/Python/basic/1_overview/install_pycharm-4.png")
+![Pycharm 설치 5]("_posts/img/Python/basic/1_overview/install_pycharm-5.png")
+![Pycharm 설치 6]("_posts/img/Python/basic/1_overview/install_pycharm-6.png")
+![Pycharm 설치 7]("_posts/img/Python/basic/1_overview/install_pycharm-7.png")
 
 위의 순서대로 설치를 완료했다면, 실행했을 때 아래와 같은 창이 나올 것이다.
-!["Pycharm 설치 완료"]("_posts/img/Python/basic/1_overview/install_pycharm-8.png")
+![Pycharm 설치 완료]("_posts/img/Python/basic/1_overview/install_pycharm-8.png")
 
 해당 창에서 Accept 버튼을 눌러주면, 정상적으로 파이참이 실행된다.
 
@@ -65,14 +65,14 @@ Pycharm 은 Jetbrain 사에서 제작했으며, 같은 회사 제품인 IntelliJ
 
 순서는 다음과 같다.
 
-!["프로젝트 생성 1"]("_posts/img/Python/basic/1_overview/create_project-1.png")
-!["프로젝트 생성 2"]("_posts/img/Python/basic/1_overview/create_project-2.png")
-!["프로젝트 생성 3"]("_posts/img/Python/basic/1_overview/create_project-3.png")
-!["프로젝트 생성 4"]("_posts/img/Python/basic/1_overview/create_project-4.png")
-!["프로젝트 생성 5"]("_posts/img/Python/basic/1_overview/create_project-5.png")
+![프로젝트 생성 1]("_posts/img/Python/basic/1_overview/create_project-1.png")
+![프로젝트 생성 2]("_posts/img/Python/basic/1_overview/create_project-2.png")
+![프로젝트 생성 3]("_posts/img/Python/basic/1_overview/create_project-3.png")
+![프로젝트 생성 4]("_posts/img/Python/basic/1_overview/create_project-4.png")
+![프로젝트 생성 5]("_posts/img/Python/basic/1_overview/create_project-5.png")
 
 아래 그림은 Python 인터프리터를 주피터 노트북(Jupyter Notebook) 과 같은 IPython 형식으로 변경하고자 할 때 설정하면 되는 부분이므로, 필요없다면 넘어가도 좋다.
-!["IPython 설정"]("_posts/img/Python/basic/1_overview/create_project-6.png")
+![IPython 설정]("_posts/img/Python/basic/1_overview/create_project-6.png")
 
 위의 순서대로 진행했다면, 아래 사진과 같이 나오면서, 작업환경의 세팅이 마무리된다.
-!["프로젝트 생성 완료"]("_posts/img/Python/basic/1_overview/create_project-7.png")
+![프로젝트 생성 완료]("_posts/img/Python/basic/1_overview/create_project-7.png")

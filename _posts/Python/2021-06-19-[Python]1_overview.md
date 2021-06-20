@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Python] 1. Python"
-tags: [blog]
+tags: [Blog]
 categories: ['programming', 'python']
 ---
 

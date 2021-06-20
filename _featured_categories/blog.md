@@ -1,6 +1,6 @@
 ---
 layout: list
-title: blog
+title: Blog
 description: >
 menu: true
 order: 2

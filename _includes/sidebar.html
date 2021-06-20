@@ -8,19 +8,6 @@
       {% capture bg_class %}sidebar-bg {% if image != 'none' %}sidebar-overlay{% endif %}{% endcapture %}
     {% endif %}
     <div class="{{ bg_class }}" style="{{ bg_style }}"></div>
-
-    <!-- search box -->
-    <form action="/search">
-        <div class="tipue_search_left">
-            <img src="{{ "/assets/tipuesearch/search.png" | relative_url }}" class="tipue_search_icon">
-        </div>
-        <div class="tipue_search_right">
-            <input type="text" name="q" id="tipue_search_input" pattern=".{3,}" title="At least 1 characters" style="width:150px;height:15px;font-size:5px"/>
-        </div>
-        <div style="clear: both;"></div>
-    </form>
-
-
     <div class="sidebar-sticky">
       <div class="sidebar-about">
         <h2 class="h1"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h2>
@@ -39,6 +26,16 @@
         {% endif %}
       </div>
 
+      <!-- search box -->
+      <form action="/search">
+          <div class="tipue_search_left">
+              <img src="{{ "/assets/tipuesearch/search.png" | relative_url }}" class="tipue_search_icon">
+          </div>
+          <div class="tipue_search_right">
+              <input type="text" name="q" id="tipue_search_input" pattern=".{3,}" title="At least 1 characters" style="width:150px;height:15px;font-size:5px"/>
+          </div>
+          <div style="clear: both;"></div>
+      </form>
 
       <nav class="sidebar-nav heading" role="navigation">
         {% include nav.html %}

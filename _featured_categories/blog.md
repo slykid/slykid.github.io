@@ -3,5 +3,5 @@ layout: list
 title: blog
 description: >
 menu: true
-order: 3
+order: 2
 ---

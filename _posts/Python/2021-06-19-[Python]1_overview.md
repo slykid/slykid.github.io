@@ -2,6 +2,7 @@
 layout: post
 title: "[Python] 1. Python"
 tags: [blog]
+categories: ['programming', 'python']
 ---
 
 ![python_template](https://user-images.githubusercontent.com/25294147/122635942-93e02b80-d121-11eb-8c7b-a1804301e07a.png)

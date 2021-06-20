@@ -34,6 +34,12 @@
 
       {% assign author = site.data.authors.first[1] | default:site.author %}
 
+      <div class="sidebar-social">
+        {% include social.html author=author %}
+      </div>
+
+      <br>
+
       <!-- search box -->
       <form action="/search">
           <div class="tipue_search_left">
@@ -44,13 +50,7 @@
           </div>
           <div style="clear: both;"></div>
       </form>
-      {{ node.title }}
 
-      <br><br>
-
-      <div class="sidebar-social">
-        {% include social.html author=author %}
-      </div>
     </div>
   </header>
 </hy-drawer>

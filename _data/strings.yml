@@ -24,17 +24,10 @@ links:                 Links
 pagination:            Pagination
 newer:                 Newer
 older:                 Older
-forward:               Forward
 back:                  Back
 permalink:             Permalink
-permalink_icon:        content-hash
+permalink_icon:        icon-link
 templates:             Templates (for web app)
-present:               present
-toc:                   Table of Contents
-note:                  Note
-description:           Description
-search:                Search
-search_placeholder:    Type something…
 
 loading:               Loading…
 redirecting:           Redirecting…
@@ -44,7 +37,7 @@ continue_reading:      >
 
 cookies_banner:
   text:                >
-    This site uses cookies. [Cookies Policy](/cookies-policy/).
+    This site uses cookies. [Cookies Policy](/hydejack/cookies-policy/).
   okay:                Okay
 
 not_found:
@@ -54,13 +47,6 @@ not_found:
     <!--home_link--> to try finding it again.
   home_link:           Head back home
 
-offline:
-  title:               'You are Offline'
-  message:             |
-    Sorry, but you appear to be offline and this page has not been prepared for offline viewing.
-    <!--home_link--> to try finding another page.
-  home_link:           Head back home
-
 error:
   title:               Error
   message:             |
@@ -68,20 +54,18 @@ error:
 
 # Separators
 # ---------------------------------------------------------------------------------------
-posted:                'Posted'
 colon:                 ':'
 separator:             '|'
 category_start:        'in '
 category_spearator:    ' / '
 tag_start:             'on '
 tag_separator:         ', '
-from_to_separator:     '–'
+
 
 # Date formats
 # ---------------------------------------------------------------------------------------
 date_formats:
-  # post:                '%d %b %Y'
-  post:                '%Y. %m. %d.'
+  post:                '%d %b %Y'
   related_post:        '%d %b %Y'
   list_group_by:       '%Y'
   list_entry:          '%d %b'
@@ -95,27 +79,31 @@ date_formats:
 # If you don't own the PRO version of Hydejack, modifying these will have no effect.
 
 tinyletter:
-  title:               Commercial break
+  title:               Newsletter
   label:               Email
-  placeholder:         Enter your email address
+  placeholder:         mail@example.com
   button:              Subscribe
   message:             |
-    Pay the *iron price* for this theme by adding yourself to the mailing list.
-    Receive development updates, advanced tutorials,
-    and anything else I can come up with as it relates to **Hydejack**.
-
+    Subscribe to my newsletter.
+    0
     <!--form-->
 
-    No 3rd party products, no spam. Emails handled by [Tinyletter](https://tinyletter.com/)
+    Open `_data/strings.yml` to edit this text.
     {:.faded}
 
 welcome:
+  selected_projects:   Selected Projects
+  selected_posts:      Selected Posts
+  recent_projects:     Recent Projects
+  recent_posts:        Recent Posts
   more_projects:       See <!--projects_title--> for more
   more_posts:          See <!--posts_title--> for more
 
 resume:
   location:            Location
   location_separator:  ', '
+  from_to_separator:   '–'
+  present:             present
   email:               Email
   phone:               Phone
   website:             Website
@@ -137,19 +125,11 @@ resume:
   skills:              Skills
   level:               Level
   interests:           Interests
-  summary:             Summary
   keywords:            Keywords
-  print:               Print
-  download_pdf:        PDF
-  download_vcf:        vCard
-  download_json:       JSON
   icons:
     fallback:          icon-link
     location:          icon-location
-    born:              icon-quill
-    citizenship:       icon-flag
-    maritalStatus:     icon-man-woman
-    email:             icon-envelop
+    email:             icon-mail2
     phone:             icon-phone
     website:           icon-home3
     work:              icon-briefcase
@@ -161,7 +141,3 @@ resume:
     languages:         icon-bubbles
     skills:            icon-wrench
     interests:         icon-heart
-
-post:
-  ps:
-    imgpath:           /assets/img/problem-solving

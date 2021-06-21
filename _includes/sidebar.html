@@ -1,0 +1,63 @@
+<hy-drawer>
+  <header id="_sidebar" class="sidebar" role="banner">
+    {% if image.background %}
+      {% capture bg_style %}background:{{ image.background }}{% endcapture %}
+      {% capture bg_class %}sidebar-bg {% if image.overlay %}sidebar-overlay{% endif %}{% endcapture %}
+    {% else %}
+      {% capture bg_style %}background-color:{{ color }};{% if image != 'none' %}background-image:url({% include smart-url url=image %}){% endif %}{% endcapture %}
+      {% capture bg_class %}sidebar-bg {% if image != 'none' %}sidebar-overlay{% endif %}{% endcapture %}
+    {% endif %}
+    <div class="{{ bg_class }}" style="{{ bg_style }}"></div>
+    <div class="sidebar-sticky">
+      <div class="sidebar-about">
+        <h2 class="h1"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h2>
+        <!-- <br>
+        <div class="sidebar-box">
+                {% if author.picture %}
+                  {% include srcset-img.html class="avatar" img=author.picture alt=author.name %}
+                {% endif %}
+        </div>
+        <br> -->
+        {% assign text = site.tagline | default:site.description %}
+        {% if text %}
+          <p class="{% if text.size > 100 %}fine{% endif %}">
+            {{ text | markdownify | replace:'<p>','' | replace:'</p>','' }}
+          </p>
+        {% endif %}
+      </div>
+
+      <nav class="sidebar-nav heading" role="navigation">
+        {% include nav.html %}
+      </nav>
+
+      <!-- search box -->
+      <form action="/search">
+          <div class="tipue_search_left">
+              <img src="/assets/tipuesearch/search-black.png" class="tipue_search_icon">
+          </div>
+          <div class="tipue_search_right">
+              <input type="text" name="q" id="tipue_search_input" pattern=".{3,}" title="At least 1 characters" style="width:150px;height:15px;font-size:7px" />
+          </div>
+          <div style="clear: both;"></div>
+      </form>
+
+      <br>
+
+      {% assign author = site.data.authors.first[1] | default:site.author %}
+
+      <!-- social info -->
+      <div class="sidebar-social">
+        {% include social.html author=author %}
+      </div>
+
+      <!-- Blog Hits Count -->
+      <center>
+      <div style="text-align: center;">
+              <a href="https://hits.seeyoufarm.com">
+                <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fslykid%2Fhit-counter&count_bg=%233DC8A9&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false">
+              </a>
+      </div>
+      </center>
+    </div>
+  </header>
+</hy-drawer>

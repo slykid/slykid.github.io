@@ -1,5 +1,5 @@
 ---
-layout: list
+layout: base
 title: Blog
 description: >
 menu: true

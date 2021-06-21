@@ -1,39 +1,50 @@
 ---
-# Copyright (c) 2017 Florian Klampfer <https://qwtel.com/>
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 layout: base
 ---
 
-{% include post.html post=page link_title=false %}
+{% include_cached components/post.html post=page no_link_title=true no_excerpt=true hide_image=page.hide_image hide_description=page.hide_description %}
 
-<hr class="dingbat related" />
 
-{% assign addons = site.hydejack.post_addons %}
+<!-- list layout -->
+{% if page.list %}
+  {% assign posts = site.categories[page.slug] | default:site.tags[page.slug] | default:site.posts %}
+
+  {% assign date_formats  = site.data.strings.date_formats               %}
+  {% assign list_group_by = date_formats.list_group_by | default:"%Y"    %}
+  {% assign list_entry    = date_formats.list_entry    | default:"%m %d" %}
+
+  {% assign prev_date = 0 %}
+  {% if page.no_groups %}<ul class="related-posts">{% endif %}
+  <div class="list-post">
+  {% for post in posts %}
+    {% assign current_date = post.date | date:list_group_by %}
+    {% unless page.no_groups %}{% if current_date != prev_date %}
+      {% unless forloop.first %}</ul>{% endunless %}
+
+      <!-- id="{{ list_group_by | slugify }}-{{ current_date | slugify }}" -->
+  <h2 class="list-lead">{{ current_date }}</h2>
+    <ul class="related-posts">
+      {% assign prev_date = current_date %}
+    {% endif %}{% endunless %}
+    {% include_cached components/post-list-item2.html post=post format=list_entry %}
+    {% if forloop.last %}</ul>{% endif %}
+  {% endfor %}
+  </div>
+{% endif %}
+
+
+{% assign addons = page.addons | default:site.hydejack.post_addons %}
 {% unless addons %}{% assign addons = "about,newsletter,related,random" | split:"," %}{% endunless %}
+
+<!-- <script>console.log("{{addons}}"); console.log("{{page.addons}}"); console.log("{{site.hydejack.post_addons}}")</script> -->
 {% for addon in addons %}
   {% case addon %}
   {% when 'about' %}
-     {% include about.html %}
+    {% include_cached components/about.html author=page.author %}
   {% when 'related' %}
-    {% include related-posts.html post=post %}
+    {% include components/related-posts.html %}
+  {% when 'comments' %}
+    {% include body/comments.html %}
   {% else %}
   {% endcase %}
 {% endfor %}

@@ -2,15 +2,13 @@
 # Must be the same as `author` in `_config.yml`.
 # Change `author1` to your shortname.
 author1:
-  name:              Kilhyun Kim
+  name:              김길현
   email:             slykid@naver.com
 
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
-    - Software Engineer & Data Scientist
-    - NICE ZiniData Team Ops. Developer
-    - 데이터 스페셜리스트를 꿈꾸는 개발자 겸 데이터 과학자 입니다 :)
+    Data Scientist & SW Engineer
 
   # This photo will be used in the about section
   picture:
@@ -24,10 +22,11 @@ author1:
   # Comment/uncommet to show/hide
   # Rearrange to change the order in which they appear
   social:
-    #twitter:         <username>
+    instagram:       slyk1d.93
     github:          slykid
-    email:           slykid@naver.com
-    # rss:             https://<url>/feed.xml
+    email:           mailto:slykid@naver.com
+    rss:             https://slykid.github.io
+    # twitter:         <username>
     # facebook:        <username>
     # google:          <number>
     # vk:              <username>
@@ -37,7 +36,7 @@ author1:
     # spotify:         <user>/<number>
     # soundcloud:      <username>
     # lastfm:          <username>
-    instagram:       slyk1d.93
+    # instagram:       <username>
     # flickr:          <string@string>
     # 500px:           <username>
     # dribbble:        <username>
@@ -61,7 +60,8 @@ author1:
     # delicious:       <username>
     # stumbleupon:     <username>
     # paypal:          <username>
-    # download:        https://github.com/qwtel/hydejack-starter-kit/archive/v7.5.0.zip
+    # download:        <url>
+    # keybase          <username>
 
 # Another author (optional)
 # author2:
@@ -71,12 +71,9 @@ author1:
 #     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 #     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 #     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-#
+
 #     Open `_data/authors.yml` to edit this text.
+
 #   picture:           https://placehold.it/128x128
 #   twitter:           <username>
 #   github:            <username>
-#   accent_color:      '#268bd2'
-#   accent_image:
-#     background:      '#202020'
-#     overlay:         false

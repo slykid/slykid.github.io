@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Monos
+title: 지극히 개인적인 연구소
 email: slykid@naver.com
 description: ""
 # baseurl: "/" # the subpath of your site, e.g. /blog

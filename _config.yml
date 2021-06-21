@@ -1,25 +1,35 @@
-title:              Clean Blog
-email:              your-email@example.com
-description:        A Blog Theme by Start Bootstrap
-author:             Start Bootstrap
-baseurl:            "/startbootstrap-clean-blog-jekyll"
-url:                "https://startbootstrap.github.io"
+baseurl: "/zolan" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
-# Social Profiles
-twitter_username:   SBootstrap
-github_username:    StartBootstrap
-facebook_username:  StartBootstrap
-instagram_username:  
-linkedin_username:
-
-# Add your google-analytics ID here to activate google analytics
-google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
 
 # Build settings
-markdown:           kramdown
-paginate:           5
-paginate_path:      "/posts/page:num/"
+markdown: kramdown
+permalink: pretty
 plugins:
-  - jekyll-feed
   - jekyll-paginate
-  - jekyll-sitemap ## Uncomment this line to silently generate a sitemaps.org compliant sitemap for your Jekyll site
+  - jekyll-sitemap
+  - jekyll/tagging
+
+paginate: 5
+paginate_path: "/page/:num"
+
+
+# Pages Path
+defaults:
+  - scope:
+      path: '_pages'
+    values:
+      permalink: /:basename:output_ext
+
+include:
+  - _pages
+
+
+# Tags
+tag_page_dir:         tag
+tag_page_layout:      tag_page
+tag_permalink_style:  pretty
+
+sass:
+  sass_dir: _sass
+  style: compressed

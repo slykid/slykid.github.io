@@ -10,14 +10,14 @@ relative_permalinks: true
 title:            지극히 개인적인 블로그
 tagline:          'For Data Science & SW Engineering'
 description:
-url:              https://slykid.github.io
+url:              http://slykid.github.io
 baseurl:          /
 
 author:
   name:           'Kilhyun Kim'
   url:            https://www.instagram.com/slyk1d.93/?hl=ko
 
-paginate:         
+paginate:
 
 # Custom vars
 version:          2.1.0

@@ -6,3 +6,5 @@ main:
      url: https://slykid.github.io/_posts/
    - title: "Catogory"
      url: /categories/
+   - title: "Tag"
+     url: /tags/

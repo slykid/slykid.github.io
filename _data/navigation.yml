@@ -4,7 +4,7 @@ main:
 #     url: https://mmistakes.github.io/minimal-mistakes/about/
    - title: "Posts"
      url: https://slykid.github.io/_posts/
-   - title: "Catogory"
+   - title: "Category"
      url: /categories/
    - title: "Tag"
      url: /tags/

@@ -8,3 +8,9 @@ main:
      url: /categories/
    - title: "Tag"
      url: /tags/
+
+docs:
+  - title: "Programming"
+    children:
+      - title: "Python"
+        url: /_posts/_programming/_python

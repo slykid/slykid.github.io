@@ -13,4 +13,4 @@ docs:
   - title: "Programming"
     children:
       - title: "Python"
-        url: /categories/python
+        url: /categories/

@@ -4,15 +4,11 @@ main:
 #     url: https://mmistakes.github.io/minimal-mistakes/about/
    - title: "Posts"
      url: https://slykid.github.io/_posts/
-   - title: "Category"
-     url: /categories/
-   - title: "Tag"
-     url: /tags/
    - title: "Search"
      url: /search/
 
-docs:
-  - title: "Programming"
+sidebar-category:
+  - title: "프로그래밍"
     children:
       - title: "Python"
-        url: /categories/
+        url: "/_posts/python"

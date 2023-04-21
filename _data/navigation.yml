@@ -1,9 +1,5 @@
 # main links
 main:
-   - title: "About"
-#     url: https://mmistakes.github.io/minimal-mistakes/about/
-   - title: "블로그"
-     url: https://slykid.github.io/_posts/
    - title: "카테고리"
      url: /categories/
    - title: "Search"

@@ -6,3 +6,7 @@ main:
      url: /tags/
    - title: "검색"
      url: /search/
+
+counts:
+  - title: "카테고리"
+    use: true

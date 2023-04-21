@@ -2,13 +2,9 @@
 main:
    - title: "About"
 #     url: https://mmistakes.github.io/minimal-mistakes/about/
-   - title: "Posts"
+   - title: "블로그"
      url: https://slykid.github.io/_posts/
+   - title: "카테고리"
+     url: /categories/
    - title: "Search"
      url: /search/
-
-sidebar-category:
-  - title: "프로그래밍"
-    children:
-      - title: "Python"
-        url: "/_posts/python"

@@ -7,5 +7,5 @@ sidebar_main: true
 ---
 
 
-{% assign posts = site.categories.Hadoop.Cassandra-DB %}
+{% assign posts = site.categories.Cassandra-DB %}
 {% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}

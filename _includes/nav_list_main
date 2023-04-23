@@ -11,11 +11,9 @@
           📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">{{sum}}</style> <span style="font-family:'Cafe24Oneprettynight';">개</style>
     </li>
     <li>
-      <!--span 태그로 카테고리들을 크게 분류-->
+      <!--이슈 & 리뷰-->
       <span class="nav__sub-title">Issues & Reviews</span>
-          <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
           <ul>
-              <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
               {% for category in site.categories %}
                   {% if category[0] == "Issue" %}
                       <li><a href="/categories/issue" class="">Issue({{category[1].size}})</a></li>
@@ -29,21 +27,49 @@
                   {% endif %}
               {% endfor %}
           </ul>
-      <!--span 태그로 카테고리들을 크게 분류-->
-      <span class="nav__sub-title">Java</span>
 
-      <!--span 태그로 카테고리들을 크게 분류-->
-      <span class="nav__sub-title">Python</span>
-          <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+      <!--Java-->
+      <span class="nav__sub-title">Java</span>
           <ul>
-              <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
+            {% for category in site.categories %}
+                {% if category[0] == "Java-Basic" %}
+                    <li><a href="/categories/issue" class="">Issue({{category[1].size}})</a></li>
+                {% endif %}
+            {% endfor %}
+          </ul>
+          <ul>
+            {% for category in site.categories %}
+                {% if category[0] == "Spring" %}
+                    <li><a href="/categories/issue" class="">Issue({{category[1].size}})</a></li>
+                {% endif %}
+            {% endfor %}
+          </ul>
+
+      <!--Python-->
+      <span class="nav__sub-title">Python</span>
+          <ul>
               {% for category in site.categories %}
-                  {% if category[0] == "Python" %}
+                  {% if category[0] == "Python-Basic" %}
                       <li><a href="/categories/python" class="">Python({{category[1].size}})</a></li>
                   {% endif %}
               {% endfor %}
           </ul>
-      <!--span 태그로 카테고리들을 크게 분류-->
+          <ul>
+              {% for category in site.categories %}
+                  {% if category[0] == "Python Machine Learning" %}
+                      <li><a href="/categories/python" class="">Python({{category[1].size}})</a></li>
+                  {% endif %}
+              {% endfor %}
+          </ul>
+          <ul>
+              {% for category in site.categories %}
+                  {% if category[0] == "Python Deep Learning" %}
+                      <li><a href="/categories/python" class="">Python({{category[1].size}})</a></li>
+                  {% endif %}
+              {% endfor %}
+          </ul>
+
+      <!--R-->
       <span class="nav__sub-title">R</span>
 
       <!--span 태그로 카테고리들을 크게 분류-->

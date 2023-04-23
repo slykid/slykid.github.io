@@ -7,5 +7,5 @@ sidebar_main: true
 ---
 
 
-{% assign posts = site.categories.Security.Security-Data-Analysis %}
+{% assign posts = site.categories.Security-Data-Analysis %}
 {% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}

@@ -7,5 +7,5 @@ sidebar_main: true
 ---
 
 
-{% assign posts = site.categories.RPA.UiPath %}
+{% assign posts = site.categories.UiPath %}
 {% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}

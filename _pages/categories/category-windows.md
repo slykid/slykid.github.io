@@ -7,5 +7,5 @@ sidebar_main: true
 ---
 
 
-{% assign posts = site.categories.Server.Windows %}
+{% assign posts = site.categories.Windows-Server %}
 {% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}

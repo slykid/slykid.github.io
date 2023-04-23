@@ -7,5 +7,5 @@ sidebar_main: true
 ---
 
 
-{% assign posts = site.categories.Network.CCNP-Router %}
+{% assign posts = site.categories.CCNP-Router %}
 {% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}

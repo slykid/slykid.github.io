@@ -7,5 +7,5 @@ sidebar_main: true
 ---
 
 
-{% assign posts = site.categories.Class.Network-101 %}
+{% assign posts = site.categories.Network-101 %}
 {% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}

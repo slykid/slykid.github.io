@@ -23,7 +23,7 @@
           <ul>
               {% for category in site.categories %}
                   {% if category[0] == "Review" %}
-                    <li><a href="/categories/Review" class="">Review({{category[1].size}})</a></li>
+                    <li><a href="/categories/review" class="">Review({{category[1].size}})</a></li>
                   {% endif %}
               {% endfor %}
           </ul>
@@ -33,14 +33,14 @@
           <ul>
             {% for category in site.categories %}
                 {% if category[0] == "Java-Basic" %}
-                    <li><a href="/categories/issue" class="">Issue({{category[1].size}})</a></li>
+                    <li><a href="/categories/java-basic" class="">Basic({{category[1].size}})</a></li>
                 {% endif %}
             {% endfor %}
           </ul>
           <ul>
             {% for category in site.categories %}
                 {% if category[0] == "Spring" %}
-                    <li><a href="/categories/issue" class="">Issue({{category[1].size}})</a></li>
+                    <li><a href="/categories/spring" class="">Spring({{category[1].size}})</a></li>
                 {% endif %}
             {% endfor %}
           </ul>
@@ -57,14 +57,14 @@
           <ul>
               {% for category in site.categories %}
                   {% if category[0] == "Python Machine Learning" %}
-                      <li><a href="/categories/python" class="">Python({{category[1].size}})</a></li>
+                      <li><a href="/categories/python-machine-learning" class="">Machine Learning({{category[1].size}})</a></li>
                   {% endif %}
               {% endfor %}
           </ul>
           <ul>
               {% for category in site.categories %}
                   {% if category[0] == "Python Deep Learning" %}
-                      <li><a href="/categories/python" class="">Python({{category[1].size}})</a></li>
+                      <li><a href="/categories/python-deep-learning" class="">Deep Learning({{category[1].size}})</a></li>
                   {% endif %}
               {% endfor %}
           </ul>
@@ -72,28 +72,28 @@
       <!--R-->
       <span class="nav__sub-title">R</span>
 
-      <!--span 태그로 카테고리들을 크게 분류-->
+      <!--Hadoop Eco System-->
       <span class="nav__sub-title">Hadoop Eco System</span>
 
-      <!--span 태그로 카테고리들을 크게 분류-->
+      <!--Database-->
       <span class="nav__sub-title">Database</span>
 
-      <!--span 태그로 카테고리들을 크게 분류-->
+      <!--Network-->
       <span class="nav__sub-title">Network</span>
 
-      <!--span 태그로 카테고리들을 크게 분류-->
+      <!--ELK-->
       <span class="nav__sub-title">ELK</span>
 
-      <!--span 태그로 카테고리들을 크게 분류-->
+      <!--DevOps-->
       <span class="nav__sub-title">DevOps</span>
 
-      <!--span 태그로 카테고리들을 크게 분류-->
+      <!--RPA-->
       <span class="nav__sub-title">RPA</span>
 
-      <!--span 태그로 카테고리들을 크게 분류-->
+      <!--SMU-Classes-->
       <span class="nav__sub-title">SMU</span>
 
-      <!--span 태그로 카테고리들을 크게 분류-->
+      <!--Certification-->
       <span class="nav__sub-title">자격증</span>
     </li>
 </ul>

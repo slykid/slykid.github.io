@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "1. KES 2021 후기"
+title: "[Review] 1. KES 2021 후기"
 
 categories: 
 - Review

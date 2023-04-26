@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "2. WIS 2023 후기"
+title: "[Review] 2. WIS 2023 후기"
 
 categories: 
 - Review

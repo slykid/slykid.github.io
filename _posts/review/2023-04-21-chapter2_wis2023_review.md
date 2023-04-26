@@ -7,11 +7,14 @@ categories:
 
 tags: 
   - [WIS2023, Review]
+  
 toc: true
 toc_sticky: true
 
 author_profile: true
 sidebar_main: true
+
+date: 2023-04-21
 ---
 
 안녕하세요. SLYKID 입니다. 약 2년 전 한국전자전 리뷰 이후로 오핸만에 IT 전시회에 대한 리뷰를 작성하게 되었습니다. 

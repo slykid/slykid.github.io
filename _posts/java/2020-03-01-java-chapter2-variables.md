@@ -63,8 +63,8 @@ char asciiCode;
 |기타|transient, volatitle, package, import, synchronized, native, final, static, strictfp, assert|
 |---|------|
 
-###### ▶ 숫자로 시작하면 안 된다.
-###### ▶ 특수문자는 '_' 와 '$' 만 사용가능하다.
+- 숫자로 시작하면 안 된다.<br>
+- 특수문자는 '_' 와 '$' 만 사용가능하다.
 
 이해를 위해 아래의 예제 코드를 실행해보자.
 

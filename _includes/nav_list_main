@@ -32,8 +32,8 @@
       <span class="nav__sub-title">Java</span>
           <ul>
             {% for category in site.categories %}
-                {% if category[0] == "Java-Basic" %}
-                    <li><a href="/categories/java-basic" class="">Basic({{category[1].size}})</a></li>
+                {% if category[0] == "Java_Basic" %}
+                    <li><a href="/categories/java_basic" class="">Basic({{category[1].size}})</a></li>
                 {% endif %}
             {% endfor %}
           </ul>

@@ -3,7 +3,7 @@ layout: single
 title: "[Java] 1. Java 란"
 
 categories:
-  - "Java-Basic"
+  - Java_Basic
 
 tags:
   - [Java, Programming]

@@ -31,8 +31,10 @@ sidebar_main: true
 
 
 ```java
+
 int numberOfCount = 10;
 char asciiCode;
+
 ```
 
 
@@ -41,8 +43,8 @@ char asciiCode;
 
 
 ###### ▶ 사용 범위
-
 변수는 항상 해당 변수가 선언된 블록 내에서만 사용이 가능하다.
+
 
 ## 2) 명명 규칙
 ###### ▶ 대소문자가 구분되며 길이에 제한이 없다.
@@ -62,27 +64,30 @@ char asciiCode;
 |예외처리<br>관련|try, catch, finally, throw, throws|
 |기타|transient, volatitle, package, import, synchronized, native, final, static, strictfp, assert|
 
+
 ###### ▶ 숫자로 시작하면 안 된다.
 ###### ▶ 특수문자는 '_' 와 '$' 만 사용가능하다.
 
 이해를 위해 아래의 예제 코드를 실행해보자.
 
 ```java
+
 public class VariableTest {
 
-	public static void main(String[] args)
-	{
-		int age = 28;
-		String name = "홍길동";
+    public static void main(String[] args) {
+        int age = 28;
+        String name = "홍길동";
 
-		// 변수 여러 개를 동시에 선언하는 경우에는 반드시 선언부 다음에 값을 대입해 주는 코드가 있어야한다.
-		int count, a;  
-		count = 1;
-		a = 1;
+        // 변수 여러 개를 동시에 선언하는 경우에는 반드시 선언부 다음에 값을 대입해 주는 코드가 있어야한다.
+        int count, a;
+        count = 1;
+        a = 1;
 
-		System.out.println(name + " 님의 올해 나이는 " + age + "살 입니다.");
-		System.out.println(count + " , " + a);
-	}
+        System.out.println(name + " 님의 올해 나이는 " + age + "살 입니다.");
+        System.out.println(count + " , " + a);
+    }
+}
+
 ```
 
 [실행 결과]<br>
@@ -108,6 +113,7 @@ ex. String, UDF(User Define Function), ...
 기본형에 대한 이해를 돕기위해 아래의 코드를 실행해보자.
 
 ```java
+
 public class VariableType {
 
 	public static void main(String[] args)
@@ -174,6 +180,7 @@ public class VariableType {
 
 	}
 }
+
 ```
 
 [실행 결과]<br>
@@ -202,13 +209,18 @@ public class VariableType {
 
 크기가 큰 지, 작은 지를 구분하는 방법은 사용하는 메모리의 크기이다. 숫자형을 쓴다고 하면 다음과 같은 순서로 자동 형변환이 가능하다.
 
-```byte (1) < short (2) < int (4) < long (8) < float (4) < double (8)```
+```txt
+
+byte (1) < short (2) < int (4) < long (8) < float (4) < double (8)
+
+```
 
 ###### ▶ 강제 형 변환(Casting)
 
 큰 크기의 타입을 작은 크기의 타입으로 형 변환 하는 것을 의미한다.
 
 ```java
+
 public class ConstantNLiteral {
 
 	public static void main(String[] args)
@@ -245,8 +257,9 @@ public class ConstantNLiteral {
 	}
 
 }
+
 ```
 
 [실행 결과]<br>
 ![실행결과](/images/2020-03-01-java-chapter2-variables/5_example3.jpg)
-﻿
+

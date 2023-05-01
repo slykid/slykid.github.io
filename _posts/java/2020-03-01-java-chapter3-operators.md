@@ -120,7 +120,8 @@ ex. &&(논리곱), ||(논리합), !(부정)
 
 예제를 통해 앞서 설명한 내용들을 확인해보자.
 
-```Java
+```java
+
 public class Operator {
 
 	public static void main(String[] args)
@@ -240,10 +241,12 @@ public class Operator {
 	}
 
 }
+
 ```
 
 [실행 결과]
-```text
+```txt
+
 변경 전
 10
 0
@@ -291,6 +294,6 @@ true
 15
 10
 5
+
 ```
 
-﻿

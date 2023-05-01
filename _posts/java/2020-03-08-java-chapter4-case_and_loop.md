@@ -24,7 +24,9 @@ sidebar_main: true
 조건식의 결과에 따라 수행문이 실행되는 조건문이며, 조건식에는 true 혹은 false 값을 산출할 수 있는 연산식이나, boolean 변수가 올 수 있다.
 
 ###### ▶ 형식
-```Java
+
+```java
+
 if (조건식)
 {
 	 수행문;
@@ -37,6 +39,7 @@ else
 {
 	 수행문;
 }
+
 ```
 
 이 때, 중간의 else if 는 조건이 여러 개이면서, if 에 속한 조건은 만족하지않을 경우에 사용한다.<br>
@@ -45,7 +48,8 @@ else
 
 간단한 코드 구현해봄으로써 if-else 조건문 흐름을 확인해보자.
 
-```Java
+```java
+
 public class ConditionIf {
 	public static void main(String[] args)
 	{
@@ -84,26 +88,30 @@ public class ConditionIf {
 		System.out.println("나이 " + age);
 		System.out.println("요금 " + charge);
 }
+
 ```
 
 ## 2) switch - case 문
 결과값에 따라 경우를 나눠 실행문이 실행되는 조건문으로, 변수가 어떤 값을 갖느냐에 따라 실행문을 선택한다고 볼 수 있다.
 
 ###### ▶ 형식
-```Java
+```java
+
 switch (조건식)
 {
     case 조건값:	수행문; break;	// break : 해당부분에서 수행을 중지하겠다는 지시어  
 	...
 	default: 	수행문; 	// 기본값, 삭제 가능
 }
+
 ```
 
 앞서 본 if-else 문의 경우 조건식의 결과가 true, false 2가지만 존재하기 때문에 경우가 많아지게 되면, 코드 자체가 길어지고 복잡해질 가능성이 있다. 그에 비해, switch 문은 변수값에 따라 실행문을 나누기 때문에 if-else 문 보다는 간결하다.
 
 또한 모든 case에 해당되지 않는 경우에는 default에 선언된 실행문을 수행하는 특징을 갖고 있다. 하지만, 만약 하나의 case 가 끝났음에도 break를 해주지 않는다면, 다음 케이스가 연달아 실행되며, 실행은 해당 실행문이 속한 case 값과는 별개로 수행됨을 알아두길 바란다.
 
-```Java
+```java
+
 public class ConditionSwitch {
     public static void main(String[] args)
 	{
@@ -121,6 +129,7 @@ public class ConditionSwitch {
 		}
 	}
 }
+
 ```
 
 # 3. 반복문
@@ -130,15 +139,19 @@ public class ConditionSwitch {
 먼저, while 은 조건문을 만족하는 경우 계속 반복적으로 수행하기 때문에 조건식에는 주로 비교 혹은 논리연산식이 온다. 만약, 조건식의 결과가 false 일 경우 반복 행위를 멈추고 while문을 종료한다. 또한 조건식 부분에 true 라고 입력할 경우 무한 루프에 빠질 수 있다. 따라서 적절하게 무한 루프를 빠져나갈 수 있는 코드를 마련해주는 것이 좋다.
 
 ###### ▶ 형식
-```Java
+
+```java
+
 while(조건식) {
     실행문;
 }
+
 ```
 
 간단하게 while 문으로 숫자 1~10까지를 더하는 프로그램을 만들어보고 수행시켜보자
 
-```Java
+```java
+
 public class LoopWhile {
     public static void main(String[] args)
 	{
@@ -157,14 +170,15 @@ public class LoopWhile {
 			a++;
 		}
 }
+
 ```
 
 다음으로 do-while 은 무조건 한번의 반복문 내 코드를 수행하고 조건이 맞다면 반복적으로 수행하는 while 문이라고 이해하면 된다. 주로 실행문을 실행하고 난 후에 반복을 시킬 지 결정하는 경우에 활용하면 좋다.<br>
 작성 시 주의 사항으로 while문 다음에는 반드시 세미콜론(;)을 붙여줘야한다. 아래 형식에도 나와있지만 while 문이 해당구문의 끝이기 때문에 반드시 붙여줘야한다.
 
-​###### ▶ 형식
+###### ▶ 형식
 
-```Java
+```java
 
 do {
     실행문;
@@ -174,7 +188,8 @@ do {
 
 앞서 구현한 1~10까지의 합을 구하는 프로그램을 do-while 문으로 구현해보자.
 
-```Java
+```java
+
 public class LoopWhile {
     public static void main(String[] args)
 	{
@@ -192,6 +207,7 @@ public class LoopWhile {
 		} while(a <= 10);
     }
 }
+
 ```
 
 ## 2) for문
@@ -199,17 +215,20 @@ public class LoopWhile {
 
 ###### ▶ 형식
 
-```Java
+```java
+
 for(초기화식; 조건식; 증감식) {
     실행문;
 }
+
 ```
 
 각각의 역할들을 살펴보자. 먼저 초기화 식은 조건식, 실행문, 증감식에서 사용할 변수를 초기화하는 역할을 한다. 만약 초기화가 필요없다면 생략 가능하다. 조건식은 반복을 while 이나 do-while 문에서 처럼 반복을 하기 위한 조건을 작성한다. 마지막으로 증감식은 초기화식에 사용된 변수를 숫자만큼 증감시켜주는 식을 의미한다.<br>
 추가적으로 식을 2개 이상 작성하는 경우 콤마(,)를 사용해 구분할 수 있으니, 필요에 따라 추가해주면 될 것이다.<br>
 초기화식 작성 시 주의 사항으로는 루프 카운트를 선언할 때, 반드시 부동 소수점 타입을 사용해야한다. 예시로 아래와 같은 코드가 있다고 가정해보자.
 
-```Java
+```java
+
 public class ForFloatCounterExample {
     public static void main(String[] args)
     {
@@ -219,6 +238,7 @@ public class ForFloatCounterExample {
         }
     }
 }
+
 ```
 
 결론부터 이야기하자면 9번만 실행된다. 이론적으로는 10번을 돌아야 맞지만, 그렇지 않은 이유는 0.1을 float 타입으로 정확하게 표현할 수 없기 때문에 x 에 더해지는 실제값이 0.1보다 약간 큰 값이 더해지게된다. 실제로 실행해보면 아래와 같다.
@@ -230,7 +250,8 @@ public class ForFloatCounterExample {
 
 이제 for문을 사용해 앞서 살펴본 1~10까지의 합을 계산하는 프로그램을 구현해보자.
 
-```Java
+```java
+
 public class LoopFor {
     public static void main(String[] args)
 	{
@@ -248,6 +269,7 @@ public class LoopFor {
 		}
     }
 }
+
 ```
 
 ## 3) 중첩 반복문(Nested Loop)
@@ -256,11 +278,13 @@ public class LoopFor {
 ###### ▶ 형식
 
 ```Java
+
 for(초기화식; 조건식; 증감식) {  --- 2
     for(초기화식; 조건식; 증감식) {  --- 1
         실행문;
     }
 }
+
 ```
 
 # 3. Break & Continue
@@ -271,7 +295,8 @@ break 문은 반복문에 대해 실행 중지를 할 경우에 사용된다. �
 ## 2) Continue
 break 문과 달리 continue 문은 해당 반복을 중지하고 다음 반복으로 넘어가도록 하는 기능이다. 주로 특정 조건을 만족하게 되면 이 후 내용을 skip 하는 용도로 많이 사용되며, 반복문내에서 조건문과 함께 사용되는 경우가 많다.
 
-```Java
+```java
+
 public class BreakNContinue_ex08 {
 	public static void main(String[] args)
 	{
@@ -313,6 +338,7 @@ public class BreakNContinue_ex08 {
 	}
 
 }
+
 ```
 
 위의 예제를 통해서도 알 수 있듯이, 둘 다 특정조건을 만족하는 경우에 사용되기 때문에 주로 조건문과 함께 사용되는 경우가 많으며, break 문은 해당 조건을 만족 시, 반복문을 종료하는 용도로, continue 문은 이하 내용을 skip하는 용도로 사용됨을 확인할 수 있다.
@@ -322,7 +348,8 @@ public class BreakNContinue_ex08 {
 이번 장에서는 특별하게 퀴즈를 준비해봤다. 총 3개의 퀴즈이며, 동일한 결과가 나온다면 성공했다고 볼 수 있다.
 추가적으로 값에 대한 입력과 2개이상의 값을 입력하는 경우 다음과 같이 사용할 수 있다.
 
-```Java
+```java
+
 import java.util.Scanner;
 ....
 public class A {
@@ -338,6 +365,7 @@ public class A {
         ...
     }
 }
+
 ```
 
 #### Quiz 1. 연산자와 두 수를 변수로 선언한 후 사칙연산이 수행되는 프로그램을 만드시오. (if-else / switch-case 모두 구현)
@@ -357,6 +385,6 @@ public class A {
 ![퀴즈3-1](/images/2020-03-08-java-chapter4-case_and_loop/4_quiz3.jpg)
 
 [결과2]<br>
-![퀴즈3-2](/images/2020-03-08-java-chapter4-case_and_loop/4_quiz3_2.jpg)​
+![퀴즈3-2](/images/2020-03-08-java-chapter4-case_and_loop/4_quiz3_2.jpg)
 
 결과가 궁금한 분들은 댓글 혹은 개인적으로 연락해주시면 됩니다 :)

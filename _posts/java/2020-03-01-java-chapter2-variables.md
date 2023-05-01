@@ -63,7 +63,7 @@ char asciiCode;
 |논리값|true, false|
 |예외처리<br>관련|try, catch, finally, throw, throws|
 |기타|transient, volatitle, package, import, synchronized, native, final, static, strictfp, assert|
-
+|---|------|
 
 ###### ▶ 숫자로 시작하면 안 된다.
 ###### ▶ 특수문자는 '_' 와 '$' 만 사용가능하다.

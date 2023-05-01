@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "1. Java 란"
+title: "[Java] 1. Java 란"
 
 categories:
 - Java

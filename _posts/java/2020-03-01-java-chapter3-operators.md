@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "3. 연산자"
+title: "[Java] 3. 연산자"
 
 categories:
 - Java

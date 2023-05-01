@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "2. 변수와 상수"
+title: "[Java] 2. 변수와 상수"
 
 categories:
 - Java

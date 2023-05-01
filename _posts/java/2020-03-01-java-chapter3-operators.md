@@ -3,7 +3,7 @@ layout: single
 title: "[Java] 3. 연산자"
 
 categories:
-- Java
+- Java-Basic
 
 tags:
   - [Java, Programming]

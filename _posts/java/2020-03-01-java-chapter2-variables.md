@@ -3,7 +3,7 @@ layout: single
 title: "[Java] 2. 변수와 상수"
 
 categories:
-- Java-Basic
+  - "Java-Basic"
 
 tags:
   - [Java, Programming]

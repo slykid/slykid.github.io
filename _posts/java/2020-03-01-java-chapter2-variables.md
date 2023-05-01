@@ -30,7 +30,7 @@ sidebar_main: true
 변수를 선언할 때는 "="(대입연산자) 를 이용한다.
 
 
-```Java
+```java
 int numberOfCount = 10;
 char asciiCode;
 ```
@@ -67,7 +67,7 @@ char asciiCode;
 
 이해를 위해 아래의 예제 코드를 실행해보자.
 
-```Java
+```java
 public class VariableTest {
 
 	public static void main(String[] args)
@@ -107,7 +107,7 @@ ex. String, UDF(User Define Function), ...
 앞서 사용해본 것처럼 기본형 변수는 실제 값을 가지지만, 참조형 변수는 저장되어있는 주소를 값으로 갖는다.
 기본형에 대한 이해를 돕기위해 아래의 코드를 실행해보자.
 
-```Java
+```java
 public class VariableType {
 
 	public static void main(String[] args)
@@ -208,7 +208,7 @@ public class VariableType {
 
 큰 크기의 타입을 작은 크기의 타입으로 형 변환 하는 것을 의미한다.
 
-```Java
+```java
 public class ConstantNLiteral {
 
 	public static void main(String[] args)

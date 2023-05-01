@@ -49,22 +49,22 @@
       <span class="nav__sub-title">Python</span>
           <ul>
               {% for category in site.categories %}
-                  {% if category[0] == "Python-Basic" %}
-                      <li><a href="/categories/python" class="">Python({{category[1].size}})</a></li>
+                  {% if category[0] == "Python_Basic" %}
+                      <li><a href="/categories/python_basic" class="">Python({{category[1].size}})</a></li>
                   {% endif %}
               {% endfor %}
           </ul>
           <ul>
               {% for category in site.categories %}
-                  {% if category[0] == "Python Machine Learning" %}
-                      <li><a href="/categories/python-machine-learning" class="">Machine Learning({{category[1].size}})</a></li>
+                  {% if category[0] == "Python_Machine_Learning" %}
+                      <li><a href="/categories/python_machine_learning" class="">Machine Learning({{category[1].size}})</a></li>
                   {% endif %}
               {% endfor %}
           </ul>
           <ul>
               {% for category in site.categories %}
-                  {% if category[0] == "Python Deep Learning" %}
-                      <li><a href="/categories/python-deep-learning" class="">Deep Learning({{category[1].size}})</a></li>
+                  {% if category[0] == "Python_Deep_Learning" %}
+                      <li><a href="/categories/python_deep_learning" class="">Deep Learning({{category[1].size}})</a></li>
                   {% endif %}
               {% endfor %}
           </ul>

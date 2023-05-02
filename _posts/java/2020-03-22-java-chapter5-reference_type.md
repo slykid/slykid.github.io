@@ -470,7 +470,10 @@ public class ex09_5_NDimArray {
         int[][] arr = new int[2][3];
 
         // 선언과 동시에 초기화하기
-        int[][] arr2 = {{1,2,3}, {4,5,6}};
+        int[][] arr2 = {% raw %}{
+                {1,2,3}, 
+                {4,5,6}
+        }{% endraw %};
 
         System.out.println(arr2.length);  // 행의 개수를 출력함
         System.out.println(arr2[0].length); // 1번째 행의 개수를 출력함

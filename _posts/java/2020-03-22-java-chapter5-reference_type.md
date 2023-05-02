@@ -177,6 +177,7 @@ public class ArrayTest {
 ```
 
 [실행결과]<br>
+
 ```text
 
 총합 : 6
@@ -220,6 +221,7 @@ public class ArrayArgument {
 ```
 
 [실행결과] <br>
+
 ```text
 
 10 + 20 = 30
@@ -288,6 +290,7 @@ public class ex09_3_ArrayCopy {
 ```
 
 [실행 결과]<br>
+
 ```text
 
 10
@@ -385,6 +388,7 @@ public class ex09_4_ObjectArrayCopy {
 ```
 
 [실행결과] <br>
+
 ```text
 
 com.java.kilhyun.OOP.Book@1b6d3586
@@ -422,7 +426,8 @@ Harry Potter5, J.K Rolling
 위의 내용을 보면 저자와 저자에 대한 책을 관리하기 위한 코드라고 볼 수 있다. 가장 먼저 해리포터 1~5권과 저자인 J.K 롤링에 대한 정보를 library 배열객체에 넣어 생성하였다. 이를 copyLib 배열에 복사를 하고서 원본배열인 library 에 존재하는 객체의 주소와 copyLib 에 존재하는 객체의 주소를 출력해 비교해본다. 이는 실행결과를 통해서 알 수 있듯이, 얕은 복사이며, 이유는 5개의 객체에 대한 주소가 원본과 복사본 모두 동일한 것을 알 수 있기 때문이다.<br>
 반면 깊은 복사의 경우에는 객체의 값을 직접 다른 객체에 입력하는 방식이며, 이를 확인하기 위해 sherlock 과 저자인 아서 코난 도일을 복사 배열의 0번째 인덱스에 새로 할당하였다. 앞서 주소를 비교한 것처럼 수정 후 확인해보면 아래와 같이 0번째 인덱스의 주소가 바뀐것을 확인할 수 있다.
 
-[실행결과]<br>
+[실행결과] <br>
+
 ```text
 
 com.java.kilhyun.OOP.Book@1b6d3586
@@ -486,6 +491,7 @@ public class ex09_5_NDimArray {
 ```
 
 [실행 결과] <br>
+
 ```text
 
 2
@@ -544,6 +550,7 @@ public class ex09_6_ArrayListTest {
 ```
 
 [실행 결과] <br>
+
 ```text
 
 ghKim

@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Java] 6. 클래스 Ⅰ"
+title: "[Java] 6. 클래스 Ⅰ: 객체의 구성"
 
 categories:
   - Java_Basic

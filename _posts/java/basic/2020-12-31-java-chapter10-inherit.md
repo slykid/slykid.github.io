@@ -1,7 +1,6 @@
-animalList.add(tAnimal);
 ---
 layout: single
-title: "[Java] 10. 상속과 다"
+title: "[Java] 10. 상속과 다형성"
 
 categories:
 - Java_Basic

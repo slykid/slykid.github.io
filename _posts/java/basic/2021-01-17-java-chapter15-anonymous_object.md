@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Java] 14. 중첩 인터페이스(Nested Interface)"
+title: "[Java] 15. 중첩 인터페이스(Nested Interface)"
 
 categories:
 - Java_Basic

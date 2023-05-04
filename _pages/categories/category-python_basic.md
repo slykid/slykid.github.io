@@ -1,11 +1,11 @@
 ---
-title: "Java Basic"
+title: "Python Basic"
 layout: archive
-permalink: categories/java/basic
+permalink: categories/python_basic
 author_profile: true
 sidebar_main: true
 ---
 
 
-{% assign posts = site.categories.Java-Basic %}
+{% assign posts = site.categories.Python-Basic %}
 {% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}

@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Java] 14. 중첩 인터페이스(Nested Interface)"
+title: "[Java] 16. 기본 API 클래스 Ⅰ: Object"
 
 categories:
 - Java_Basic

@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Java] 31. 스트림 (Stream)Ⅰ: 스트림 소개"
+title: "[Java] 31. 스트림 (Stream) Ⅰ: 스트림 소개"
 
 categories:
 - Java_Basic

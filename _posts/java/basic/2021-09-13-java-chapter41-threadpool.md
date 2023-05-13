@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Java] 40. 스레드 상태 제어"
+title: "[Java] 41. 스레드 풀"
 
 categories:
 - Java_Basic

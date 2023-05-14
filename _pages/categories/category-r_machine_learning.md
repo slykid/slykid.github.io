@@ -7,5 +7,5 @@ sidebar_main: true
 ---
 
 
-{% assign posts = site.categories['R Machine Leanring'] %}
+{% assign posts = site.categories.R_Machine_Learning %}
 {% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}

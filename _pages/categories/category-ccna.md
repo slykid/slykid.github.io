@@ -1,7 +1,7 @@
 ---
 title: "CCNA"
 layout: archive
-permalink: categories/network/ccna
+permalink: categories/ccna
 author_profile: true
 sidebar_main: true
 ---

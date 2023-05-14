@@ -1,7 +1,7 @@
 ---
 title: "ADsP/ADP"
 layout: archive
-permalink: categories/certifications/adp
+permalink: categories/adp
 author_profile: true
 sidebar_main: true
 ---

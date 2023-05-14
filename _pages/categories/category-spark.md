@@ -1,7 +1,7 @@
 ---
 title: "Spark"
 layout: archive
-permalink: categories/hadoop/spark
+permalink: categories/spark
 author_profile: true
 sidebar_main: true
 ---

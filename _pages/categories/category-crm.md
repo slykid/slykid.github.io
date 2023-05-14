@@ -1,7 +1,7 @@
 ---
 title: "SMU:CRM"
 layout: archive
-permalink: categories/class/crm
+permalink: categories/crm
 author_profile: true
 sidebar_main: true
 ---

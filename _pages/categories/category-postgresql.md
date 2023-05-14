@@ -1,7 +1,7 @@
 ---
 title: "PostgreSQL"
 layout: archive
-permalink: categories/database/postgresql
+permalink: categories/postgresql
 author_profile: true
 sidebar_main: true
 ---

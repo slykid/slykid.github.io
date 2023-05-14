@@ -1,7 +1,7 @@
 ---
 title: "UiPath"
 layout: archive
-permalink: categories/rpa/uipath
+permalink: categories/uipath
 author_profile: true
 sidebar_main: true
 ---

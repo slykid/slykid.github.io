@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Spring] 4. POJO Java"
+title: "[Spring] 5. 웹 개발 개론"
 
 categories:
 - Spring

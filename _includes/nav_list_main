@@ -50,7 +50,7 @@
           <ul>
               {% for category in site.categories %}
                   {% if category[0] == "Python_Basic" %}
-                      <li><a href="/categories/python_basic" class="">Python({{category[1].size}})</a></li>
+                      <li><a href="/categories/python_basic" class="">Basic({{category[1].size}})</a></li>
                   {% endif %}
               {% endfor %}
           </ul>
@@ -71,24 +71,122 @@
 
       <!--R-->
       <span class="nav__sub-title">R</span>
+         <ul>
+              {% for category in site.categories %}
+                  {% if category[0] == "R_Basic" %}
+                      <li><a href="/categories/r_basic" class="">Basic({{category[1].size}})</a></li>
+                  {% endif %}
+              {% endfor %}
+          </ul>
+          <ul>
+              {% for category in site.categories %}
+                  {% if category[0] == "R_Machine_Learning" %}
+                      <li><a href="/categories/r_machine_learning" class="">Machine Learning({{category[1].size}})</a></li>
+                  {% endif %}
+              {% endfor %}
+          </ul>
 
       <!--Hadoop Eco System-->
       <span class="nav__sub-title">Hadoop Eco System</span>
+          <ul>
+              {% for category in site.categories %}
+                  {% if category[0] == "Hadoop_Basic" %}
+                      <li><a href="/categories/hadoop_basic" class="">Basic({{category[1].size}})</a></li>
+                  {% endif %}
+              {% endfor %}
+          </ul>
+          <ul>
+              {% for category in site.categories %}
+                  {% if category[0] == "Spark" %}
+                      <li><a href="/categories/spark" class="">Spark({{category[1].size}})</a></li>
+                  {% endif %}
+              {% endfor %}
+          </ul>
+          <ul>
+              {% for category in site.categories %}
+                  {% if category[0] == "Spark" %}
+                      <li><a href="/categories/spark" class="">Spark({{category[1].size}})</a></li>
+                  {% endif %}
+              {% endfor %}
+          </ul>
+          <ul>
+              {% for category in site.categories %}
+                  {% if category[0] == "Cassandra" %}
+                      <li><a href="/categories/cassandra_db" class="">Cassandra DB({{category[1].size}})</a></li>
+                  {% endif %}
+              {% endfor %}
+          </ul>
+          <ul>
+              {% for category in site.categories %}
+                  {% if category[0] == "Flume" %}
+                      <li><a href="/categories/flume" class="">Flume({{category[1].size}})</a></li>
+                  {% endif %}
+              {% endfor %}
+          </ul>
 
       <!--Database-->
       <span class="nav__sub-title">Database</span>
+          <ul>
+              {% for category in site.categories %}
+                  {% if category[0] == "PostgreSQL" %}
+                      <li><a href="/categories/postgresql" class="">PostgreSQL({{category[1].size}})</a></li>
+                  {% endif %}
+              {% endfor %}
+          </ul>
 
       <!--Network-->
       <span class="nav__sub-title">Network</span>
+          <ul>
+              {% for category in site.categories %}
+                  {% if category[0] == "CCNA" %}
+                      <li><a href="/categories/ccna" class="">CCNA({{category[1].size}})</a></li>
+                  {% endif %}
+              {% endfor %}
+          </ul>
+          <ul>
+              {% for category in site.categories %}
+                  {% if category[0] == "CCNP_Switch" %}
+                      <li><a href="/categories/ccnp_switch" class="">CCNP: Switch({{category[1].size}})</a></li>
+                  {% endif %}
+              {% endfor %}
+          </ul>
+          <ul>
+              {% for category in site.categories %}
+                  {% if category[0] == "CCNP_Router" %}
+                      <li><a href="/categories/ccnp_router" class="">CCNP: Router({{category[1].size}})</a></li>
+                  {% endif %}
+              {% endfor %}
+          </ul>
 
       <!--ELK-->
       <span class="nav__sub-title">ELK</span>
+          <ul>
+              {% for category in site.categories %}
+                  {% if category[0] == "ELK_Stack" %}
+                      <li><a href="/categories/elk" class="">ELK Stack({{category[1].size}})</a></li>
+                  {% endif %}
+              {% endfor %}
+          </ul>
 
       <!--DevOps-->
       <span class="nav__sub-title">DevOps</span>
+          <ul>
+              {% for category in site.categories %}
+                  {% if category[0] == "Docker" %}
+                      <li><a href="/categories/docker" class="">Docker({{category[1].size}})</a></li>
+                  {% endif %}
+              {% endfor %}
+          </ul>
 
       <!--RPA-->
       <span class="nav__sub-title">RPA</span>
+          <ul>
+              {% for category in site.categories %}
+                  {% if category[0] == "UiPath" %}
+                      <li><a href="/categories/uipath" class="">UiPath({{category[1].size}})</a></li>
+                  {% endif %}
+              {% endfor %}
+          </ul>
 
       <!--SMU-Classes-->
       <span class="nav__sub-title">SMU</span>

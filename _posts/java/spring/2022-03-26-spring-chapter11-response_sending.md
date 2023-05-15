@@ -139,7 +139,8 @@ public class ResponseTestController {
 
 위의 내용을 그대로 사용해서 서버에 요청을 다음과 같이 보내면, 그 아래의 사진과 같은 결과를 얻을 수 있다.<br>
 
-![]()
+![실행결과1-1](/images/2022-03-26-spring-chapter11-response_sending/1_example1.jpg)
+![실행결과1-2](/images/2022-03-26-spring-chapter11-response_sending/2_example1.jpg)
 
 결과 사진을 보면 알 수 있듯이, 앞서 유저 DTO에 별도의 설정을 하지 않았으며, 그럴 경우 Camel Case 로 변수가 반환되는 것을 확인할 수 있다.<br>
 여기까지의 내용만 보면 앞서 살펴 본 REST API 의 언급만 된다. 때문에 이번 장에서는 코드 내부에서 어떻게 동작하는 지를 좀 더 살펴보자.<br>
@@ -169,7 +170,8 @@ public class UserDto {
 
 위와 같이 수정을 한 후에 변수명을 스네이크 케이스로 변경해서 실행해도 200 OK 가 나오는 것을 확인할 수 있다.<br>
 
-![]()
+![실행결과2-1](/images/2022-03-26-spring-chapter11-response_sending/3_example2.jpg)
+![실행결과2-2](/images/2022-03-26-spring-chapter11-response_sending/4_example2.jpg)
 
 앞서 언급한 것처럼 @JsonProperty 혹은 @JsonNaming 을 사용하면, 변수명을 카멜 케이스가 아닌 스네이크 케이스로 사용할 수 있다는 점이지만, 만약 사용자가 잘못 입력한 경우일지라도 200 OK 가 출력된다는 단점이 있다. 이를 위해 마지막으로 살펴볼 방법은 ResponseEntity를 사용해서 200 만 나오는 것이 아니라 다른 응답코드들도 출력할 수 있도록 하는 방법을 살펴볼 것이다.<br>
 우선 PUT 메소드를 사용할 API 부터 설계해보자. 코드는 다음과 같다.<br>
@@ -196,7 +198,8 @@ public class ResponseTestController {
 
 위와 같이 ResponseEntity 객체의 status 메소드를 사용하게 되면, 예시와 같이 HttpStatus.CREATED 로 이미 생성된 경우에 대한 응답코드를 반환할 수 있도록 해주고, 추가적으로 body 에 입력으로 받은 값을 넣어 줌으로써, 해당 객체가 이미 생성되어있다는 것을 사용자에게 전달할 수 있게된다. 이처럼 응답에 대한 커스터마이징을 해야되는 경우라면, 위와 같은 방법으로 설계할 수 있다. 위의 내용을 실행해서 잘 되는지 확인해보자.<br>
 
-![]()
+![실행결과3-1](/images/2022-03-26-spring-chapter11-response_sending/5_example3.jpg)
+![실행결과3-2](/images/2022-03-26-spring-chapter11-response_sending/6_example3.jpg)
 
 앞서 우리가 설정해 준 데로 201 코드가 나오는 것을 확인할 수 있다.<br>
 
@@ -250,7 +253,8 @@ public class PageController {
 
 위와 같이 작성을 했다면, 실제로 main.html에 접근해보도록 하자.<br> 
 
-![]()
+![main.html 결과](/images/2022-03-26-spring-chapter11-response_sending/7_example4.jpg)
+![실행결과4](/images/2022-03-26-spring-chapter11-response_sending/8_example4.jpg)
 
 위의 2개 그림처럼 설정해둔 main.html 의 정보와 200 코드가 응답되는 것까지 확인할 수 있다.<br>
 그렇다면, 여기서 한가지 고민이 된다. 앞서 우리가 다룬 Json 파일의 내용을 어떻게 웹 페이지에 보여줄 지를 알아보자. 우선 첫 번째 방법은 앞서 배운 ResponseEntity를 사용하는 방법이다. 해당 방법은 이전 예제를 통해서 다뤄봤기 때문에 넘어가기로 한다.  또 다른 방법은 @ResponseBody 어노테이션을 활용하는 방법이다. 먼저 코드를 작성한 후에 이어서 설명을 진행하겠다.<br>
@@ -283,7 +287,7 @@ public class PageController {
 
 위의 코드에서 @Controller 어노테이션을 사용할 때, 문자열을 반환하게 되면, 해당 문자열을 찾지만, 예시와 같이 @ResponseBody 어노테이션을 사용한다면, 객체 자체를 반환했을 때 리소스를 찾지않고, 해당 객체에 입력된 값으로 ResponseBody를 구현하게 된다. 그렇다면, 위와 같이 설정했을 때, 설정된 값이 잘 나오는지까지 확인해보자.<br>
 
-![]()
+![실행결과5](/images/2022-03-26-spring-chapter11-response_sending/9_example5.jpg)
 
 앞선 코드에서 name 과 address 값을 설정했기 때문에, 2개의 결과는 정상적으로 나오고, age, account, phone_number 는 기입하지 않았기 때문에, 숫자형은 0, 문자형은 null 로 출력되는 것을 확인할 수 있다.<br>
 만약 age 와 같이 숫자형임에도 NULL 로 출력하게 하고 싶다면, 아래와 같이 int 를 Wrapper 클래스인 Integer 로 변경해주면 된다.<br>
@@ -309,6 +313,8 @@ public Integer getAge() {
 ...
 ```
 
+![실행결과6-1](/images/2022-03-26-spring-chapter11-response_sending/10_example6.jpg)
+
 또한 위의 그림에서는 입력되지 않은 변수들까지 불필요하게 나오고 있다. 만약, 입력된 값들만 확인하고 싶은 경우라면, 클래스 명에 @JsonInclude 어노테이션을 사용하며, 어노테이션의 값으로는  아래 코드와 같이, JsonInclude.Include.NON_NULL 을 추가하면 된다.<br>
 
 ```java
@@ -321,5 +327,7 @@ public class UserDto {
     ...
 }
 ```
+
+![실행결과6-2](/images/2022-03-26-spring-chapter11-response_sending/11_example6.jpg)
 
 앞서 언급한 내용과 동일하게 입력한 2개 값에 대해서만 Response 에서 확인할 수 있다. 일반적으로는 REST API 를 개발하기 때문에, 웹페이지에서 위의 기능은 잘 수행하지 않으며, 정말 특별하게 보여줘야 하는 경우에만 사용된다. 때문에, 일반적인 상황이라면, @RESTController 어노테이션을 사용해서 REST API를 제공하는 것이 맞고, 페이지 컨트롤러에서는 페이지에 대한 정보만 다루도록 설계하는 것이 좋다.<br>

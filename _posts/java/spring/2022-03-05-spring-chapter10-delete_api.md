@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Spring] 9. PUT API"
+title: "[Spring] 10. DELETE API"
 
 categories:
 - Spring

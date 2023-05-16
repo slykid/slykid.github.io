@@ -17,7 +17,6 @@ sidebar_main: true
 
 ![spring_template](/assets/images/blog_template/spring_fw.jpg)
 
-
 # 1. Filter 란
 웹 애플리케이션에서 관리되는 영역으로써 스프링부트 프레임워크에서 클라이언트로부터 오는 요청/응답에 대해 최초 및 최종 단계의 위치에 존재하여, 요청 및 응답 정보를 변경하거나, 스프링에 의해서 데이터가 변환되기 전의 순수한 클라이언트의 요청/응답 값을 확인할 수 있다.<br>
 

@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Python] 3. 자료구조 (미완성)"
+title: "[Python] 3. 자료구조"
 
 categories:
 - Python_Basic
@@ -679,26 +679,31 @@ dict_items([('name', 'Kilhyun'), ('HP', '010-1234-5678'), ('birth', '2015-12-01'
 ```
 
 # 5. 셋 (Set, 집합)
+셋은 딕셔너리에서 값을 제외한, 키만 남은 형태라고 볼 수 있다. 특징은 수학에서 나오는 집합이 갖는 속성과 동일하게, 모든 요소는 중복이 없어야 하며, 주로 어떤 요소가 존재하는 지 중복 없이 확인하는 용도로 많이 사용된다.<br>
 
-셋은 딕셔너리에서 값을 제외한, 키만 남은 형태라고 볼 수 있다. 특징은 수학에서 나오는 집합이 갖는 속성과 동일하게, 모든 요소는 중복이 없어야 하며, 주로 어떤 요소가 존재하는 지 중복 없이 확인하는 용도로 많이 사용된다.
+## 1) 생성하기
+셋을 생성할 때는 중괄호( { } ) 안에 콤마(,) 로 하나 이상의 값을 넣으면 된다.<br>
 
-​
-
-1) 생성하기
-
-셋을 생성할 때는 중괄호( { } ) 안에 콤마(,) 로 하나 이상의 값을 넣으면 된다.
-
+```python
 [Python Code]
+
 set1 = {'hello', 'world'}
 print(set1)
 print(set1.__class__)
+```
 
+```text
 [실행 결과]
+
 {'world', 'hello'}
 <class 'set'>
-만약 다른 자료구조를 셋으로 형변환 하려는 경우에는 set() 함수를 사용하여 형변환할 수 있다. 단, 딕셔너리의 경우에는 딕셔너리의 키만 사용된다.
+```
 
+만약 다른 자료구조를 셋으로 형변환 하려는 경우에는 set() 함수를 사용하여 형변환할 수 있다. 단, 딕셔너리의 경우에는 딕셔너리의 키만 사용된다.<br>
+
+```python
 [Python Code]
+
 set1 = set('letter')
 set2 = set( ['Hello', 'World', 1, 2, 3] )
 set3 = set( ('Kim', 'Lee', 'Park') )
@@ -708,43 +713,52 @@ print(set1)
 print(set2)
 print(set3)
 print(set4)
+```
 
+```text
 [실행 결과]
+
 {'t', 'e', 'l', 'r'}
 {1, 2, 3, 'Hello', 'World'}
 {'Park', 'Kim', 'Lee'}
 {'birth', 'HP', 'name'}
-2) 관련 함수
+```
 
-(1) in
+## 2) 관련 함수
+### (1) in
+앞서 다른 자료구조들과 동일하게 멤버쉽 테스트를 하기위한 용도로 사용된다. 예시로 drinks 라는 딕셔너리를 생성해보자.  각 키는 음료 이름이고, 값은 음료를 만들기 위한 재료의 셋으로 구성된다. 이 때, vodka 가 들어가 음료만을 출력 해보자. 코드는 다음과 같다.<br>
 
-앞서 다른 자료구조들과 동일하게 멤버쉽 테스트를 하기위한 용도로 사용된다. 예시로 drinks 라는 딕셔너리를 생성해보자.  각 키는 음료 이름이고, 값은 음료를 만들기 위한 재료의 셋으로 구성된다.
-
-이 때, vodka 가 들어가 음료만을 출력 해보자. 코드는 다음과 같다.
-
+```python
 [Python Code]
+
 drinks = {
-'martini' : {'vodka', 'vermouth'},
-'black_russian' : {'vodka', 'kahlua'},
-'white_russian' : {'vodka', 'cream', 'kahlua'},
-'manhattan' : {'rye', 'vermouth', 'bitters'},
-'screwdriver' : {'orange juice', 'vodka'}
+    'martini' : {'vodka', 'vermouth'},
+    'black_russian' : {'vodka', 'kahlua'},
+    'white_russian' : {'vodka', 'cream', 'kahlua'},
+    'manhattan' : {'rye', 'vermouth', 'bitters'},
+    'screwdriver' : {'orange juice', 'vodka'}
 }
 
 for name, contents in drinks.items():
-if 'vodka' in contents:
-print(name)
+    if 'vodka' in contents:
+        print(name)
+```
 
+```text
 [실행 결과]
+
 martini
 black_russian
 white_russian
 screwdriver
-(2) Combination (조합)
+```
 
-만약 위의 drinks 에 있는 음료중 블랙러시안과 화이트러시안에 공통으로 들어간 내용물을 살펴본다고 가정해보자. 셋에서는 이처럼 여러 조건에 대한 조합을 한 번에 하기 위해 셋 인터섹션 연산자인 & (엠퍼센트) 혹은 intersection() 메소드를 사용하여 여러 조건을 같이 줄 수 있다.
+### (2) Combination (조합)
+만약 위의 drinks 에 있는 음료중 블랙러시안과 화이트러시안에 공통으로 들어간 내용물을 살펴본다고 가정해보자. 셋에서는 이처럼 여러 조건에 대한 조합을 한 번에 하기 위해 셋 인터섹션 연산자인 & (엠퍼센트) 혹은 intersection() 메소드를 사용하여 여러 조건을 같이 줄 수 있다.<br>
 
+```python
 [Python Code]
+
 bruss = drinks['black_russian']
 wruss = drinks['white_russian']
 
@@ -753,17 +767,23 @@ print(wruss)
 
 print(bruss & wruss)
 #bruss.intersection(wruss)
+```
 
+```text
 [실행 결과]
+
 {'kahlua', 'vodka'}
 {'cream', 'vodka', 'kahlua'}
 
 {'kahlua', 'vodka'}
+```
+
 위의 두 음료에 모두 들어간 내용물을 출력한 결과와 교집합을 출력한 결과를 비교해보면 알 수 있듯이, 보드카와 칼루아가 들어갔다는 것을 확인할 수 있다.
+만약 합집합을 출력하고 싶다면 파이프( | ) 연산자 혹은 union() 메소드를 사용하면 된다.<br>
 
-만약 합집합을 출력하고 싶다면 파이프( | ) 연산자 혹은 union() 메소드를 사용하면 된다.
-
+```python
 [Python Code]
+
 bruss = drinks['black_russian']
 wruss = drinks['white_russian']
 
@@ -772,15 +792,22 @@ print(wruss)
 
 print(bruss | wruss)
 #bruss.union(wruss)
+```
 
+```text
 [실행 결과]
+
 {'kahlua', 'vodka'}
 {'cream', 'vodka', 'kahlua'}
 
 {'kahlua', 'cream', 'vodka'}
-이번에는 차집합을 계산해보자. 차집합은 - 연산자 혹은 difference() 메소드를 사용하면 된다.
+```
 
+이번에는 차집합을 계산해보자. 차집합은 - 연산자 혹은 difference() 메소드를 사용하면 된다.<br>
+
+```python
 [Python Code]
+
 bruss = drinks['black_russian']
 wruss = drinks['white_russian']
 
@@ -792,16 +819,23 @@ print(bruss - wruss)
 
 print(wruss - bruss)
 #wruss.difference(bruss)
+```
 
+```text
 [실행 결과]
+
 {'kahlua', 'vodka'}
 {'cream', 'vodka', 'kahlua'}
 
 set()
 {'cream'}
-마지막으로 XOR 연산을 계산해보자. 이 때는 ^ 연산자 혹은 symmetric_difference() 메소드를 사용하여 구현하면 된다.
+```
 
+마지막으로 XOR 연산을 계산해보자. 이 때는 ^ 연산자 혹은 symmetric_difference() 메소드를 사용하여 구현하면 된다.<br>
+
+```python
 [Python Code]
+
 bruss = drinks['black_russian']
 wruss = drinks['white_russian']
 
@@ -810,30 +844,46 @@ print(wruss)
 
 print(bruss ^ wruss)
 #bruss.symetric_difference(wruss)
+```
 
+```text
 [실행 결과]
+
 {'kahlua', 'vodka'}
 {'cream', 'vodka', 'kahlua'}
 
 {'cream'}
-그 외에도 슈퍼셋인지를 확인해볼 수도 있다. 슈퍼 셋이란 대상을 포함하는 상위집합으로 수학에서 부분집합, 전체집합에 대한 내용 중 전체 집합에 해당되는 용어라고 할 수 있다. 위의 예시를 좀 더 살펴보자면, 블랙 러시안에 크림을 추가하면 화이트 러시안이 되는 것을 알 수 있다. 즉, 화이트 러시안은 블랙 러시안의 슈퍼 셋이 되며, 블랙 러시안은 화이트 러시안의 서브 셋이 되는 관계에 있다.
+```
 
+그 외에도 슈퍼셋인지를 확인해볼 수도 있다. 슈퍼 셋이란 대상을 포함하는 상위집합으로 수학에서 부분집합, 전체집합에 대한 내용 중 전체 집합에 해당되는 용어라고 할 수 있다. 위의 예시를 좀 더 살펴보자면, 블랙 러시안에 크림을 추가하면 화이트 러시안이 되는 것을 알 수 있다. 즉, 화이트 러시안은 블랙 러시안의 슈퍼 셋이 되며, 블랙 러시안은 화이트 러시안의 서브 셋이 되는 관계에 있다.
 셋에서는 <= 연산자 혹은 issubset()메소드를 사용하면 부분집합인지를 확인할 수 있다.
 
+```python
 [Python Code]
+
 bruss <= wruss
 #bruss.issubset(wruss)
+```
 
+```text
 [실행 결과]
+
 True
+```
 위의 결과처럼 서브셋이 맞다면, True 를 아니면 False 를 반환해준다.
+반대로, 슈퍼셋인지의 여부를 확인하려면, >= 연산자 혹은 issuperset() 메소드를 통해서 확인이 가능하다.<br>
 
-반대로, 슈퍼셋인지의 여부를 확인하려면, >= 연산자 혹은 issuperset() 메소드를 통해서 확인이 가능하다.
-
+```python
 [Python Code]
+
 wruss >= bruss
 #wruss.issuperset(bruss)
+```
 
+```text
 [실행 결과]
+
 True
-주의 사항으로 서브셋이나 슈퍼셋을 계산할 때는 반드시 비교하려는 대상을 왼쪽에, 비교되는 대상을 오른쪽에 위치시켜야 한다.
+```
+
+주의 사항으로 서브셋이나 슈퍼셋을 계산할 때는 반드시 비교하려는 대상을 왼쪽에, 비교되는 대상을 오른쪽에 위치시켜야 한다.<br>

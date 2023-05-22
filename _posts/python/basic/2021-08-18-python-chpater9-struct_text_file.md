@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Python] 스트림 Ⅱ : 구조화 텍스트 파일"
+title: "[Python] 9. 스트림 Ⅱ : 구조화 텍스트 파일"
 
 categories:
 - Python_Basic
@@ -340,6 +340,7 @@ fetchone(), fetchmany(), fetchall() : SQL의 실행 결과를 얻는다.
 PostgreSQL 에 대한 설치는 검색을 통해 충분히 알아볼 수 있기 때문에, 여기서는 설치는 완료됬다고 가정하고 진행하겠다. 설치를 완료했고, PostgreSQL이 정상적으로 실행됬다면, PostgreSQL에 접근하기 위한 드라이버를 설치해야한다. 필요한 드라이버는 다음과 같다.<br>
 
 |이름|파이썬 패키지|임포트|
+|---|---|---|
 |psycopg2|psycopg2|psycopg2|
 |py-postgresql|py-postgresql|postgresql|
 

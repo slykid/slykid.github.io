@@ -1,28 +1,437 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
-        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    {% for post in site.posts %}
-    <url>
-        <loc>{{ site.url }}{{ post.url }}</loc>
-        {% if post.lastmod == null %}
-        <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
-        {% else %}
-        <lastmod>{{ post.lastmod | date_to_xmlschema }}</lastmod>
-        {% endif %}
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-        {% if post.sitemap.changefreq == null %}
-        <changefreq>weekly</changefreq>
-        {% else %}
-        <changefreq>{{ post.sitemap.changefreq }}</changefreq>
-        {% endif %}
 
-        {% if post.sitemap.priority == null %}
-        <priority>0.5</priority>
-        {% else %}
-        <priority>{{ post.sitemap.priority }}</priority>
-        {% endif %}
+<url>
+  <loc>https://slykid.github.io/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/categories/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/categories/review</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/categories/java_basic</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/categories/spring</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/categories/python_basic</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/review/review-chapter2-wis2023_review/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/spring/spring-chapter18-resttemplate_post/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/spring/spring-chapter17-resttemplate_get/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/spring/spring-chapter16-spring_interceptor/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/spring/spring-chapter15-spring_filter/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/spring/spring-chapter14-spring_boot_exception/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/spring/spring-chapter13-spring_boot_validation/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/spring/spring-chapter12-object_mapper/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/spring/spring-chapter11-response_sending/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/spring/spring-chapter9-put_api/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/page2/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/page3/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/page8/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter42-singleton/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/tags/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter41-threadpool/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter40-thread_status_control/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter39-thread_priority/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter38-thread/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter37-sub_stream/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter36-file_io/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter35-io_stream_console_io/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter34-io_stream_standard_io/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter33-parallel_opteration/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter32-stream_pipeline/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter31-stream_intro/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter30-lambda/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter29-lifo_fifo/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter28-comparable_comparator/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter27-collection_properties/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter26-collection_map/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter25-collection_set/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter24-collection_list/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter23-generic/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter22-exception/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter21-api_class_wrapper/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter20-api_class_arrays/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter19-api_class_tokenizer_buffer/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter18-api_class_string/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter17-api_class_class/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter16-api_class_object/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter15-anonymous_object/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter14-nested_interface/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter13-nested_class/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter12-interface/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter11-abstract_class/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter10-inherit/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter9-static_variable/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter8-annotation/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter7-class_2/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter6-class_1/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter5-reference_type/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter4-case_and_loop/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter3-operators/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter2-variables/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/java_basic/java-chapter1-about_java/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/spring/spring-chapter10-delete_api/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/spring/spring-chapter8-post_api/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/spring/spring-chapter7-get_api/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/spring/spring-chapter6-springboot_overview/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/spring/spring-chapter5-web_101/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/spring/spring-chapter4-pojo_java/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/spring/spring-chapter3-solid/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/spring/spring-chapter2-oop_in_spring/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/spring/spring-chapter1-overview/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/python_basic/python-chpater9-struct_text_file/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/python_basic/python-chapter8-file_stream/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/python_basic/python-chapter7-text_processing/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/python_basic/python-chaptrer6-python_oop/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/python_basic/python-chapter5-python_programming_2/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/python_basic/python-chapter4-python_programming_1/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/python_basic/python-chapter3-data_structure/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/python_basic/python-chapter2-data_type/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/python_basic/python-chapter1-overview/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/review/review-chapter1-kes2021_review/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/page4/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/page5/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/page7/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slykid.github.io/page6/</loc>
+  <lastmod>2023-05-21T13:29:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
 
-    </url>
-    {% endfor %}
+
 </urlset>

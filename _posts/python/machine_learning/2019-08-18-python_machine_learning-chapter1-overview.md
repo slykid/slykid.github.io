@@ -670,6 +670,8 @@ plt.grid(True, linestyle='-', color = '0.75')
 plt.show()
 ```
 
+![실행 결과1](/images/2019-08-18-python_machine_learning-chapter1-overview/1_example.jpg)
+
 # 6. 적절한 모델과 알고리즘
 ## 1) 근사치 오차
 복잡한 현실의 이론적 근사치로서 단순화된 모델과 현실의 차이를 의미하며, 모델이 예측한 예상 값과 실제 값 사이의 거리 제곱으로 계산한다.
@@ -700,8 +702,8 @@ fx = sp.linspace(0,x[-1],1000)
 plt.plot(fx,f1(fx),linewidth=4)
 plt.legend(["d = %i" % f1.order], loc = "upper left")
 ```
-
-- 직선 함수 식: f(x) = 2.59619213 × x + 989.02487106<br>
+![실행결과2](/images/2019-08-18-python_machine_learning-chapter1-overview/2_example.jpg)
+- 직선 함수 식: $\f(\x) = \2.59619213\x \ + \989.02487106<br>
 - 오차 : 317,189,767.34<br>
 
 → 일반적으로 오차 절대값은 비교하는데 사용된다<br>
@@ -721,6 +723,7 @@ print(error(f2, x, y))
 # f(x) = 0.0105322215 * x**2 - 5.26545650 * x + 1974.76082
 plt.plot(fx,f2(fx),linewidth=4)
 ```
+![실행결과3](/images/2019-08-18-python_machine_learning-chapter1-overview/)
 
 파란색 선형 모형보다 주황색 선형 모형이 좀 더 잘 분류해 낸다는 사실을 알 수 있다.
 다음으로 주황색 선형모형의 방정식을 보면 다음과 같다.<br>
@@ -756,6 +759,8 @@ plt.legend(["d = %i" % f1.order,"d = %i" % f2.order,
   "d = %i" % f3.order, "d = %i" % f10.order,
   "d = %i" % f53.order], loc = "upper left")
 ```
+
+![실행결과4](/images/2019-08-18-python_machine_learning-chapter1-overview/4_example.jpg)
 
 100까지 실행할 경우 " RankWarning: Polyfit maybe poorly conditioned "와 같은 경고 메세지를 볼 수 있기 때문에 53으로 맞춘 것이다.
 이는 복잡한 데이터를 입력 받을수록 곡선은 이를 반영해 좀 더 적합해지며 오차 또한 동일한 결과를 보여준다고 볼 수 있다.<br> 
@@ -804,6 +809,8 @@ plt.plot(fx,fb1(fx),linewidth=4)
 
 plt.legend(["d = %i" % fa1.order,"d = %i" % fb1.order], loc = "upper left")
 ```
+
+![실행결과5](/images/2019-08-18-python_machine_learning-chapter1-overview/5_example.jpg)
 
 위의 결과로 봤을 때 두 직선은 이전의 모델들 보다 데이터에 매우 잘 적합한 것으로 보이지만 고차원일때의 오차보다 큰 편이다.<br>
 하지만 이전의 모델들 보다 마지막 주에 적합하게 만든 모형을 더 신용하는 것은 직선형 모델일 수록 미래를 예측하는데 좀 더 적합하다고 생각할 수 있기 때문이다.<br>

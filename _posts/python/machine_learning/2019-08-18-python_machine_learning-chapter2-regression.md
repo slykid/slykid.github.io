@@ -657,7 +657,7 @@ $ {J\left(w\right)}_{LASSO}= \sum _{i=1}^n{({y}^{(i)}-{\hat{y}}^{(i)})}^2 + \lam
 
 사용된 규제항의 식을 전개하면 아래와 같다.<br>
 
-$ L1: \lambda {\Vert{w}\Vert}_1 = $ $ \lambda \sum_{j=1}^m{\vert{w}_j\vert} $ <br>
+$ L1: \lambda {\Vert{w}\Vert}_1 = \lambda \sum_{j=1}^m{\vert{w}_j\vert} $ <br>
 
 위의 두 식에 대해 만약 m > n 인 상황이라면 최대 n개의 특성을 선택하는 것이 LASSO 회귀의 한계이다. LASSO 회귀에서의 중요한 특징이 덜 중요한 특성의 가중치를 완전히 제거하려고 하는 것이기 때문이다. 아래 그래프를 통해 좀 더 살펴보자.<br>
 

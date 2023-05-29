@@ -781,6 +781,7 @@ $\sigma \left(t\right) = \frac {1}{1+\exp \left(-t\right)}$ <br>
 
 $ \hat{y}= \begin{cases}
     0 & \text{if }\hat{p}<0.5
+
     1 & \text{if }\hat{p}\ge 0.5
 \end{cases}$ <br>
 
@@ -789,6 +790,7 @@ $ \hat{y}= \begin{cases}
 
 $c(\theta)=\begin{cases}
     -\log (\hat{p}) & \text{if } y=1
+
     -\log (1-\hat{p}) & \text{if } y=0
 \end{cases}$ <br>
 

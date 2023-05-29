@@ -621,7 +621,7 @@ Ridge 회귀는 단순히 최소 제곱 비용 함수에 가중치의 제곱합�
 
 Ridge 회귀는 단순히 최소 제곱 비용 함수에 가중치의 제곱합을 추가한 L2 규제 모델이다. 비용함수는 다음과 같다.
 
-$ {J\left(w\right)}_{Ridge}\ =  <br>
+$ {J\left(w\right)}_{Ridge}\ = $ <br>
 
 위의 수식에서 $\lambda \left|\left|\{w}\right|\right|_2^2$ 부분이 규제항(가중치 벡터의 L2 노름)이며 전개해보면 다음과 같다.<br>
 

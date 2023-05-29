@@ -55,7 +55,7 @@ plt.show()
 ## 2) 다변량 회귀
 단변량 회귀를 여러 개의 특성이 있는 경우로 일반화(확장) 한 개념이다.<br>
 
-$\ y\ =\ {w}_0\ {x}_0\ +\ {w}_1\ {x}_1\ + ...\ +\ {w}_m\ {x}_m\ =\ m\ {∑}_i=0\{w}_i\ {x}_i = \{w}^T\ x $<br>
+$\ y\ =\ {w}_0\ {x}_0\ +\ {w}_1\ {x}_1\ + ...\ +\ {w}_m\ {x}_m\ =\ m\ {∑}_{i=0}\{w}_i\ {x}_i = \{w}^T\x $<br>
 
 하지만 3개의 특성을 갖고 있어도 3차원 산점도를 이해하는 것은 어렵다.<br>
 ![산점도](/images/2019-08-18-python_machine_learning-chapter2-regression/2_scatter.jpg)
@@ -588,7 +588,7 @@ $SST\ =\ \sum _{i=1}^n\{\left(\{y}^{\left(i\right)}-\{\mu }_y\right)}^2$ <br>
 결과적으로 SST는 단순히 타겟의 분산을 의미하는 것과 같다. 다음으로 결정계수가 MSE의 표준화된 버전이 맞는지도 살펴보자. 증명은 아래와 같다.<br>
 
 $\{R}^2\ =1-\frac{SSE}{SST}$ <br>
-$\ \ \ \ \ =1-\frac{\frac{1}{n}\sum _{i=1}^n\{\left(\{y}^{\left(i\right)}-\{\hat{y}}^{\left(i\right)}\right)}^2}{\frac{1}{n}\sum _{i=1}^n\{\left(\{y}^{\left(i\right)}\ -\{\mu }_y\right)}^2}$ <br>
+$\ \ \ \ \ =1-\frac{\frac{1}{n}\sum_{i=1}^n\{\left(\{y}^{\left(i\right)}-\{\hat{y}}^{\left(i\right)}\right)}^2}{\frac{1}{n}\sum _{i=1}^n\{\left(\{y}^{\left(i\right)}\ -\{\mu }_y\right)}^2}$ <br>
 $\ \ \ \ \ =1-\frac{MSE}{Var\left(y\right)}$ <br>
 
 훈련 세트에 대해 R2 은 0~1사이의 값을 가진다. 실제로 아래코드를 이용해 주택 가격 데이터에 대한 결정계수를 계산해보자.<br>
@@ -619,11 +619,13 @@ print("훈련 R^2: %.3f, 테스트 R^2: %.3f" % (r2_score(y_train, y_train_pred)
 ## 1) Ridge 회귀(Ridge Regression)
 Ridge 회귀는 단순히 최소 제곱 비용 함수에 가중치의 제곱합을 추가한 L2 규제 모델이다. 비용함수는 다음과 같다.<br>
 
-$\{J\left(w\right)}_{Ridge}=\sum _{i=1}^n\{\left(\{y}^{\left(i\right)}-\{\hat{y}}^{\left(i\right)}\right)}^2+\lambda \left|\left|\{w}\right|\right|_2^2$ <br>
+Ridge 회귀는 단순히 최소 제곱 비용 함수에 가중치의 제곱합을 추가한 L2 규제 모델이다. 비용함수는 다음과 같다.
 
-위의 수식에서 λ||w||22 부분이 규제항(가중치 벡터의 L2 노름)이며 전개해보면 다음과 같다.<br>
+$\{J\left(w\right)}_{Ridge}\ =\sum_{i=1}^n\{\left(\{y}^{\left(i\right)}-\{\hat{y}}^{\left(i\right)}\right)}^2+\lambda \left|\left|\{w}\right|\right|_2^2$ <br>
 
-$L2\ :\ \lambda \left|\left|\{w}\right|\right|_2^2=\lambda \sum _{j=1}^m\{w}_j^2$ <br>
+위의 수식에서 $\lambda \left|\left|\{w}\right|\right|_2^2$ 부분이 규제항(가중치 벡터의 L2 노름)이며 전개해보면 다음과 같다.<br>
+
+$L2\ :\ \lambda \left|\left|\{w}\right|\right|_2^2=\lambda \sum_{j=1}^m\{w}_j^2$ <br>
 
 하이퍼 파라미터 λ 를 증가시키면 규제 강도가 증가되고 모델의 가중치 값이 감소한다. 만약 λ = 0 일 경우, Ridge 회귀는 선형회귀와 동일하게 된다.  반면 가중치가 아주 큰 경우 모든 가중치가 거의 0에 가까워지고 결국 데이터의 평균을 지나는 수평선이 된다.<br>
 Ridge 회귀 비용함수에서 절편에 해당하는 w0 는 규제하지 않는다. 모델의 복잡도와 절편은 관계가 없기 때문이다. 만약  경사하강법에 적용하려면 MSE 그레디언트 벡터에 λw 를 더하면 된다. 아래의 그림을 통해 좀 더 살펴보자.<br>

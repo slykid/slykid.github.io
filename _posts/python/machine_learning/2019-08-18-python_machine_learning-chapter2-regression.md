@@ -773,18 +773,24 @@ plt.show()
 ## 1) 확률 추정
 로지스틱 회귀 모델은 입력 특성의 가중치 합을 계산한다. 대신 결과값은 로지스틱으로 출력한다. 일반적으로 로지스틱은 0~1사이의 값을 출력하는 시그모이드 함수로 수식은 다음과 같다.<br>
 
-$\sigma \left(t\right)=\frac{1}{1+\exp \left(-t\right)}$ <br>
+$\sigma \left(t\right) = \frac {1}{1+\exp \left(-t\right)}$ <br>
 
 ![로지스틱회귀](/images/2019-08-18-python_machine_learning-chapter2-regression/21_logistic_function_plot.jpg)
 
 로지스틱 회귀 모델이 샘플 x 가 양성클래스에 속할 확률을 추정하면 아래와 같은 결과를 얻을 것이다.<br>
 
-$\hat{y}=\begin{cases}0\ \ \ \ \ \ \hat{p}<0.5\ 일\ 때\\1\ \ \ \ \ \hat{p}\ge 0.5\ 일\ 때\end{cases}$ <br>
+$ \hat{y}= \begin{cases}
+    0 & \text{if }\hat{p}<0.5 \\
+    1 & \text{if }\hat{p}\ge 0.5
+\end{cases}$ <br>
 
 ## 2) 훈련과 비용함수
 훈련의 목적은 양성 샘플(y=1)에 대해 높은 확률을 추정하고 음성샘플(y=0) 에 대해 낮은 확률을 추정하는 모델의 파라미터 벡터인 θ 를 찾는 것이다. 훈련 샘플에 대한 비용함수는 아래와 같다.<br>
 
-$c\left(\theta \right)=\begin{cases}-\log \left(\hat{p}\right)\ \ \ \ \ \ \ \ \ \ \ y=1\ 일\ 때\\-\log \left(1-\hat{p}\right)\ \ \ \ \ y=0\ 일\ 때\end{cases}$ <br>
+$c(\theta)=\begin{cases}
+    -\log (\hat{p}) & \text{if } y=1 \\
+    -\log (1-\hat{p}) & \text{if } y=0
+\end{cases}$ <br>
 
 비용 함수는 t가 0에 가까워질 수록 -log(t) 가 매우 커지므로 타당하다고 할 수 있다. 따라서 모델이 양성 샘플을 0에 가가운 확률로 추정하면 비율이 크게 증가할 것이다.
 반면 t가 1에 가까워질 수록 -log(t)는 0에 가까워진다.  따라서 음성샘플의 확률을 0에 가깝게 추정하거나 양성 샘플의 확률을 1에 가깝게 추정하면 비용은 0에 가까워진다.<br>

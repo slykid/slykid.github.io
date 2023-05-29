@@ -24,7 +24,7 @@ sidebar_main: true
 ## 1) 단변량 회귀
 하나의 특성(설명변수) 와 연속적인 타깃(응답변수) 사이의 관계를 모델링한다. 선형 모델에 대한 식은 다음과 같다.<br>
 
-$y\ =\ \combi{w}_0\ +\ \combi{w}_1x$y = \{w}_0 \+ \w_1 \x <br>
+$y\ =\ {w}_0\ +\ \{w}_1x $<br>
 
 위의 식에서 y 는 목표변수를, w0 는 y 축 절편을, w1 은 특성의 가중치를 의미하고 x는 특성을 의미한다.<br>
 
@@ -55,7 +55,7 @@ plt.show()
 ## 2) 다변량 회귀
 단변량 회귀를 여러 개의 특성이 있는 경우로 일반화(확장) 한 개념이다.<br>
 
-$\ y\ =\ {w}_0\ {x}_0\ +\ {w}_1\ {x}_1\ + ...\ +\ {w}_m\ {x}_m\ =\ m\ {∑}_i=0\{w}_i\ {x}_i = \{w}^T\ x<br>
+$\ y\ =\ {w}_0\ {x}_0\ +\ {w}_1\ {x}_1\ + ...\ +\ {w}_m\ {x}_m\ =\ m\ {∑}_i=0\{w}_i\ {x}_i = \{w}^T\ x $<br>
 
 하지만 3개의 특성을 갖고 있어도 3차원 산점도를 이해하는 것은 어렵다.<br>
 ![산점도](/images/2019-08-18-python_machine_learning-chapter2-regression/2_scatter.jpg)
@@ -135,7 +135,7 @@ plt.show()
 또한 모델이 최상의 성능을 내도록 하는 값을 확인하기 위해 예측과 훈련 데이터 사이의 거리를 측정하는 비용함수를 정의한다.<br>
 정규 방정식은 비용함수를 최소화하는 θ 값을 찾기 위한 해석적인 방법으로 사용하며, 식은 다음과 같다.<br>
 
-$\hat{\theta }\ =\ \combi{\left(\combi{X}^T\cdot \combi{X}\right)}^{-1}\cdot \combi{X}^T\cdot y$<br>
+$\hat{\theta }\ =\ \{\left(\{X}^T\cdot \{X}\right)}^{-1}\cdot \{X}^T\cdot y$<br>
 
 위의 공식을 테스트 하기 위해 아래의 코드를 실행해보자.<br>
 
@@ -275,7 +275,7 @@ plt.show()
 앞서 언급한 경사하강법을 구현하기 위해서는 각 모델 파라미터인 $\ {θ}_i $ 에 대해 비용함수의 그래디언트를 계산해야 한다. 즉, θi 가 조금 변경될 때 비용함수가 얼마나 바뀌는 가를 계산해야하며, 이를 편도함수 라고 한다.
 선형회귀의 경우 아래 식과 같다.<br>
 
-$\frac{\vartheta }{\vartheta \combi{\theta }_i}\ MSE\left(\theta \right)\ =\ \frac{2}{m}\sum _{i=1}^m\left(\combi{\theta }^T\cdot \combi{X}^{\left(i\right)}\ -\combi{Y}^{\left(i\right)}\ \right)\ \combi{X}_j^{\left(i\right)}$<br>
+$\frac{\vartheta }{\vartheta \{\theta }_i}\ MSE\left(\theta \right)\ =\ \frac{2}{m}\sum _{i=1}^m\left(\{\theta }^T\cdot \{X}^{\left(i\right)}\ -\{Y}^{\left(i\right)}\ \right)\ \{X}_j^{\left(i\right)}$<br>
 
 반복 횟수의 경우에는 아주 크게 지정하고, 대신 그래디언트 벡터를 아주 작게 지정하게 되면, 벡터의 노름이 임의 값 ε 보다 작아지게 되는 시점이 최솟값에 도달한 것과 일치하여 알고리즘이 중지하게 된다.<br>
 이를 앞서 실습한 주택 데이터에 경사하강법을 적용해보자. 코드는 아래와 같다.<br>
@@ -560,7 +560,7 @@ plt.show()
 두번째 방법은 평균 제곱 오차를 확인하는 방법이다. 선형 회귀 모델을 훈련하기 위해서 최소화하는 제곱 오차 항의 평균을 의미한다. 주로 그리드 서치와 교차 검증에서 매개변수를 튜닝하거나 다른 회귀 모델을 비교할 때 유용하다.
 식은 다음과 같다.<br>
 
-$MSE\ =\ \frac{1}{n}\sum _{i=1}^n\combi{\left(\combi{y}^{\left(i\right)}-\combi{\hat{y}}^{\left(i\right)}\right)}^2$ <br>
+$MSE\ =\ \frac{1}{n}\sum _{i=1}^n\{\left(\{y}^{\left(i\right)}-\{\hat{y}}^{\left(i\right)}\right)}^2$ <br>
 
 다음으로 앞서 실습한 주택 가격 데이터를 이용해 훈련 세트와 테스트 세트의 예측에 대한 MSE를 계산해보자.<br>
 
@@ -579,16 +579,16 @@ print("훈련 MSE : %.3f, 테스트 MSE: %.3f" % (mean_squared_error(y_train, y_
 
 평균제곱 오차 대신 결정계수를 이용할 수 있다. 결정 계수는 모델 성능을 잘 해석하기 위해 만든 MSE의 표준화된 버전이다. 계산식은 다음과 같다.<br>
 
-$\combi{R}^2\ =\ 1-\frac{SSE}{SST}$<br>
+$\{R}^2\ =\ 1-\frac{SSE}{SST}$<br>
 
 위 수식에서 SSE는 제곱 오차항을 의미하고, SST는 전체 제곱합을 의미한다. SST를  계산하는 방법은 아래와 같다.<br>
 
-$SST\ =\ \sum _{i=1}^n\combi{\left(\combi{y}^{\left(i\right)}-\combi{\mu }_y\right)}^2$ <br>
+$SST\ =\ \sum _{i=1}^n\{\left(\{y}^{\left(i\right)}-\{\mu }_y\right)}^2$ <br>
 
 결과적으로 SST는 단순히 타겟의 분산을 의미하는 것과 같다. 다음으로 결정계수가 MSE의 표준화된 버전이 맞는지도 살펴보자. 증명은 아래와 같다.<br>
 
-$\combi{R}^2\ =1-\frac{SSE}{SST}$ <br>
-$\ \ \ \ \ =1-\frac{\frac{1}{n}\sum _{i=1}^n\combi{\left(\combi{y}^{\left(i\right)}-\combi{\hat{y}}^{\left(i\right)}\right)}^2}{\frac{1}{n}\sum _{i=1}^n\combi{\left(\combi{y}^{\left(i\right)}\ -\combi{\mu }_y\right)}^2}$ <br>
+$\{R}^2\ =1-\frac{SSE}{SST}$ <br>
+$\ \ \ \ \ =1-\frac{\frac{1}{n}\sum _{i=1}^n\{\left(\{y}^{\left(i\right)}-\{\hat{y}}^{\left(i\right)}\right)}^2}{\frac{1}{n}\sum _{i=1}^n\{\left(\{y}^{\left(i\right)}\ -\{\mu }_y\right)}^2}$ <br>
 $\ \ \ \ \ =1-\frac{MSE}{Var\left(y\right)}$ <br>
 
 훈련 세트에 대해 R2 은 0~1사이의 값을 가진다. 실제로 아래코드를 이용해 주택 가격 데이터에 대한 결정계수를 계산해보자.<br>
@@ -619,11 +619,11 @@ print("훈련 R^2: %.3f, 테스트 R^2: %.3f" % (r2_score(y_train, y_train_pred)
 ## 1) Ridge 회귀(Ridge Regression)
 Ridge 회귀는 단순히 최소 제곱 비용 함수에 가중치의 제곱합을 추가한 L2 규제 모델이다. 비용함수는 다음과 같다.<br>
 
-$\combi{J\left(w\right)}_{Ridge}=\sum _{i=1}^n\combi{\left(\combi{y}^{\left(i\right)}-\combi{\hat{y}}^{\left(i\right)}\right)}^2+\lambda \left|\left|\combi{w}\right|\right|_2^2$ <br>
+$\{J\left(w\right)}_{Ridge}=\sum _{i=1}^n\{\left(\{y}^{\left(i\right)}-\{\hat{y}}^{\left(i\right)}\right)}^2+\lambda \left|\left|\{w}\right|\right|_2^2$ <br>
 
 위의 수식에서 λ||w||22 부분이 규제항(가중치 벡터의 L2 노름)이며 전개해보면 다음과 같다.<br>
 
-$L2\ :\ \lambda \left|\left|\combi{w}\right|\right|_2^2=\lambda \sum _{j=1}^m\combi{w}_j^2$ <br>
+$L2\ :\ \lambda \left|\left|\{w}\right|\right|_2^2=\lambda \sum _{j=1}^m\{w}_j^2$ <br>
 
 하이퍼 파라미터 λ 를 증가시키면 규제 강도가 증가되고 모델의 가중치 값이 감소한다. 만약 λ = 0 일 경우, Ridge 회귀는 선형회귀와 동일하게 된다.  반면 가중치가 아주 큰 경우 모든 가중치가 거의 0에 가까워지고 결국 데이터의 평균을 지나는 수평선이 된다.<br>
 Ridge 회귀 비용함수에서 절편에 해당하는 w0 는 규제하지 않는다. 모델의 복잡도와 절편은 관계가 없기 때문이다. 만약  경사하강법에 적용하려면 MSE 그레디언트 벡터에 λw 를 더하면 된다. 아래의 그림을 통해 좀 더 살펴보자.<br>
@@ -651,11 +651,11 @@ sgd_reg.predict([[1.5]])
 ## 2) LASSO 회귀
 LASSO 회귀는 Ridge 회귀 처럼 비용 함수에 규제항을 더하지만 L2 노름의 제곱을 2로 나눈 것 대신 가중치 벡터의 L1 노름을 사용한다. 규제 강도에 따라서 어떤 가중치는 0이 될 수 있다. 비용함수는 다음과 같다.<br>
 
-$J\left(w\right)_{LASSO}=\sum _{i=1}^n\left(\combi{y}^{\left(i\right)}-\combi{\hat{y}}^{\left(i\right)}\right)^2+\lambda \left|\left|\combi{w}\right|\right|_1$ <br>
+$J\left(w\right)_{LASSO}=\sum _{i=1}^n\left(\{y}^{\left(i\right)}-\{\hat{y}}^{\left(i\right)}\right)^2+\lambda \left|\left|\{w}\right|\right|_1$ <br>
 
 사용된 규제항의 식을 전개하면 아래와 같다.<br>
 
-$L1:λ\left|\left|w\right|\right|_1=λ\sum _{j=1}^m\left|\combi{w_j}\right|$ <br>
+$L1:λ\left|\left|w\right|\right|_1=λ\sum _{j=1}^m\left|\{w_j}\right|$ <br>
 
 위의 두 식에 대해 만약 m > n 인 상황이라면 최대 n개의 특성을 선택하는 것이 LASSO 회귀의 한계이다. LASSO 회귀에서의 중요한 특징이 덜 중요한 특성의 가중치를 완전히 제거하려고 하는 것이기 때문이다. 아래 그래프를 통해 좀 더 살펴보자.<br>
 
@@ -678,7 +678,7 @@ LASSO의 경우 자료오차 차원이 각 축의 점에 걸린다. 즉,  어느
 ## 3) ElasticNet
 Ridge 회귀와 LASSO 회귀의 절충안이라고 할 수 있다. 희소한 모델을 만들기 위한 L1 페널티와 선택 특성 개수가 같은 LASSO의 한계를 극복하기 위한 L2 페널티를 가진다. 비용함수는 아래와 같다.<br>
 
-$J\left(w\right)_{ElasticNet}=\sum _{i=1}^n\left(\combi{y}^{\left(i\right)}-\combi{\hat{y}}^{\left(i\right)}\right)^2+r\combi{\lambda }_1\sum _{j=1}^m\combi{\combi{w}_j}^2+\frac{1-r}{2}\combi{\lambda }_2\sum _{j=1}^m\left|\combi{w}_j\right|$ <br>
+$J\left(w\right)_{ElasticNet}=\sum _{i=1}^n\left(\{y}^{\left(i\right)}-\{\hat{y}}^{\left(i\right)}\right)^2+r\{\lambda }_1\sum _{j=1}^m\{\{w}_j}^2+\frac{1-r}{2}\{\lambda }_2\sum _{j=1}^m\left|\{w}_j\right|$ <br>
 
 규제항은 Ridge와 LASSO 회귀의 규제항을 단순히 더해서 사용하며 혼합비율 r 을 이용해 조절한다. r = 0 이면 엘라스틱넷은 Ridge 회귀와 같고, r = 1 이면 LASSO 회귀와 같다. 규제가 작게라도 있는 것이 좋기 때문에 일반적으로 평범한 선형회귀는 피해야한다.<br>
 또한 실제로 사용되는 특성이 몇 개뿐인 경우라면, LASSO 나 ElasticNet을 사용하는 것이 좋다. 그리고 특성 수가 훈련 샘플의 수보다 많거나, 특성 몇 개가 가아게 연관되어 있는 경우 LASSO 보다는 ElasticNet을 사용하는 편이 좋다.<br>
@@ -686,7 +686,7 @@ $J\left(w\right)_{ElasticNet}=\sum _{i=1}^n\left(\combi{y}^{\left(i\right)}-\com
 # 7. 다항 회귀
 다항 회귀는 각 특성의 거듭 제곱으로 새로운 특성을 추가하고 확장된 특성을 포함한 데이터 셋에 선형 모델을 훈련 시키는 것이다. 선형 가정이 어긋날 때 대처 방법으로 활용할 수 있으며, 모델에 대한 함수는 다음과 같다.<br>
 
-$y=\combi{w}_0+\combi{w}_1x+\combi{w}_2\combi{x}^2+...+\combi{w}_n\combi{x}^n$<br>
+$y=\{w}_0+\{w}_1x+\{w}_2\{x}^2+...+\{w}_n\{x}^n$<br>
 
 여기서 n 은 다항식의 차수를 의미한다. 다항 회귀를 사용해 비선형 관계를 모델링하는 경우가 있지만 선형 회귀 가중치인 w 때문에 다변량 선형회귀모델로 생각할 수 있다. 예를 들어 아래와 같은 분포의 데이터가 존재한다고 가정해보자.<br>
 
@@ -789,7 +789,7 @@ $c\left(\theta \right)=\begin{cases}-\log \left(\hat{p}\right)\ \ \ \ \ \ \ \ \ 
 
 비용함수에 대해서는 모든 훈련 샘플의 비용을 평균화 한 것이다. 아래의 수식을 통해 좀 더 살펴보자.<br>
 
-$J\left(\theta \right)=-\frac{1}{m}\sum _{i=1}^m\left[\combi{y}^{\left(i\right)}\log \left(\combi{\hat{p}}^{\left(i\right)}\right)+\left(1-\combi{y}^{\left(i\right)}\right)\log \left(1-\combi{\hat{p}}^{\left(i\right)}\right)\right]$ <br>
+$J\left(\theta \right)=-\frac{1}{m}\sum _{i=1}^m\left[\{y}^{\left(i\right)}\log \left(\{\hat{p}}^{\left(i\right)}\right)+\left(1-\{y}^{\left(i\right)}\right)\log \left(1-\{\hat{p}}^{\left(i\right)}\right)\right]$ <br>
 
 비용함수의 최솟값을 계산하는 알려진 해는 없다. 하지만 볼록 함수이므로 경사하강법이 전역 최소값을 찾는 것을 보장한다.<br>
 
@@ -911,14 +911,14 @@ plt.show()
 ## 4) 소프트 맥스 회귀
 여러 개의 이진 분류기를 훈련 시켜 연결하지 않고 직접 다중 클래스를 지원하도록 로지스틱 회귀를 일반화 한 모형으로 다항 로지스틱 회귀라고도 한다. 샘플 x 가 주어지면 각 클래스 k에 대해 점수를 계산하고 그 점수에 소프트맥스 함수를 적용하여 각 클래스이 확률을 추정한다. 이 때 각 클래스는 자신만을 파라미터 벡터 θ(i) 가 존재하며, 파라미터 벡터 Θ에 행으로 저장된다. 소프트 맥스 함수는 아래의 식과 같다.<br>
 
-$\hat{p}_k=\sigma \left(s\left(x\right)\right)_k=\frac{\exp \left(\combi{s}_k\left(x\right)\right)}{\sum _{j=1}^k\exp \left(\combi{s}_j\left(x\right)\right)}$ <br>
+$\hat{p}_k=\sigma \left(s\left(x\right)\right)_k=\frac{\exp \left(\{s}_k\left(x\right)\right)}{\sum _{j=1}^k\exp \left(\{s}_j\left(x\right)\right)}$ <br>
 
 위의 식에서 k는 클래스 개수, s(x)는 샘플 x 에 대한 각 클래스의 점수를 담고 있는 벡터, σ(s(x))k 는 샘플 x 에 대한 각 클래스의 점수가 주어졌을 때, 해당 샘플이 클래스 k에 속할 추정 확률을 의미한다.<br>
 
 소프트 맥스 함수의 목적은 모델이 타깃 클래스에 대해서는 높은 확률을 추정하도록 만드는 것이 목적이다. 크로스 엔트로피 비용 함수를 최소화하는 것은 타깃 클래스에 대해 낮은 확률을 예측하는 모델을 억제하므로 목적에 부함한 함수라고 할 수 있다.<br>
 크로스 엔트로피는 추정된 클래스의 확률이 타깃 클래셍 얼마나 잘 맞는지 측정하는 용도로 사용된다. 식은 다음과 같다.<br>
 
-$J\left(\Theta \right)=-\frac{1}{m}\sum _{i=1}^m\sum _{k=1}^K\combi{\combi{y}_k}^{\left(i\right)}\log \left(\hat{p}_k^{\left(i\right)}\right)$ <br>
+$J\left(\Theta \right)=-\frac{1}{m}\sum _{i=1}^m\sum _{k=1}^K\{\{y}_k}^{\left(i\right)}\log \left(\hat{p}_k^{\left(i\right)}\right)$ <br>
 
 이를 앞서 사용한 붓꽃 데이터에 적용해보자.<br>
 

@@ -680,7 +680,7 @@ LASSO의 경우 자료오차 차원이 각 축의 점에 걸린다. 즉,  어느
 ## 3) ElasticNet
 Ridge 회귀와 LASSO 회귀의 절충안이라고 할 수 있다. 희소한 모델을 만들기 위한 L1 페널티와 선택 특성 개수가 같은 LASSO의 한계를 극복하기 위한 L2 페널티를 가진다. 비용함수는 아래와 같다.<br>
 
-$J\left(w\right)_{ElasticNet}=\sum _{i=1}^n\left(\{y}^{\left(i\right)}-\{\hat{y}}^{\left(i\right)}\right)^2+r\{\lambda }_1\sum _{j=1}^m\{\{w}_j}^2+\frac{1-r}{2}\{\lambda }_2\sum _{j=1}^m\left|\{w}_j\right|$ <br>
+$J(w)_{ElasticNet}=\sum _{i=1}^n({y}^{(i)} - {\hat{y}}^{(i)})^2 + r{\lambda}_1\sum _{j=1}^m{w}_j^2 + \frac {1-r}{2} {\lambda }_2 \sum _{j=1}^m\vert\{w}_j\vert $ <br>
 
 규제항은 Ridge와 LASSO 회귀의 규제항을 단순히 더해서 사용하며 혼합비율 r 을 이용해 조절한다. r = 0 이면 엘라스틱넷은 Ridge 회귀와 같고, r = 1 이면 LASSO 회귀와 같다. 규제가 작게라도 있는 것이 좋기 때문에 일반적으로 평범한 선형회귀는 피해야한다.<br>
 또한 실제로 사용되는 특성이 몇 개뿐인 경우라면, LASSO 나 ElasticNet을 사용하는 것이 좋다. 그리고 특성 수가 훈련 샘플의 수보다 많거나, 특성 몇 개가 가아게 연관되어 있는 경우 LASSO 보다는 ElasticNet을 사용하는 편이 좋다.<br>

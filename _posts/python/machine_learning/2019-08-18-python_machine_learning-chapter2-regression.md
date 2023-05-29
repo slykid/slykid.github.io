@@ -653,11 +653,11 @@ sgd_reg.predict([[1.5]])
 ## 2) LASSO 회귀
 LASSO 회귀는 Ridge 회귀 처럼 비용 함수에 규제항을 더하지만 L2 노름의 제곱을 2로 나눈 것 대신 가중치 벡터의 L1 노름을 사용한다. 규제 강도에 따라서 어떤 가중치는 0이 될 수 있다. 비용함수는 다음과 같다.<br>
 
-$J\left(w\right)_{LASSO}=\sum _{i=1}^n\left(\{y}^{\left(i\right)}-\{\hat{y}}^{\left(i\right)}\right)^2+\lambda \left|\left|\{w}\right|\right|_1$ <br>
+$ J\left(w\right)_{LASSO}=\sum_{i=1}^n({y}^{(i)}- {\hat{y}}^{(i)})^2 + \lambda {\Vert{w}\Vert}_1 $ <br>
 
 사용된 규제항의 식을 전개하면 아래와 같다.<br>
 
-$L1:λ\left|\left|w\right|\right|_1=λ\sum _{j=1}^m\left|\{w_j}\right|$ <br>
+$L1: \lambda {\Vert{w}\Vert}_1 = λ\sum _{j=1}^m\vert\{w_j}\vert$ <br>
 
 위의 두 식에 대해 만약 m > n 인 상황이라면 최대 n개의 특성을 선택하는 것이 LASSO 회귀의 한계이다. LASSO 회귀에서의 중요한 특징이 덜 중요한 특성의 가중치를 완전히 제거하려고 하는 것이기 때문이다. 아래 그래프를 통해 좀 더 살펴보자.<br>
 

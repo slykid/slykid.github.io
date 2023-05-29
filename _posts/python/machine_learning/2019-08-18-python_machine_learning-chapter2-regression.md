@@ -780,7 +780,7 @@ $\sigma \left(t\right) = \frac {1}{1+\exp \left(-t\right)}$ <br>
 로지스틱 회귀 모델이 샘플 x 가 양성클래스에 속할 확률을 추정하면 아래와 같은 결과를 얻을 것이다.<br>
 
 $ \hat{y}= \begin{cases}
-    0 & \text{if }\hat{p}<0.5 \\
+    0 & \text{if }\hat{p}<0.5
     1 & \text{if }\hat{p}\ge 0.5
 \end{cases}$ <br>
 
@@ -788,7 +788,7 @@ $ \hat{y}= \begin{cases}
 훈련의 목적은 양성 샘플(y=1)에 대해 높은 확률을 추정하고 음성샘플(y=0) 에 대해 낮은 확률을 추정하는 모델의 파라미터 벡터인 θ 를 찾는 것이다. 훈련 샘플에 대한 비용함수는 아래와 같다.<br>
 
 $c(\theta)=\begin{cases}
-    -\log (\hat{p}) & \text{if } y=1 \\
+    -\log (\hat{p}) & \text{if } y=1
     -\log (1-\hat{p}) & \text{if } y=0
 \end{cases}$ <br>
 

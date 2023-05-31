@@ -55,7 +55,7 @@ $\Vert{w}\Vert= \sqrt {\sum _{j=1}^m{w}_j^2} $ <br>
 
 지금까지의 식을 모두 합했을 때의 결과식은 아래와 같다.<br>
 
-$ \frac {{w}^T({x}_{pos} - {x}_{neg})}{\Vert{w}\Vert} = \frac {2}{\Vert{w}\Vert} $
+$ \frac {w^{T({x}_{pos} - {x}_{neg})} }{\Vert{w}\Vert} = \frac {2}{\Vert{w}\Vert} $
 
 이 식은 좌변이 양성쪽 초평면과 음성 쪽 초평면 사이의 거리라고 볼 수 있다.<br>
 

@@ -236,13 +236,13 @@ tree_reg2.fit(x, y)
 
 ![의사결정나무 회귀모델 예측결과](/images/2019-09-11-python_machine_learning-chapter4-decision_tree/5_tree_regression_plot.jpg)
 
-의사결정나무 회귀 모델 최대 깊이에 따른 비교
+<br>의사결정나무 회귀 모델 최대 깊이에 따른 비교
 
 ![max_depth=2 인 경우](/images/2019-09-11-python_machine_learning-chapter4-decision_tree/6_iris_decisionTreeRegressorDetail_1.jpg)
-max_depth = 2 인 경우
+<br>max_depth = 2 인 경우
 
 ![max_depth=3 인 경우](/images/2019-09-11-python_machine_learning-chapter4-decision_tree/7_iris_decisionTreeRegressorDetail_2.jpg)
-max_depth = 3 인 경우
+<br>max_depth = 3 인 경우
 
 첫번째 시각화를 통해서 최대 깊이가 깊을 수록 데이터 분포 및 그래프 상에서 분할 구간이 자세하게 나누어 지는 것을 확인할 수 있다. 각 영역의 예측값은 항상 그 영역에 있는 타깃값의 평균값을 의미하며, 알고리즘은 예측값과 가능한 많은 샘플이 가까이 있도록 영역을 분할한다.
 앞서 살펴본 분류 문제일 경우의 의사결정나무 구성과 거의 유사하다는 것을 알 수 있다.다만, 주요한 차이점은 각 노드에서 클래스를 예측하는 것이 아니라 어떤 값을 예측한다는 점이 분류 모델과의 차이라고 할 수 있다.<br>

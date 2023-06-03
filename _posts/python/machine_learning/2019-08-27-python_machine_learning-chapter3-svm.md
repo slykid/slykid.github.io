@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Python Machine Learning] 3. 서포트 벡터 머신 (SVM)"
+title: "[Python Machine Learning] 3. 분류: 서포트 벡터 머신 (SVM)"
 
 categories:
 - Python_Machine_Learning

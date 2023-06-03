@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Python Machine Learning] 4. 의사결정나무"
+title: "[Python Machine Learning] 4. 분류: 의사결정나무"
 
 categories:
 - Python_Machine_Learning

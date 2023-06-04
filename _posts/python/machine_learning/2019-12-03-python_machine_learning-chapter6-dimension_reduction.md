@@ -28,17 +28,17 @@ sidebar_main: true
 결과적으로 모든 훈련 샘플이 고차원 공간 내에 존재하는 저차원의 부분 공간에 놓여있다라고 할 수 있다.
 예를 들어 아래 그림과 같은 3차원에 데이터가 원 모양으로 분포한다고 가정해보자.<br>
 
-![]()
+![Hyperplane](/images/2019-12-03-python_machine_learning-chapter6-dimension_reduction/1_hyperplane.jpg)
 
 이 때 모든 샘플은 거의 평면인 상태로 놓여져 있으며, 그림에서 회색 사각형이 고차원 공간 내의 저차원 부분 공간이라고 가정해보자.
 부분 공간을 기준으로 수직으로 바라보면 아래 그림과 같이 보일 것이다.<br>
 
-![]()
+![저차원 부분 공간](/images/2019-12-03-python_machine_learning-chapter6-dimension_reduction/2_data_on_2D.jpg)
 
 이렇게 원본 데이터는 특징이 3개가 존재하는 고차원의 데이터였지만 이를 특징이 2개인 부분 공간의 데이터로 변환함으로써 데이터의 분포를 이해하는 데에 수월하도록 차원을 줄이는 기법이 투영이다.
 하지만 항상 좋은 것은 아닌게, 아래에 나온 스위스 롤과 같이 데이터셋의 공간이 뒤틀려 있거나, 휘어있는 경우에는 적용하는 것이 어렵다.<br>
 
-![]()
+![스위스롤](/images/2019-12-03-python_machine_learning-chapter6-dimension_reduction/3_swiss_roll.jpg)
 
 ## 2) 매니폴드 학습
 매니폴드란 고차원 공간에서 휘어지거나 뒤틀린 저차원 부분공간을 의미한다. 앞서 본 스위스롤 역시 매니폴드의 한 형태이다.
@@ -51,6 +51,7 @@ sidebar_main: true
 왼쪽은 결정경계가 복잡하게 보이지만, 오른쪽 그림은 결정경계가 단순한 직선으로 구분이 가능하다. 하지만 위와 같은 가정이 항상 유효한 것은 아니기 때문에 유의해야되는 부분이다.
 정리를 해보자면, 모델을 훈련시키기 전에 훈련 세트의 차원을 감소시키면, 훈련 속도는 빨라지지만 항상 더 낫거나 간단한 솔루션이 되는 것은 아니다. 때문에 데이터 셋에 대한 의존도가 매우 높다고 할 수 있다.<br>
 
+![스위스롤 2차원](/images/2019-12-03-python_machine_learning-chapter6-dimension_reduction/4_swiss_roll1.jpg)
 
 # 3. PCA (주성분 분석, Principal Component Analysis)
 가장 대표적인 차원 축소 알고리즘으로, 데이터에 가장 가까운 초평면을 정의한 다음 데이터를 평면에 투영시킨다.<br>
@@ -59,7 +60,7 @@ sidebar_main: true
 저차원의 초평면에 훈련 데이터를 투영하기 전에 투영시키고자하는 초평면이 올바른지를 확인해야된다.
 예를 들어 데이터의 분포가 아래의 그림과 같다고 가정해보자.
 
-![]()
+![분산보존](/images/2019-12-03-python_machine_learning-chapter6-dimension_reduction/5_variance_remain.jpg)
 
 왼쪽의 그림이 데이터의 분포를 보여주는 것인데, 그래프 상에서도 알 수 있듯이, 총 3개의 축(선) 들로 구성되어 있으며, 이 중에서 실선에 투영된 것이 분산을 최대한으로 보존하는 반면, 점선에 투영되는 경우에는 상대적으로 분산이 매우 적다는 것을 알 수 있다. 이는 오른쪽 그래프를 통해서도 확인이 가능하다.<br>
 따라서 분산이 최대로 보존되는 실선을 축으로 선택하는 것이 정보를 가장 적게 손실할 수 있는 방법이 합리적이라고 할 수 있다.<br>
@@ -248,6 +249,8 @@ print(d, cumsum[d])
 153 0.9504095236698549
 ```
 
+![적절한 차원 수 구하기](/images/2019-12-03-python_machine_learning-chapter6-dimension_reduction/6_find_dimension_size.jpg)
+
 다음으로 PCA 모델의 매개변수중 하나인 n_components 값을 앞서 구한 d 로 설정하여 PCA 모델을 다시 만든다. 하지만 유지하려는 주성분의 수를 지정하기 보다는 보존하려는 분산의 비율을 n_components 값에 기입해주는 것이 더 좋으며, 값은 0.0 ~ 1.0 사이로 설정한다.<br>
 
 ```python
@@ -310,7 +313,7 @@ plt.title("압축 후 복원", fontsize=16)
 plt.savefig("images/dimension_reduction/mnist_compression_plot")
 ```
 
-![]()
+![MNIST 분류 with 차원축소](/images/2019-12-03-python_machine_learning-chapter6-dimension_reduction/7_mnist_compression_plot.jpg)
 
 ## 6) 실습 : Wine 데이터 셋의 주성분 추출하기
 실습의 과정은 다음과 같다.
@@ -366,6 +369,8 @@ plt.show()
 plt.savefig('images/dimension_reduction/Variance Sum to Component Index.png')
 ```
 
+![주성분 검출하기](/images/2019-12-03-python_machine_learning-chapter6-dimension_reduction/8_variance_sum_to_component_index.jpg)
+
 위의 결과그래프를 살펴보면 첫번째 주성분은 분산의 약 40%를 차지하고 있다는 것을 알 수 있으며, 첫 2개 주성분으로는 전체 분산의 약 60%를 설명할 수 있다.
 다음으로 고유 벡터를 생성하고 투영해서 새로운 특성 부분 공간을 생성해보자.<br>
 
@@ -406,6 +411,8 @@ plt.show()
 plt.savefig('images/dimension_reduction/wine_dim_reduction_result.png')
 ```
 
+![주성분 산점도 시각화](/images/2019-12-03-python_machine_learning-chapter6-dimension_reduction/9_wine_dim_reduction_result.jpg)
+
 결과 그래프에서 확인할 수 있듯이, 데이터가 y축 보다 x축을 따라 더 넓게 퍼져있는 것을 확인할 수 있으며, 주성분은 고유값의 크기로 정렬했기 때문에 첫 번째 주성분이 가장 큰 분산을 갖는다는 것도 확인할 수 있다.<br>
 
 # 4. 커널 PCA
@@ -428,7 +435,7 @@ X_reduced = rbf_pca.fit_transform(X)
 
 위와 같은 방법으로 앞서 본 스위스롤 데이터에 비선형 투영을 적용하면 아래의 그림과 같이 나오게 된다. 사용한 커널은 선형커널, RBF 커널, 시그모이드 커널을 사용했다.<br>
 
-![]()
+![스위스롤 비선형 투영 적용](/images/2019-12-03-python_machine_learning-chapter6-dimension_reduction/10_kernel_pca_plot.jpg)
 
 kPCA 는 비지도 학습으로 분류되기 때문에 좋은 커널과 하이퍼파라미터를 선택하기 위한 명확한 성능 측정 기준이 없다. 하지만 지도학습의 전처리 과정으로 사용되기 때문에 그리드 탐색을 사용해 최적의 커널과 하이퍼파라미터를 선택할 수 있다.<br>
 
@@ -690,7 +697,7 @@ for eigen_val in eigen_pairs:
 
 LDA에서 선형판별벡터의 길이는 (클래스개수 - 1)개 이다. 클래스 내 산포행렬인 SB 가 랭크 1또는 그 이하인 클래스 개수 만큼의 행렬을 합한 것이기 때문이다. 이를 그래프로 살펴보면 아래와 같다.<br>
 
-![]()
+![LDA 주성분 분석 시각화](/images/2019-12-03-python_machine_learning-chapter6-dimension_reduction/11_LDA.jpg)
 
 마지막으로 2개의 판별 고유 벡터를 열로 쌓은 변환 백터 W를 생성하고 이를 훈련 데이터 곱해서 데이터를 변환시켜보자.<br>
 
@@ -722,7 +729,7 @@ plt.show()
 ```
 
 [실행결과]<br>
-![]()
+![LDA 주성분 산점도 시각화](/images/2019-12-03-python_machine_learning-chapter6-dimension_reduction/12_LDA2.jpg)
 
 ## 4) Scikit-Learn 을 이용한 LDA
 앞서 설명한 모든 과정을 scikit-learn 의 LDA() 를 사용하면 단순하고, 쉽게 계산하는 것이 가능하다
@@ -780,7 +787,7 @@ plot_decision_regions(x_train_lda, y_train, classifier=lr)
 ```
 
 [실행결과]<br>
-![]()
+![LDA회귀 주성분 분석](/images/2019-12-03-python_machine_learning-chapter6-dimension_reduction/13_lda_lr.jpg)
 
 확인해본 결과 클래스 2로 분류된 1개 데이터만 오분류했다는 것을 알 수 있었으며, 규제 강도를 낮추면, 정확히 분류해 낼 것으로 보인다.
 다음으로 모델에 테스트 데이터를 넣고 예측해보자.<br>
@@ -800,6 +807,6 @@ plt.show()
 ```
 
 [실행결과]<br>
-![]()
+![LDA회귀 주성분 분석2](/images/2019-12-03-python_machine_learning-chapter6-dimension_reduction/14_lda_lr_test.jpg)
 
 테스트 셋의 결과 원본 13개의 와인특성 대신 2차원의 특성부분공간을 이용해 정확히 분류해낸다는 것을 확인할 수 있다.<br>

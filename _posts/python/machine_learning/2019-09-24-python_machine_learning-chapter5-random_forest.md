@@ -23,7 +23,10 @@ sidebar_main: true
 앙상블 방식에 대해서는 크게 배깅, 부스팅, 스태킹이 있다.<br>
 
 ## 1) 투표 기반 분류기
-더 좋은 분류기를 만드는 가장 간단한 방법은 각 분류기의 예측을 모아 가장 많이 선택된 클래스를 예측하는 것이다. 아래와 같이 다수결 투표로 정해지는 분류기를 직접 투표 분류기라고 한다.
+더 좋은 분류기를 만드는 가장 간단한 방법은 각 분류기의 예측을 모아 가장 많이 선택된 클래스를 예측하는 것이다. 아래와 같이 다수결 투표로 정해지는 분류기를 직접 투표 분류기라고 한다.<br>
+
+![Ensemble: Voting](/images/2019-09-24-python_machine_learning-chapter5-random_forest/1_ensemble_voting.jpg)
+
 각 분류기가 성능이 낮은 약한 학습기이더라도 충분한 수와 종류가 다양하다면, 강한 학습기가 될 수 있다.<br>
 
 ```python
@@ -420,6 +423,9 @@ plt.ylabel("True Positive Rate(FPR)")
 plt.show()
 ```
 
+[실행 결과]<br>
+![ROC Curve 결과](/images/2019-09-24-python_machine_learning-chapter5-random_forest/2_majorityvoteclassifier_roc_curve.jpg)
+
 위의 ROC 곡선을 통해서도 확인할 수 있듯이, 앙상블 분류기가 다른 모델들에 비해서 높은 성능을 낸다는 것을 다시 한 번 확인할 수 있다. 특이 사항으로 로지스틱 함수가 앙상블 모델과 동일한 성능을 내는 것으로 볼 수 있는데, 그 이유는 데이터 셋 자체가 작았고, 그로 인해 데이터의 분산 자체가 높아지기 때문에 로지스틱 회귀를 사용하게 되는 경우 높은 성능을 나타낸다고 설명할 수 있다. (단, 어떻게 데이터 셋을 나누었는지에 민감한 모델이 생성된다.) <br>
 
 # 2. 배깅 & 페이스팅
@@ -430,12 +436,10 @@ plt.show()
 
 ## 1) 배깅 알고리즘 동작 방식
 동작 방식은 아래 그림과 같다. 구체적으로 살펴보면 배깅 단계마다 중복을 허용하여 랜덤하게 샘플링된다. 각각의 부트스트랩 샘플을 사용해 분류기를 학습하게 되며, 일반적으로는 가지치기하지 않은 결정트리를 분류기로 사용한다.<br>
-
-![]()
-
 각 분류기에서는 훈련 세트로부터 추출한 랜덤한 부분 집합을 이용한다. 중복을 허용한 샘플링을 사용하기  때문에 각 부분집합에는 일부가 중복되어있고, 원본으로부터 일부는 아예 샘플링되지 않는 경우가 있다.
 샘플링을 통해 분류기가 학습을 완료하면 다수결 투표를 사용해 예측을 모은다.<br>
 
+![Ensemble: Bagging](/images/2019-09-24-python_machine_learning-chapter5-random_forest/3_ensemble_bagging.jpg)
 
 ## 2) Scikit-Learn 에서의 배깅 & 페이스팅
 사이킷 런에서의 배깅은 BaggingClassifier() (회귀인 경우에는 BaggingRegressor() ) 를 사용한다.
@@ -489,7 +493,7 @@ print(accuracy_score(y_test, y_pred_tree))
 위의 코드를 실행해 결과를 비교해보면 확실히 배깅으로 예측한 결과가 단순히 의사결정나무로 만든 예측보다 더 정확하다는 것을 알 수 있다.
 추가적으로 시각화를 통해서 확인해보면 아래 그림과 유사한 결과를 얻을 수 있다.<br>
 
-![]()
+![예측결과: 의사결정나무 vs. 앙상블:배깅](/images/2019-09-24-python_machine_learning-chapter5-random_forest/4_decision_tree_without_and_with_bagging_plot.jpg)
 
 위의 그림에서도 알 수 있듯이, 결정 경계가 배깅으로 만들었을 때 좀 더 일반화가 잘 됬다는 것을 알 수 있다.<br>
 부트 스트래핑의 경우 각 예측기가 학습하는 서브셋에 다양성을 증가시키므로 배깅이 페이스팅 보다 편향이 좀 더 높은 편이다. 이는 예측기들의 상관관계를 줄여 결과적으로 앙상블의 분산이 감소하게 된다.
@@ -612,7 +616,7 @@ print(accuracy_score(y_test, y_pred))
 ```
 
 [실행 결과]<br>
-![]()
+![랜덤포레스트 실행결과](/images/2019-09-24-python_machine_learning-chapter5-random_forest/5_randomforest_model_result_using_iris_data.jpg)
 
 사이킷런의 RandomForestClassifier를 포함해 대부분의 라이브러리에서는 부트스트랩 샘플 크기를 원본 훈련 세트의 샘플 개수와 동일하게 한다. 이유는 균형 잡힌 편향-분산 트래이드 오프를 얻을 수 있기 때문이다. 분할에 사용할 특정 개수 d는  훈련 데이터 에 있는 전체 특성의 수보다 작게 지정하는 경우가 많다. 사용하기에 가장 적정 값은 아래와 같이 설정해주는 것이 좋다.<br>
 
@@ -787,8 +791,7 @@ plt.show()
 ```
 
 [실행 결과]<br>
-![]()
-
+![실행결과: AdaBoosting](/images/2019-09-24-python_machine_learning-chapter5-random_forest/6_adaboost.jpg)
 
 ## 2) Gradient Boosting
 앙상블에 이전까지의 오차를 보정하도록 예측기를 순차적으로 추가하는 기법으로 아다부스트처럼 반복이나 샘플의 가중치를 수정하는 것이 아니라, 이전 예측기가 만든 잔여 오차(잔차, Residual Error)에 새로운 학습기를 훈련 시킨다. 간단한 예제를 통해 확인해보자.<Br>
@@ -835,13 +838,15 @@ y_pred = sum(tree.predict(X_new) for tree in (tree_reg1, tree_reg2, tree_reg3))
 print(y_pred)
 
 def plot_predictions(regressors, X, y, axes, label=None, style="r-", data_style="b.", data_label=None):
-x1 = np.linspace(axes[0], axes[1], 500)
-y_pred = sum(regressor.predict(x1.reshape(-1, 1)) for regressor in regressors)
-plt.plot(X[:, 0], y, data_style, label=data_label)
-plt.plot(x1, y_pred, style, linewidth=2, label=label)
-if label or data_label:
-plt.legend(loc="upper center", fontsize=16)
-plt.axis(axes)
+    x1 = np.linspace(axes[0], axes[1], 500)
+    y_pred = sum(regressor.predict(x1.reshape(-1, 1)) for regressor in regressors)
+    plt.plot(X[:, 0], y, data_style, label=data_label)
+    plt.plot(x1, y_pred, style, linewidth=2, label=label)
+
+    if label or data_label:
+        plt.legend(loc="upper center", fontsize=16)
+    
+    plt.axis(axes)
 
 plt.figure(figsize=(11,11))
 
@@ -884,7 +889,7 @@ plt.show()
 
 위의 코드를 실행하게 되면 아래와 같은 결과를 얻을 수 있다.<br>
 
-![]()
+![의사결정나무 잔차 vs. 앙상블 예측 비교](/images/2019-09-24-python_machine_learning-chapter5-random_forest/7_gradient_boosting.jpg)
 
 잠깐 시각화를 보게되면 왼쪽에 위치한 그래프들은 앙상블하기 전에 만들어놓은 의사결정나무 모델들이고 오른쪽에 있는 그래프들은 그래디언트 부스팅을 사용해 앙상블을 순서대로 했을 때의 분류 결과이다.<br>
 맨 처음에는 tree_reg1 만 생성이 되었기 때문에 앙상블을 적용 전과 후가 동일한 그래프로 나타나게 된다. 하지만 2번째 모델을 적용하는 것에서 부터 달라지게 되는데 왼쪽 그림중 2번째에 위치한 그래프는 첫번째 모델을 학습한 결과에 대한 잔차(잔여 오차)를 학습한 결과를 보여주는 것이며, 해당 내용을 앙상블로 적용한 결과가 오른쪽 두번째 그림이라고 할 수 있다.<br>
@@ -906,6 +911,8 @@ print(y_pred1)
 
 [0.75026781]
 ```
+
+![Gradient Boosting](/images/2019-09-24-python_machine_learning-chapter5-random_forest/8_gradient_boosting1.jpg)
 
 위 모델의 경우 앞선 모델과 유사하며, 차이점이 있다면 학습률을 설정해 줬다는 것에서 차이가 발생할 수 있다. 즉, learning_rate 매개변수가 각 트리의 기여 정도를 조절하며, 낮게 설정할  경우 예측을 위해 많은 의사결정나무가 필요하지만, 성능 자체는 좋아지는 경향이 있다.
 앙상블 학습의 경우 개별 분류기에 비해 계산복잡도가 높아, 실전에서 사용할 경우 예측성능을 높이기 위해 계산 비용에 투자를 더 할 것인 지에 대한 트레이드 오프가 발생할 수 있으므로 사용 전에 가급적이면 우선순위를 따져 사용여부를 결정하는 것이 좋다.<br>

@@ -50,7 +50,7 @@ pred = kmeans.fit_predict(x)
 ```
 
 [실행 결과]<br>
-![]()
+![K-Means](/images/2020-03-12-python_machine_learning-chapter7-clustering/1_kmeans.jpg)
 
 k-means 는 다음과 같이 4 단계로 요약할 수 있다.<br>
 
@@ -90,7 +90,7 @@ y_pred = kmeans.fit_predict(x)
 
 결과로 산출된 군집을 확인해보면 아래의 시각화와 같다.<br>
 
-![]()
+![K-Means 결과](/images/2020-03-12-python_machine_learning-chapter7-clustering/2_kmeans_result.jpg)
 
 위의 산점도에서 k-means 알고리즘이 원형 중심부에 세 개의 센트로이드를 할당한 것을 확인할 수 있다.
 보통 작은 데이터 셋에서는 잘 작동하지만, 사전에 군집의 개수인 k를 설정해줘야 된다는 단점이 있다.<br>
@@ -116,15 +116,13 @@ kmeans_plus = KMeans(n_clusters=3, init="k-means++", n_init=10, max_iter=300, to
 pred_plus = kmeans_plus.fit_predict(x)
 ```
 
-![]()
-
 ## 3) 직접 군집화 vs. 간접 군집화
 직접 군집화는 데이터셋의 샘플이 정확히 하나의 클러스터에 할당되는 알고리즘으로 대표적인 예시가 앞서 본 K-Means 이다. 반면, 간접 군집화는 샘플을 하나 이상의 클러스터에 할당하는 알고리즘이다. 대표적인 알고리즘으로는 퍼지 알고리즘이 해당된다.
 앞서 K-Means에 대해 살펴봤기 때문에 이번에는 퍼지 알고리즘(Fuzzy C-Means) 를 살펴보자.<br>
 퍼지 알고리즘의 진행과정은 K-Means 와 매우 유사하지만, 포인트가 직접 클러스터에 할당되는 것이 아니라, 해당 클러스터에 속한 확률로 변환된다. 각 값은 확률이기 때문에 0 ~ 1사이의 값을 갖고, 각 클러스터 센트로이드의 확률을 의미한다. 또한 한 샘플에 대한 클래스 소속 확률의 합은 반드시 1이 되어야 한다. 알고리즘의 과정은 아래의 내용과 같다.<br>
 
 ① 센트로이드 개수 k 를 지정하고 랜덤하게 각 포인트에 대해 클러스터의 확률을 할당한다.<br>
-② 클러스터 센트로이드 μ(i), j∈{1, ... , k} 를 계산한다.<br>
+② 클러스터 센트로이드 $ {\mu}^{(i)}, j ∈ {1, ... , k} $ 를 계산한다.<br>
 ③ 각 샘플에 대해 클러스터 소속 확률을 계산한다.<br>
 ④ 클러스터 확률에 변화가 없거나, 사용자가 지정한 허용오차 혹은 최대 반복 횟수에 도달하기 전까지 ②와 ③을 반복한다.<br>
 
@@ -154,7 +152,7 @@ plt.show()
 ```
 
 [실행결과]<br>
-![]()
+![엘보우 기법](/images/2020-03-12-python_machine_learning-chapter7-clustering/3_elbow.jpg)
 
 위 그림에 따르면 클러스터의 수가 3일 때 왜곡의 변화가 급격하게 일어났다는 것을 통해, 최적의 클러스터 수는 3개로 설정하면 된다는 결론을 얻을 수 있다.<br>
 
@@ -211,13 +209,13 @@ plt.show()
 ```
 
 [실행 결과]<br>
-![]()
+![실루엣 기법](/images/2020-03-12-python_machine_learning-chapter7-clustering/4_silhouette.jpg)
 
 위의 그래프를 통해서 알 수 있듯이, 3개의 군집 모두 1에 가까운 실루엣 계수를 갖는 것으로 보아 군집이 잘 형성됬다고 볼 수 있다.
 만약 군집화가 잘못된다면 어떤 형태일지 살펴보기 위해, k = 2로 설정하고 같은 코드를 수행하게 되면 아래의 결과와 유사한 형태로 나타날 것이다.<br>
 
-![]()
-![]()
+![잘못된 군집화](/images/2020-03-12-python_machine_learning-chapter7-clustering/5_wrong_cluster.jpg)
+![잘못된 실루엣 결과](/images/2020-03-12-python_machine_learning-chapter7-clustering/6_wrong_sil.jpg)
 
 산점도에서는 2번 군집의 중심이 두 군집 사이에 위치한다고 예측했으며, 실루엣 그래프의 경우도 길이나 두께가 서로 확실히 다르다는 것이 확인된다.<br>
 
@@ -376,7 +374,7 @@ plt.show()
 ```
 
 [실행 결과]<br>
-![]()
+![계층적 군집](/images/2020-03-12-python_machine_learning-chapter7-clustering/7_hierarchy_cluster.jpg)
 
 덴드로그램은 위의 그림처럼 병합 계측 군집이 수행되는 동안에 만들어지는 클러스터들을 요약해준다. 위의 경우 ID_1 과 ID_2 , ID_0 과 ID_4 가 서로 유클리디안 거리가 가까운 군집이라고 할 수 있다.<br>
 

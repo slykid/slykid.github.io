@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Python Machine Learning] 8. 인공신경망 (미완성)"
+title: "[Python Machine Learning] 8. 인공신경망"
 
 categories:
 - Python_Machine_Learning

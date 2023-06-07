@@ -93,8 +93,11 @@ axis([0, som.weights.shape[0], 0, som.weights.shape[1]])
 show()
 ```
 
-[실행결과]
+[실행결과]<br>
 ![SOM 토폴로지](/images/2020-05-19-python_machine_learning-chapter9-som/3_som_topology.jpg)
 
 16 x 16 노드의 SOM 시각화 결과를 보여주며 위의 그림과 같이 각 클러스터를 토폴로지 상에 구분 가능하도록 표시해두었다.
 일부 클래스는 SOM의 공간 여러곳에 걸쳐있는 경우도 있지만, 대다수의 클래스는 서로 다른 영역에 위치가 있다는 것을 보아, SOM 알고리즘이 상당히 효과적이라는 것을 알 수 있다.<br>
+
+[참고자료]<br>
+[https://ratsgo.github.io/machine%20learning/2017/05/01/SOM/](https://ratsgo.github.io/machine%20learning/2017/05/01/SOM/)

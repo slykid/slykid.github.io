@@ -172,8 +172,10 @@ $ {\Vert{X}\Vert}_p := {(\sum _{i=1}^n {\vert{x_i}\vert}^p)}^{\frac {1}{p}} $ <b
 norm 에는 크게 2가지 방식이 있는데, L1 norm 은 두 벡터들의 원소들의 차이에 대한 절대값의 합으로 계산한다.
 반면 L2 norm 은 두 벡터간의 유클리디안 거리로 계산한다.<br>
 
-$L_1norm = \Vert{p_i - q_i}\Vert = \sum _{i=1}^n \vert{p_i - q_i}\vert, \ & \text {p 와 q 는 모두 두 벡터의요소 라고 가정한다.} $ <br>
-$L_2norm = \Vert{x_i}\Vert = \sqrt {\sum _{i=1}^n x_i^2} , x_i = p_i - q_i & \text {이고, p =(x_1, x_2, x_3, ...) 이고, q = (0, 0, 0, ...) 이라고 가정한다.} $ <br>
+$L_1norm = \Vert{p_i - q_i}\Vert = \sum _{i=1}^n \vert{p_i - q_i}\vert $ <br>
+$L_2norm = \Vert{x_i}\Vert = \sqrt {\sum _{i=1}^n x_i^2} $ <br>
+
+위의 수식에서 p 와 q 는 모두 두 벡터의요소 라고 가정하며, $x_i = p_i - q_i$ 이고, 이 때 $p = (x_1, x_2, x_3, ...)$ 이고, $q = (0, 0, 0, ...)$ 이라고 가정한다.
 
 ## 2) Loss
 Loss 라는 것은 실제 값과 예측 값 사이의 오차를 의미한다. Norm 과 마찬가지로 L1 Loss와 L2 Loss 가 존재하며,

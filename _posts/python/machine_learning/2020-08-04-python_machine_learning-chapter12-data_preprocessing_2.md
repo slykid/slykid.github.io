@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Python Machine Learning] 12. 데이터 전처리 II : Validation, Scaling, Regulation (미완성)"
+title: "[Python Machine Learning] 12. 데이터 전처리 II : Validation, Scaling, Regulation"
 
 categories:
 - Python_Machine_Learning

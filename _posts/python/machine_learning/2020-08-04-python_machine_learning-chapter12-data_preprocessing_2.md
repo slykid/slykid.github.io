@@ -181,8 +181,8 @@ $L_2norm = \Vert{x_i}\Vert = \sqrt {\sum _{i=1}^n x_i^2} $ <br>
 Loss 라는 것은 실제 값과 예측 값 사이의 오차를 의미한다. Norm 과 마찬가지로 L1 Loss와 L2 Loss 가 존재하며,
 L1 Loss 는 실제 값과 예측 값 사이의 차이에 대한 절대 값의 합으로 계산된다. 반면 L2 Loss 는 오차의 제곱합으로 계산된다.<br>
 
-$ Loss_{L1} = \sum _{i=1}^n \vert{y_i - f(x_i)}\vert $<br>
-$ Loss_{L1} = \sum _{i=1}^n {(y_i - f(x_i))}^2 $<br>
+$ Loss_{L1} = \sum _{i=1}^n \vert {y_i - f(x_i)} \vert $ <br>
+$ Loss_{L1} = \sum _{i=1}^n {(y_i - f(x_i))}^2 $ <br>
 
 ## 3) L1 Regulation
 L1 규제의 핵심은, 손실함수에 가중치의 절대값에 학습률과 같은 상수 λ 를 곱하고, 1/2 또는 1/n 으로 나누어 주는데, 이 때 상수 λ 값이 작을 수록 규제의 효과는 없어진다. 회귀에서는 L1 규제를 사용하는 회귀모형을 가리켜, Lasso 회귀 라고 부른다.<br>

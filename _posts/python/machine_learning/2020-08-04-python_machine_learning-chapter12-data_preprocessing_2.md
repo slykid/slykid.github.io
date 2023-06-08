@@ -182,6 +182,7 @@ Loss 라는 것은 실제 값과 예측 값 사이의 오차를 의미한다. No
 L1 Loss 는 실제 값과 예측 값 사이의 차이에 대한 절대 값의 합으로 계산된다. 반면 L2 Loss 는 오차의 제곱합으로 계산된다.<br>
 
 $ Loss_{L1} = \sum _{i=1}^n \vert {y_i - f(x_i)} \vert $ <br>
+
 $ Loss_{L1} = \sum _{i=1}^n {(y_i - f(x_i))}^2 $ <br>
 
 ## 3) L1 Regulation

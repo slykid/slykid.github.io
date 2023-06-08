@@ -185,9 +185,9 @@ $ Loss_{L1} = \sum _{i=1}^n {(y_i - f(x_i))}^2 $<br>
 ## 3) L1 Regulation
 L1 규제의 핵심은, 손실함수에 가중치의 절대값에 학습률과 같은 상수 λ 를 곱하고, 1/2 또는 1/n 으로 나누어 주는데, 이 때 상수 λ 값이 작을 수록 규제의 효과는 없어진다. 회귀에서는 L1 규제를 사용하는 회귀모형을 가리켜, Lasso 회귀 라고 부른다.<br>
 
-$Cost\ =\ \frac{1}{n}\sum _{i=1}^n\left\{L\left(\combi{y}_i\ ,\ \combi{\hat{y}}_i\right)\ +\ \frac{\lambda }{2}\left|\combi{w}\right|\right\}$ <br>
+$ Cost =\frac {1} {n} \sum _{i=1}^n L(y_i, {\hat {y}}_i) + \frac {\lambda } {2} \vert{w}\vert $ <br>
 
-앞서 언급한 대로 L1 규제는 가중치 절대값의 합이기 때문에 아래와 같이 다이아몬드 모양의 제한 범위를 그릴 수 있다.
+앞서 언급한 대로 L1 규제는 가중치 절대값의 합이기 때문에 아래와 같이 다이아몬드 모양의 제한 범위를 그릴 수 있다.<br>
 
 ![]()
 
@@ -207,7 +207,7 @@ model = LogisticRegression(..., penalty='L1')
 L2 규제의 핵심은 손실함수의 가중치에 제곱을 포함해서 더하기 때문에 L1 규제와 마찬가지로 가중치가 너무 크지 않은 방향으로 학습하게 된다. 회귀에서는 L2 규제를 사용하는 회귀모형을 가리켜, Ridge 회귀라고 부른다.
 L2 규제에 대한 수식은 다음과 같다.<br>
 
-$Cost\ =\ \frac{1}{n}\sum _{i=1}^n\left\{L\left(\combi{y}_i\ ,\ \combi{\hat{y}}_i\right)\ +\ \frac{\lambda }{2}\left|\combi{w}\right|^2\right\}$ <br>
+$ Cost = \frac {1} {n} \sum _{i=1}^n L(y_i, {\hat {y}}_i) + \frac {\lambda } {2} \vert{w}\vert^2 $ <br>
 
 위에서 설명한 것처럼, L2 규제는 가중치의 제곱을 더해주기 때문에 아래 그림과 같이 원형의 제한 영역이 그려진다.<br>
 

@@ -403,7 +403,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-[실행 결과]
+[실행 결과]<br>
 ![실행결과](/images/2020-09-08-python_machine_learning-chapter13-model_performance/7_confusion_matrix_sample.jpg)
 
 이번에는 오차행렬과 관련된 지표에 대해서 살펴보자.<br>
@@ -574,7 +574,7 @@ plt.show()
 ![ROC 커브](/images/2020-09-08-python_machine_learning-chapter13-model_performance/8_ROC_curve.jpg)
 
 
-[참고자료]
+[참고자료]<br>
 데이터분석전문가가이드 (K-Data 출판)<br>
 
 머신러닝 교과서 with 파이썬, 사이킷런, 텐서플로 (세바스찬 라시카, 바히드 미자리리 지음, 박해선 옮김 /  길벗 출판사)<br>

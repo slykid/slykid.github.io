@@ -15,7 +15,8 @@ author_profile: true
 sidebar_main: true
 ---
 
-<img src="/assets/images/blog_template/tensorflow.jpg" width="150" height="150"/>
+![python_deep_learning](/assets/images/blog_template/tensorflow.jpg){: width="100%" height="100%"}
+
 
 # 1. Tensorflow
 구글에서 만들었으며, 딥러닝을 쉽게 구현할 수 있도록 다양한 기능을 제공하는 라이브러리이다.<br>

@@ -3,7 +3,7 @@ layout: single
 title: "[Python Deep Learning] 1. Tensorflow"
 
 categories:
-- Python_Depp_Learning
+- Python_Deep_Learning
 
 tags:
 - [Python, DeepLearning, Tensorflow, 파이썬, 딥러닝, 텐서플로]

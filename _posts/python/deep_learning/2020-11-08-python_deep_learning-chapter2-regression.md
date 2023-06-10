@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Python Deep Learning] 1. Tensorflow"
+title: "[Python Deep Learning] 2. Regression"
 
 categories:
 - Python_Deep_Learning

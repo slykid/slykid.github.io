@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Python Deep Learning] 2. Regression"
+title: "[Python Deep Learning] 2. 회귀 (Regression)"
 
 categories:
 - Python_Deep_Learning

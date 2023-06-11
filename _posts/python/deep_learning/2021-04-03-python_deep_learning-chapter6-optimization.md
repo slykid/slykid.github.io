@@ -63,9 +63,9 @@ AdaGrad 는 개별 매개 변수에 적응적으로(adaptive) 학습률을 조�
 
 만약 w1 에 비해 w2 가 더 빠르게 최적값에 도달하는 경우라면, 학습을 중지해야되지만, w1 의 학습이 원할하지 않으면, 그레디언트가 크게 증가하고, 학습률도 2개 노드 모두 공유하는 상황이기 때문에 학습속도가 느려진다는 단점이 있다. 그렇다면 AdaGrad 는 어떻게 조정할 수 있을까? 갱신 방법을 수식을 표현하면 아래와 같다.
 
-$ G_t = G_{t-1} + {({\nabla }_{\theta } J({\theta }_t))}^2 $ <br>
+$ G_t = G_{t-1} + {(\nabla_\thetaJ(\theta_t))}^2 $ <br>
 
-$ {\theta }_{t+1} = {\theta }_t - \frac {\eta } {\sqrt {G_t + {\epsilon } } } \cdot {\nabla }_{\theta }J({\theta }_t) $<br>
+$ \theta_{t+1} = \theta_t - \frac {\eta } {\sqrt {G_t + \epsilon } } \cdot \nabla_\thetaJ(\theta_t) $<br>
 
 다소 복잡해보이지만, 위의 수식 내용을 해석해보면 다음과 같다.<br>
 먼저, 등장하는 변수들부터 정리해보면, θ 는 갱신할 가중치 매개 변수, ∇θJ(θt)  는 W에 대한 손실함수 기울기, η 는 학습률이다. 추가적으로 위 식에 등장하는 Gt 는 기존 기울기 값을 행렬곱해서 나온 결과이며, 이는 가중치 갱신할 때, 학습률을 조정해주는 역할 로 사용된다.
@@ -75,18 +75,18 @@ $ {\theta }_{t+1} = {\theta }_t - \frac {\eta } {\sqrt {G_t + {\epsilon } } } \c
 # 6. RMSProp
 위에서 본 AdaGrad의 단점을 해결하기 위해서 개발된 기법이다. 동작 과정은 AdaGrad 기법과 유사하지만, 그레디언트가 이동할 때, 이동 비중을 곱해 줌으로써 기울기를 단순 누적하는 것이 아니라 지수 가중 이동 평균(Exponentially Weighted moving average)으로 더 크게 반영하도록 한다. 수식으로는 아래와 같다.<br>
 
-$ G_t = {\gamma }G_{t-1} + (1 - {\gamma }){({\nabla }_{\theta }J({\theta }_t))}^2 $<br>
+$ G_t = \gamma G_{t-1} + (1 - \gamma ){(\nabla_\theta J(\theta_t))}^2 $<br>
 
-$ {\theta }_{t+1} = {\theta }_t - \frac {\eta } {\sqrt {G_t + {\epsilon } } }{\nabla }_{\theta }J({\theta }_t) $<br>
+$ \theta_{t+1} = \theta_t - \frac {\eta } {\sqrt {G_t + \epsilon} }\nabla_\theta J(\theta_t) $<br>
 
 위의 수식들을 잘 보면 낯익은 부분들이 있다. 그레디언트 계산하는 부분은 위에서 등장했던 모멘텀과 유사하다는 것을 알 수있다. 즉, 그레디언트를 계산할 때 가중치에 대한 비중(Moving Rate)을 그레디언트를 계산할 때 반영함으로써, 가중치를 반영할 때 더 크게 반영될 수 있도록 해준다.<br>
 
 # 7. Adam(Adaptive Moment Estimation)
 Adam 알고리즘은 간단하게 말해서, 모멘텀의 장점과 RMSProp 을 장점만을 가져와 결합한 결과물이라고 할 수 있다. 즉, 이동 방향은 모멘텀 처럼 관성을 가진 채로 이동하고, 학습률을 조정하는 방법은 RMSProp 처럼 신경망을 구성하는 각각의 노드별로 가중치를 부여하겠다는 의미이다. 식으로 표현하면 아래와 같다.<br>
 
-$ m_t = {\beta }_1 m_{t-1} + (1 - {\beta }_1)g_t $ <br>
+$ m_t = \beta_1 m_{t-1} + (1 - \beta_1)g_t $ <br>
 
-$v_t = {\beta }_2 v_{t-1} + (1 - {\beta }_2)g_t^2 $ <br>
+$v_t = \beta_2 v_{t-1} + (1 - \beta_2)g_t^2 $ <br>
 
 위의 수식에서 $ \beta $ 값은 Bias Correction Term 이라고 해서 편향을 조정하기 위한 값이라고 보면 된다.<br>
 

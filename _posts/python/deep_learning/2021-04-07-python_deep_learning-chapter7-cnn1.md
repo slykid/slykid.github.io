@@ -87,7 +87,8 @@ sidebar_main: true
 ### (3) Convolution Layer
 컨볼루션 레이어를 설명하기에 앞서, 합성곱 연산과 매우 유사한 연산을 하는 교차 상관(Cross-Correlation) 이라는 연산에 대해 알아보자. 수식으로 표현하자면 다음과 같다.<br>
 
-$ (f \cdot g)(t) = \int _{-\infty }^{\infty }f(\tau )g(t + \tau )d\tau $ <br>
+$ (f \cdot g)(t) = \int _{-\infty }^{\infty }f({\tau })g(t + {\tau })d{\tau } $ <br>
+
 $ (f \cdot g)(i, j) = \sum _{x=0}^{h-1} \sum _{y=0}^{w-1} f(x, y)g(i + x, j + y) $ <br>
 
 합성곱과의 차이는 위의 수식에서 g 함수에 대해 반전(-) 을 하는 것 빼고는 전부 동일하다.<br>

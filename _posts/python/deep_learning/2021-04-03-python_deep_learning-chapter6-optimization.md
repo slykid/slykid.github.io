@@ -50,7 +50,7 @@ NAG는 기존 경사하강법, 모멘텀의 기법과는 달리, 먼저 관성�
 일반적으로 경사하강법이나, 모멘텀은 이전 위치에서 그레디언트를 계산했고, 계산 결과와 관성방향에 대해 내적방향으로 이동했었다. 하지만, NAG는 순서를 바꿔서, 관성의 방향(momentum step)으로 먼저 이동을 하고, 해당 위치에서 그레디언트를 계산해서 위치를 찾는다. 이후 이전 결과에서 도출된 위치까지 이동하는 방식으로 동작한다.<br>
 그 결과 위의 그림에서처럼, NAG로 최적화 했을 때의 이동하는 거리가 모멘텀을 사용했을 때보다 더 짧은 거리로 이동한다는 것을 확인할 수 있으며, 이는 그만큼 최적점을 지나치는 거리가 짧아지기 때문에, 모멘텀보다는 좀 더 빠르게 학습을 완료할 수 있다는 말과 이어진다. 위의 내용을 수식으로 표현하면, 다음과 같다.<br>
 
-$ v_t = \gamma v_{t-1} + \eta \nabla_\theta J(\theta  - \gamma v_{t-1}) $<br>
+$ v_t = \gamma v_{t-1} + \eta \nabla_{\theta} J(\theta  - \gamma v_{t-1}) $<br>
 
 $ \theta_t = \theta_{t-1} - v_t $<br>
 
@@ -63,9 +63,9 @@ AdaGrad 는 개별 매개 변수에 적응적으로(adaptive) 학습률을 조�
 
 만약 w1 에 비해 w2 가 더 빠르게 최적값에 도달하는 경우라면, 학습을 중지해야되지만, w1 의 학습이 원할하지 않으면, 그레디언트가 크게 증가하고, 학습률도 2개 노드 모두 공유하는 상황이기 때문에 학습속도가 느려진다는 단점이 있다. 그렇다면 AdaGrad 는 어떻게 조정할 수 있을까? 갱신 방법을 수식을 표현하면 아래와 같다.
 
-$ G_t = G_{t-1} + {(\nabla_\thetaJ(\theta_t))}^2 $ <br>
+$ G_t = G_{t-1} + {(\nabla_{\theta} J(\theta_t))}^2 $ <br>
 
-$ \theta_{t+1} = \theta_t - \frac {\eta } {\sqrt {G_t + \epsilon } } \cdot \nabla_\thetaJ(\theta_t) $<br>
+$ \theta_{t+1} = \theta_t - \frac {\eta } {\sqrt {G_t + \epsilon } } \cdot \nabla_{\theta} J(\theta_t) $<br>
 
 다소 복잡해보이지만, 위의 수식 내용을 해석해보면 다음과 같다.<br>
 먼저, 등장하는 변수들부터 정리해보면, θ 는 갱신할 가중치 매개 변수, ∇θJ(θt)  는 W에 대한 손실함수 기울기, η 는 학습률이다. 추가적으로 위 식에 등장하는 Gt 는 기존 기울기 값을 행렬곱해서 나온 결과이며, 이는 가중치 갱신할 때, 학습률을 조정해주는 역할 로 사용된다.
@@ -75,9 +75,9 @@ $ \theta_{t+1} = \theta_t - \frac {\eta } {\sqrt {G_t + \epsilon } } \cdot \nabl
 # 6. RMSProp
 위에서 본 AdaGrad의 단점을 해결하기 위해서 개발된 기법이다. 동작 과정은 AdaGrad 기법과 유사하지만, 그레디언트가 이동할 때, 이동 비중을 곱해 줌으로써 기울기를 단순 누적하는 것이 아니라 지수 가중 이동 평균(Exponentially Weighted moving average)으로 더 크게 반영하도록 한다. 수식으로는 아래와 같다.<br>
 
-$ G_t = \gamma G_{t-1} + (1 - \gamma ){(\nabla_\theta J(\theta_t))}^2 $<br>
+$ G_t = \gamma G_{t-1} + (1 - \gamma ){(\nabla_{\theta} J(\theta_t))}^2 $<br>
 
-$ \theta_{t+1} = \theta_t - \frac {\eta } {\sqrt {G_t + \epsilon} }\nabla_\theta J(\theta_t) $<br>
+$ \theta_{t+1} = \theta_t - \frac {\eta } {\sqrt {G_t + \epsilon} }\nabla_{\theta} J(\theta_t) $<br>
 
 위의 수식들을 잘 보면 낯익은 부분들이 있다. 그레디언트 계산하는 부분은 위에서 등장했던 모멘텀과 유사하다는 것을 알 수있다. 즉, 그레디언트를 계산할 때 가중치에 대한 비중(Moving Rate)을 그레디언트를 계산할 때 반영함으로써, 가중치를 반영할 때 더 크게 반영될 수 있도록 해준다.<br>
 

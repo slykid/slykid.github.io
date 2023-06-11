@@ -72,8 +72,8 @@ $ {\theta }_{t+1} = {\theta }_t - \frac {\eta } {\sqrt {G_t + {\epsilon } } } \c
 # 6. RMSProp
 위에서 본 AdaGrad의 단점을 해결하기 위해서 개발된 기법이다. 동작 과정은 AdaGrad 기법과 유사하지만, 그레디언트가 이동할 때, 이동 비중을 곱해 줌으로써 기울기를 단순 누적하는 것이 아니라 지수 가중 이동 평균(Exponentially Weighted moving average)으로 더 크게 반영하도록 한다. 수식으로는 아래와 같다.<br>
 
-$ G_t = \gamma G_{t-1} + (1 - \gamma){(\nabla _{\theta }J(\theta _t))}^2 $<br>
-$ {\theta }_{t+1} = {\theta }_t - \frac {\eta } {\sqrt {G_t + \epsilon } }{\nabla }_{\theta }J({\theta }_t) $<br>
+$ G_t = {\gamma }G_{t-1} + (1 - {\gamma }){({\nabla }_{\theta }J({\theta }_t))}^2 $<br>
+$ {\theta }_{t+1} = {\theta }_t - \frac {\eta } {\sqrt {G_t + {\epsilon } } }{\nabla }_{\theta }J({\theta }_t) $<br>
 
 위의 수식들을 잘 보면 낯익은 부분들이 있다. 그레디언트 계산하는 부분은 위에서 등장했던 모멘텀과 유사하다는 것을 알 수있다. 즉, 그레디언트를 계산할 때 가중치에 대한 비중(Moving Rate)을 그레디언트를 계산할 때 반영함으로써, 가중치를 반영할 때 더 크게 반영될 수 있도록 해준다.<br>
 

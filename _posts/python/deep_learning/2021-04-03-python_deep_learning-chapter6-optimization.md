@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Python Deep Learning] 5. 신경망의 학습"
+title: "[Python Deep Learning] 6. 최적화"
 
 categories:
 - Python_Deep_Learning

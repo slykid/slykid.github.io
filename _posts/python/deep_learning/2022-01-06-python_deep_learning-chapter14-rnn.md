@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Python Deep Learning] 13. Modern CNN Ⅴ : ShuffleNet"
+title: "[Python Deep Learning] 14. RNN"
 
 categories:
 - Python_Deep_Learning

@@ -39,14 +39,14 @@ $ P(x_1, x_2, x_3, ... , x_n) = P(x_1)P(x_2 \mid x_1)P(x_3 \mid x_1, x_2) ... P(
 그렇다면 어떻게 사용되는 지 알아보도록 하자. 예를 들어, 문장 'An adorable little boy is spreading smiles' 의 확률인 를 식으로 표현해보자.<br>
 각 단어는 문맥이라는 관계로 인해 이전 단어의 영향을 받아서 나온 단어들이다. 그리고 모든 단어로부터 하나의 문장이 완성된다. 앞서 언급한 조건부 확률의 일반화식을 문장의 확률 관점에서 구성해보자면 다음과 같이 나타낼 수 있다.<br>
 
-$ P(An\ \adorable\ \little\ \boy\ \is\ \spreading\ \smiles) = P(An)P({adorable} \mid {An})P({little} \mid {An\ \adorable})P({boy} \mid {An\ \adorable\ \little})P({is} \mid {An\ \adorable\ \little\ \boy})P({spreading} \mid {An\ \adorable\ \little\ \boy\ \is})P({smiles} \mid {An\ \adorable\ \little\ \boy\ \is\ \spreading}) $ <br>
+$ P(An\ \ adorable\ \ little\ \ boy\ \ is\ \ spreading\ \ smiles) = P(An)P({adorable} \mid {An})P({little} \mid {An\ \ adorable})P({boy} \mid {An\ \ adorable\ \ little})P({is} \mid {An\ \ adorable\ \ little\ \ boy})P({spreading} \mid {An\ \ adorable\ \ little\ \ boy\ \ is})P({smiles} \mid {An\ \ adorable\ \ little\ \ boy\ \ is\ \ spreading}) $ <br>
 
 ## 3) 카운트 기반의 접근
 문장의 확률을 구하기 위해서 다음 단어에 대한 예측확률을 모두 곱한다는 것을 알아봤다. 그렇다면 통계적 언어 모델은 이전 단어로부터 다음 단어에 대한 확률의 계산은 어떻게 구할까? 예를 들어 An adorable little boy 가 나왔을 때, 다음 단어로 is 가 나올 확률을 계산해보자.<br>
 
-$ P({is} \mid {An\ \adorable\ \little\ \boy}) = \frac {count(An\ \adorable\ \little\ \boy\ \is)} {count(An \ adorable \ \little \ \boy)} $<br>
+$ P({is} \mid {An\ \ adorable\ \ little\ \ boy}) = \frac {count(An\ \ adorable\ \ little\ \ boy\ \ is)} {count(An \ adorable \ \ little \ \ boy)} $<br>
 
-예를 들어, An adorable little boy 가 100 번 등장했는데  그 다음에 is 가 나온 경우가 30번이라고 가정한다면, P(is | An adorable little boy) 는 30% 가 된다.<br>
+예를 들어, An adorable little boy 가 100 번 등장했는데  그 다음에 is 가 나온 경우가 30번이라고 가정한다면, P(is | An\ \ adorable\ \ little\ \ boy) 는 30% 가 된다.<br>
 
 # 3. N-gram 언어 모델
 N-gram 모델은 일종의 통계적 언어 모델 중 하나로, 임의의 개수를 정하기 위한 기준을 위해 사용하는 모델이다. 코퍼스에서 n 개의 단어 뭉치 단위로 끊어서 이를 하나의 토큰으로 간주한다. 예를 들어, 문장 An adorable little boy is spreading smiles 가 있을 때, 각 n에 대해서 n-gram을 전부 구하면, 다음과 같다.<br>
@@ -69,7 +69,7 @@ trigrams (n=3)
 
 n-gram을 통한 언어 모델에서는 다음에 날올 단어의 예측은 오직 n-1개의 단어에만 의존한다. 즉, 4-grams 이고, "An adorable little boy is spreading" 다음에 나올 단어를 예측한다하면, 사실 "boy is spreading" 3개의 단어만 고려하게 된다. 따라서 위의 문장 다음에 나올 단어의 확률을 계산하면 다음과 같다.<br>
 
-$ P(w \mid {boy\ \is\ \spreading}) = \frac {count(boy\ \is\ \spreading\ \w)} {count(boy\ \is\ \spreading)} $<br>
+$ P(w \mid {boy\ \ is\ \ spreading}) = \frac {count(boy\ \ is\ \ spreading\ \ w)} {count(boy\ \is\ \spreading)} $<br>
 
 위와 같을 때, boy is spreading 이 1000번 등장했다하자. 그리고 boy is spreading insults 가 400번, boy is spreading smiles 가 200번이라고 하면, insults가 등장할 확률은 50%, smiles가 등장할 확률은 20%가 된다.<br>
 이러한 n-gram 모델도 한계점은 있다. 코퍼스 데이터를 어떻게 가정하느냐의 나름이고, 전혀 말이 안되는 문장은 아니나, 일부 단어 몇 개만 보다보니 의도하고 싶은 데로 문장을 끝맺지 못할 수도 있다는 한계점이 있다.<br>
@@ -141,7 +141,7 @@ RNN이 학습하는 파라미터는 구조에서 볼 수 있듯이, 2가지의 �
 
 앞서 우리가 했던 'o' 라는 철자를 예측하기 위해서 순차적으로 계산을 해서 최종적으로는 $J^{(4)}(θ)$ 에 대한 값을 구했다. 하지만, 값이 잘못 됬었고, 이를 위해 2개의 가중치를 수정한다고 말했다. 따라서 우리가 수정해야되는 값은 가장 처음에 설정한 가중치인 $h(1)$ 이 되며, 이를 계산하기 위한, $dJ^{(4)}/dh^{(1)}$ 을 계산해야 되며, 이는 다음과 같다.<br>
 
-$ \frac {\delta J^(4)} {\delta h^{(1)}} = \frac {\delta J^{(4)}} {\delta h^{(4)}} \times \frac {\delta h^{\left(4\right)}}{\delta h^{(3)}} \times \frac {\delta h^{(3)}} {\delta h^{(2)}} \times \frac {\delta h^{(2)}} {\delta h^{(1)}} $<br>
+$ \frac {\delta J^{(4)}} {\delta h^{(1)}} = \frac {\delta J^{(4)}} {\delta h^{(4)}} \times \frac {\delta h^{\left(4\right)}}{\delta h^{(3)}} \times \frac {\delta h^{(3)}} {\delta h^{(2)}} \times \frac {\delta h^{(2)}} {\delta h^{(1)}} $<br>
 
 위의 수식과 같이 계산을 하면, 역전파를 통해 계산된 그레디언트가 나오게 된다.<br>
 

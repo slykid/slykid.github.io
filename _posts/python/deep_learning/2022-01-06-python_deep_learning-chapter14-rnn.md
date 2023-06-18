@@ -69,7 +69,7 @@ trigrams (n=3)
 
 n-gram을 통한 언어 모델에서는 다음에 날올 단어의 예측은 오직 n-1개의 단어에만 의존한다. 즉, 4-grams 이고, "An adorable little boy is spreading" 다음에 나올 단어를 예측한다하면, 사실 "boy is spreading" 3개의 단어만 고려하게 된다. 따라서 위의 문장 다음에 나올 단어의 확률을 계산하면 다음과 같다.<br>
 
-$ P(w \mid {boy\ \ is\ \ spreading}) = \frac {count(boy\ \ is\ \ spreading\ \ w)} {count(boy\ \is\ \spreading)} $<br>
+$ P(w \mid {boy\ \ is\ \ spreading}) = \frac {count(boy\ \ is\ \ spreading\ \ w)} {count(boy\ \ is\ \ spreading)} $<br>
 
 위와 같을 때, boy is spreading 이 1000번 등장했다하자. 그리고 boy is spreading insults 가 400번, boy is spreading smiles 가 200번이라고 하면, insults가 등장할 확률은 50%, smiles가 등장할 확률은 20%가 된다.<br>
 이러한 n-gram 모델도 한계점은 있다. 코퍼스 데이터를 어떻게 가정하느냐의 나름이고, 전혀 말이 안되는 문장은 아니나, 일부 단어 몇 개만 보다보니 의도하고 싶은 데로 문장을 끝맺지 못할 수도 있다는 한계점이 있다.<br>

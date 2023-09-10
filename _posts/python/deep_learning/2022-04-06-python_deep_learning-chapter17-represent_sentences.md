@@ -52,7 +52,7 @@ sidebar_main: true
 
 위의 모델에서 학습에 사용되는 가중치는 "Dense layer의 가중치 + 이전에 주어진 가중치" 로 계산된다. 그리고 앞서 언급한 모든 pair case 에 대한 표현은 다음과 같다.
 
-$f({x}_i,\ {x}_j) = W_{\Phi }({U}_{left}{e}_i+{U}_{right}{e}_j)$ <br>
+$f({x}_i,\ {x}_j) = W_{\Phi }({U}_{left} e_i + {U}_{right} e_j)$ <br>
 
 모든 pair case가 위의 수식과 같을 때, 최종적으로 Relation Network 를 통해 계산되는 관계에 대한 값은 다음과 같다.
 

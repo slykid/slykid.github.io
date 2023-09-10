@@ -85,11 +85,11 @@ $ CNN: h_t = f(x_t, x_{t-k}) + ... + f(x_t, x_t) + ... + f(x_t , x_{t+k})$ <br>
 
 $본래 가중치계산: h_t = f(x_t, x_{t-k}) + ... + f(x_t , x_t) + ... + f(x_t , x_{t+k}) $ <br>
 
-$변형 가중치계산: h_t = \sum _{t"=1}^T \prod (\vert {t"-t}\vert \le k)f(x_t , x_{t"}) (S가 참이면,\prod (S)=1 , 아니면 0) $ <br>
+$변형 가중치계산: h_t = \sum_{t""=1}^T \prod (\vert {t""-t} \vert k)f(x_t , x_{t"}) (S가 참이면,\prod (S)=1 , 아니면 0) $ <br>
 
 위와 같이 가중치 계산 방식을 바꿨을 때, 이를 0 ~ 1로 고정하지 않고 가중치를 계산할 수 있을까? 이를 가능하게 하려면, 각 pair 별로 가중치를 적용하는 것이다. 이를 식으로 표현하면 다음과 같다.<br>
 
-$h_t = \sum _{t"=1}^T \alpha (x_t, x_{t"}) f(x_t , x_{t"})$ <br>
+$h_t = \sum_{t"=1}^T \alpha (x_t, x_{t"}) f(x_t , x_{t"})$ <br>
 
 위의 수식에서 α(xt , xt') 부분은 RN에서 사전에 학습된 가중치를 사용하기 때문에, 다음과 같이 표현할 수 있다.<br>
 

@@ -93,7 +93,7 @@ $h_t = \sum_{t"=1}^T \alpha (x_t, x_{t"}) f(x_t , x_{t"})$ <br>
 
 위의 수식에서 α(xt , xt') 부분은 RN에서 사전에 학습된 가중치를 사용하기 때문에, 다음과 같이 표현할 수 있다.<br>
 
-$ \alpha (x_t , x_{t"}) = \sigma (RN(x_t , x_{t"}))\in [0, 1]$ <br>
+$ \alpha (x_t , x_{t'}) = \sigma (RN(x_t , x_{t'}))\in [0, 1]$ <br>
 
 $ \alpha (x_t , x_{t'}) = \frac {\exp (\beta (x_t , x_{t'}))}{\sum_{t'=1}^T \exp (\beta (x_t, x_{t'}))}, (단, \beta (x_t , x_{t'})=RN(x_t, x_{t'}) 일 때)$ <br>
 

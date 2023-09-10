@@ -85,7 +85,7 @@ $ CNN: h_t = f(x_t, x_{t-k}) + ... + f(x_t, x_t) + ... + f(x_t , x_{t+k})$ <br>
 
 $본래 가중치계산: h_t = f(x_t, x_{t-k}) + ... + f(x_t , x_t) + ... + f(x_t , x_{t+k}) $ <br>
 
-$변형 가중치계산: h_t = \sum_{t""=1}^T \prod (\vert {t""-t} \vert k)f(x_t , x_{t"}) (S가 참이면,\prod (S)=1 , 아니면 0) $ <br>
+$변형 가중치계산: h_t = \sum_{t'=1}^T \prod (\vert {t'-t} \vert k)f(x_t , x_{t'}) (S가 참이면,\prod (S)=1 , 아니면 0) $ <br>
 
 위와 같이 가중치 계산 방식을 바꿨을 때, 이를 0 ~ 1로 고정하지 않고 가중치를 계산할 수 있을까? 이를 가능하게 하려면, 각 pair 별로 가중치를 적용하는 것이다. 이를 식으로 표현하면 다음과 같다.<br>
 
@@ -93,9 +93,9 @@ $h_t = \sum_{t"=1}^T \alpha (x_t, x_{t"}) f(x_t , x_{t"})$ <br>
 
 위의 수식에서 α(xt , xt') 부분은 RN에서 사전에 학습된 가중치를 사용하기 때문에, 다음과 같이 표현할 수 있다.<br>
 
-$\alpha (x_t , x_{t"}) = \sigma (RN(x_t , x_{t"}))\in [0, 1]$ <br>
+$ \alpha (x_t , x_{t"}) = \sigma (RN(x_t , x_{t"}))\in [0, 1]$ <br>
 
-$\alpha (x_t , x_{t"}) = \frac {\exp (\beta (x_t , x_{t"}))}{\sum _{t""=1}^T \exp (\beta (x_t, x_{t""}))}, (단, \beta (x_t , x_{t"})=RN(x_t, x_{t"}) 일 때)$ <br>
+$ \alpha (x_t , x_{t'}) = \frac {\exp (\beta (x_t , x_{t'}))}{\sum_{t'=1}^T \exp (\beta (x_t, x_{t'}))}, (단, \beta (x_t , x_{t'})=RN(x_t, x_{t'}) 일 때)$ <br>
 
 결과적으로 Self Attention 은 앞서 언급한  것처럼 CNN 과 RN 의 장점만을 사용한 방법이다. 위에서 볼 수 있듯이, 기존에 RN 만으로 할 때, 중요 단어간의 거리가 먼 경우에 학습이 어렵다는 단점을 해결하였으며, 문장의 길이에 상관없이 학습이 가능하다는 점을 해결했다. 하지만, 기존의 RN 이 갖는 단점을 해결한 만큼, 문장이 들어오면,  전체 토큰에 대해 가중치를 계산하고, 계산된 결과를 Matmul 연산으로 통합(Merge) 해주기 때문에 계산량이 많이 든다는 단점이 있다.<br>
 위의 문제를 해결하기 위해서 등장한 것이 RNN을 활용한 Attention 이며, 현재 자연어 처리, 특히 기계 번역 등에서 많이 사용되는 Transformer 의 시초가 된다.<br><br>

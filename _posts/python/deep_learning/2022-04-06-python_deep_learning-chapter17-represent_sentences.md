@@ -89,11 +89,11 @@ $변형 가중치계산: h_t = \sum_{t'=1}^T \prod (\vert {t'-t} \vert k)f(x_t ,
 
 위와 같이 가중치 계산 방식을 바꿨을 때, 이를 0 ~ 1로 고정하지 않고 가중치를 계산할 수 있을까? 이를 가능하게 하려면, 각 pair 별로 가중치를 적용하는 것이다. 이를 식으로 표현하면 다음과 같다.<br>
 
-$h_t = \sum_{t"=1}^T \alpha (x_t, x_{t"}) f(x_t , x_{t"})$ <br>
+$h_t = \sum_{t'=1}^T \alpha (x_t, x_{t'}) f(x_t , x_{t'})$ <br>
 
-위의 수식에서 α(xt , xt') 부분은 RN에서 사전에 학습된 가중치를 사용하기 때문에, 다음과 같이 표현할 수 있다.<br>
+위의 수식에서 $ \alpha(x_t , x_{t'}) $ 부분은 RN에서 사전에 학습된 가중치를 사용하기 때문에, 다음과 같이 표현할 수 있다.<br>
 
-$ \alpha (x_t , x_{t'}) = \sigma (RN(x_t , x_{t'}))\in [0, 1]$ <br>
+$ \alpha (x_t , x_{t'}) = \sigma (RN(x_t , x_{t'})) \in [0, 1]$ <br>
 
 $ \alpha (x_t , x_{t'}) = \frac {\exp (\beta (x_t , x_{t'}))}{\sum_{t'=1}^T \exp (\beta (x_t, x_{t'}))}, (단, \beta (x_t , x_{t'})=RN(x_t, x_{t'}) 일 때)$ <br>
 

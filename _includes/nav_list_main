@@ -68,6 +68,15 @@
                   {% endif %}
               {% endfor %}
           </ul>
+      <!--R-->
+      <span class="nav__sub-title">R</span>
+        <ul>
+            {% for category in site.categories %}
+                {% if category[0] == "R_Basic" %}
+                    <li><a href="/categories/r_basic" class="">Basic({{category[1].size}})</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
     </li>
 </ul>
 </nav>

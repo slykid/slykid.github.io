@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[R] 1. R 개요 및 설치"
+title: "[R-Basic] 1. R 개요 및 설치"
 
 categories:
 - R_Basic

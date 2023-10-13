@@ -266,6 +266,8 @@ defaults:
       comments: true
       share: true
       related: true
+      toc_ads: true
+      toc_sticky: true
       show_date: true
       mathjax: true
       sidebar_main: true

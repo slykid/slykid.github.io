@@ -10,3 +10,6 @@
 # 3. 해야되는 일
 - 네이버 블로그 포스트 이관
 - KES 2023 리뷰 작성
+
+# 4. 광고 개재 관련 참고자료
+- https://devinlife.com/howto%20github%20pages/adsense/

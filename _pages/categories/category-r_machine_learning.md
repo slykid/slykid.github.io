@@ -1,7 +1,7 @@
 ---
-title: "R"
+title: "R Machine Learning"
 layout: archive
-permalink: categories/r_basic
+permalink: categories/r_machine_learning
 author_profile: true
 sidebar_main: true
 ---

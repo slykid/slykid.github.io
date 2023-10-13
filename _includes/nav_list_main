@@ -11,7 +11,7 @@
           📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">{{sum}}</style> <span style="font-family:'Cafe24Oneprettynight';">개</style>
     </li>
     <li>
-      <!--이슈 & 리뷰-->
+      <!-- 이슈 & 리뷰 -->
       <span class="nav__sub-title">Issues & Reviews</span>
           <ul>
               {% for category in site.categories %}
@@ -28,7 +28,7 @@
               {% endfor %}
           </ul>
 
-      <!--Java-->
+      <!-- Java -->
       <span class="nav__sub-title">Java</span>
           <ul>
             {% for category in site.categories %}
@@ -45,7 +45,7 @@
             {% endfor %}
           </ul>
 
-      <!--Python-->
+      <!-- Python -->
       <span class="nav__sub-title">Python</span>
           <ul>
               {% for category in site.categories %}
@@ -68,6 +68,7 @@
                   {% endif %}
               {% endfor %}
           </ul>
+
       <!--R-->
       <span class="nav__sub-title">R</span>
         <ul>
@@ -77,6 +78,14 @@
                 {% endif %}
             {% endfor %}
         </ul>
+        <ul>
+            {% for category in site.categories %}
+                {% if category[0] == "R_Machine_Learning" %}
+                    <li><a href="/categories/r_machine_learning" class="">Machine Learning({{category[1].size}})</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+
     </li>
 </ul>
 </nav>

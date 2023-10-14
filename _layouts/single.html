@@ -59,7 +59,7 @@ layout: default
       </section>
 
       <footer class="page__meta">
-        {% include GoogleAdSenseHorizonMulti.html %}
+        {% include GoogleAdSenseFixedDisplay.html %}
         {% if site.data.ui-text[site.locale].meta_label %}
           <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
         {% endif %}
@@ -99,6 +99,7 @@ layout: default
             {% continue %}
           {% endif %}
           {% include archive-single.html type="grid" %}
+          {% include GoogleAdSenseHorizonMulti.html %}
         {% endfor %}
       </div>
     </div>

@@ -72,7 +72,8 @@ layout: default
       {% include post_pagination.html %}
     </div>
 
-    <!-- 댓글기능 -->
+    {% include GoogleAdSenseHorizonMulti.html %}
+
     {% if jekyll.environment == 'production' and site.comments.provider and page.comments %}
       {% include comments.html %}
     {% endif %}
@@ -99,7 +100,6 @@ layout: default
             {% continue %}
           {% endif %}
           {% include archive-single.html type="grid" %}
-          {% include GoogleAdSenseHorizonMulti.html %}
         {% endfor %}
       </div>
     </div>

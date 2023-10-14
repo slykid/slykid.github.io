@@ -58,6 +58,10 @@ layout: default
         {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
 
+      <div class="google_adsense_muliplex_horizontal" style="text-align: center;">
+        {% include GoogleAdSenseHorizonMulti.html %}
+      </div>
+
       <footer class="page__meta">
         {% if site.data.ui-text[site.locale].meta_label %}
           <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
@@ -100,9 +104,6 @@ layout: default
           {% include archive-single.html type="grid" %}
         {% endfor %}
       </div>
-    </div>
-    <div style="text-align: center;">
-      {% include GoogleAdSenseHorizonMulti.html %}
     </div>
   {% endif %}
 </div>

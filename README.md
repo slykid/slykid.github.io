@@ -13,3 +13,6 @@
 
 # 4. 광고 개재 관련 참고자료
 - https://devinlife.com/howto%20github%20pages/adsense/
+
+# 5. Google Search Console 설정 관련 참고자료
+- https://burningfalls.github.io/blog/google-search-console/

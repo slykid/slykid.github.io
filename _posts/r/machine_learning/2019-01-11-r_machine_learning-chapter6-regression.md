@@ -415,6 +415,7 @@ summary(ins_model)
 $ SDR = sd(T) - \sum_{i=1}^n {\frac { \vert T \vert }{ \vert T_i \vert } \times sd(T_i) } $
 
 - 아래의 예제를 통해 좀더 자세히 살펴보자.
+
 ```R
 [R code]
 

@@ -69,7 +69,7 @@
               {% endfor %}
           </ul>
 
-      <!--R-->
+      <!-- R -->
       <span class="nav__sub-title">R</span>
         <ul>
             {% for category in site.categories %}
@@ -85,6 +85,17 @@
                 {% endif %}
             {% endfor %}
         </ul>
+
+       <!-- Database -->
+       <span class="nav__sub-title">Database</span>
+         <ul>
+            {% for category in site.categories %}
+                {% if category[0] == "PostgreSQL" %}
+                    <li><a href="/categories/postgresql" class="">PostgreSQL({{category[1].size}})</a></li>
+                {% endif %}
+            {% endfor %}
+         </ul>
+
 
     </li>
 </ul>

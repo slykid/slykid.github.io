@@ -6,7 +6,7 @@ categories:
 - PostgreSQL
 
 tags:
-- [R, MachineLearning]
+- [Database, SQL, PostgreSQL]
 
 toc: true
 toc_sticky: true

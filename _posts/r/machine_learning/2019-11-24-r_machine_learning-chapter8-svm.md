@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[R-Machine Learning] 8. 서포트 벡터 머신 (SVM) (수정중)"
+title: "[R-Machine Learning] 8. 서포트 벡터 머신 (SVM)"
 
 categories:
 - R_Machine_Learning
@@ -49,24 +49,20 @@ sidebar_main: true
 ![선형분류 가능한 경우](/images/2019-11-24-r_machine_learning-chapter8-svm/3_how_to_find_margin_case_linear.jpg)
 
 - 위의 내용을 수식으로 풀어보자면, 다음과 같이 진행된다. 우선 n차 공간에서의 초평면은 아래와 같이 정의할 수 있다. <br>
-
-$ \vec{w} \cdot \vec{x} + b = 0 $ <br><br>
+  $ \vec{w} \cdot \vec{x} + b = 0 $ <br><br>
 
 - w는 n개 가중치 벡터를 의미하며, b는 편향을, x는 입력 벡터를 의미한다. 위의 공식을 사용해 아래와 같이 두 초평면을 명시하는 가중치 w를 찾는 것이 목적이다. <br>
-
-$ \vec{w} \cdot \vec{x} + b \geq 1 $ <br>
-$ \vec{w} \cdot \vec{x} + b \leq -1 $ <br>
+  $ \vec{w} \cdot \vec{x} + b \geq 1 $ <br>
+  $ \vec{w} \cdot \vec{x} + b \leq -1 $ <br>
 
 - 첫 번째 초평면보다 위쪽으로 놓여야되고, 두번째 초평면보다 아래쪽으로 분포하도록 2개 그룹으로 나눠져야 한다.
 - 표현식에 의해 모든 데이터는 선형적으로 구별되어야한다.
 - 벡터 기하학에서는 두 평면 사이의 거리를 계산할 때 아래와 같이 정의한다. <br>
-
-$ d = \frac {2} {\Vert \vec{w} \Vert} $ <br>
+  $ d = \frac {2} {\Vert \vec{w} \Vert} $ <br>
 
 - 위의 식에서 $\Vert \vec{w} \Vert$ 는 유클리드 정규를 의미하며, 최대마진을 구하기 위해 w를 최소화할 필요가 있다. 제약사항에 대해서는 아래와 같이 표기한다. <br>
-
-$ min \frac {1} {2} {\Vert \vec{w} \Vert}^2 $ <br><br>
-$ s.t. y_i ( \vec{w} \cdot \vec{x_i} - b ) \geq 1, \forall \vec{x_i} $ <br><br>
+  $ min \frac {1} {2} {\Vert \vec{w} \Vert}^2 $ <br><br>
+  $ s.t. y_i ( \vec{w} \cdot \vec{x_i} - b ) \geq 1, \forall \vec{x_i} $ <br><br>
 
 - 위의 공식에서 s.t. 은 올바르게 분류된 y 데이터 점의 각 조건을 최소화 한다는 의미이다. y 는 분류값(+1 또는 -1로 변환)을 나타내고, $\forall$ 는 "모든"이라는 의미이다.
 
@@ -81,10 +77,9 @@ $ s.t. y_i ( \vec{w} \cdot \vec{x_i} - b ) \geq 1, \forall \vec{x_i} $ <br><br>
 
 - 위의 그림에서 빨간색으로 칠한 부분은 해당 선형 경계가 잘못 분류한 부분이며, 위와 같은 경우 비용값을 사용해 최적화 문제를 변환한다.
 - 비용 값(Cost Value) 란 잘못 속해 있는 모든 점에 적용하고, 최대 마진을 찾는 것이 아닌, 알고리즘의 총 비용 값을 최소화하려는 값을 의미한다.<br>
-  따라서 최적화에 대한 표현식은 아래와 같이 변형된다.
-
-$ min \frac {1} {2} {\Vert \vec{w} \Vert}^2 + C \sum_{i=1}^{n} \xi_i $ <br><br>
-$ s.t. y_i( \vec{w} \cdot \vec{x_i} - b ) \geq 1 - \xi_i , \forall \vec{x_i} , \xi \geq 0 $ <br>
+  따라서 최적화에 대한 표현식은 아래와 같이 변형된다.<br>
+  $ min \frac {1} {2} {\Vert \vec{w} \Vert}^2 + C \sum_{i=1}^{n} \xi_i $ <br><br>
+  $ s.t. y_i( \vec{w} \cdot \vec{x_i} - b ) \geq 1 - \xi_i , \forall \vec{x_i} , \xi \geq 0 $ <br>
 
 - 위의 수식에서 중요한 부분은 비용 매개변수인 C가 추가되었다는 점이다.
 - 값의 변경에 따라 다른 초평면으로 잘못 속해 있는 예제들이 패널티를 조절하며, 비용 매개변수의 값이 클 수록 최적화는 어려워지고 100% 구별을 하려고 한다.
@@ -111,24 +106,20 @@ $ s.t. y_i( \vec{w} \cdot \vec{x_i} - b ) \geq 1 - \xi_i , \forall \vec{x_i} , \
 - R에서 사용할 수 있는 커널은 다음과 같다.
 
 #### ① 선형 커널
-- 데이터를 전혀 변환하지 않으며, 단순히 속성의 내적으로 나타낸다.
-
-$ K( \vec{x_i}, \vec{y_j} ) = \vec{x_i} \cdot \vec{y_j} $
+- 데이터를 전혀 변환하지 않으며, 단순히 속성의 내적으로 나타낸다.<br>
+  $ K( \vec{x_i}, \vec{y_j} ) = \vec{x_i} \cdot \vec{y_j} $
 
 #### ② 차수 다항 커널
-- 데이터의 비선형 변환에 추가한다.
-
-$ K( \vec{x_i}, \vec{y_j} ) = {(\vec{x_i} \cdot \vec{y_j} + 1)}^d
+- 데이터의 비선형 변환에 추가한다. <br>
+  $ K( \vec{x_i}, \vec{y_j} ) = {(\vec{x_i} \cdot \vec{y_j} + 1)}^d $
 
 #### ③ 시그모이드 커널
-- SVM 모델은 시그모이드 활성 함수를 사용한 신경망과 조금 유사하다. 식에서 사용된 카파와 델타는 커널 매개변수를 사용한다.
-
-$ K( \vec{x_i}, \vec{y_j} ) = tanh(k \vec{x_i} \cdot \vec{y_j} - \delta)
+- SVM 모델은 시그모이드 활성 함수를 사용한 신경망과 조금 유사하다. 식에서 사용된 카파와 델타는 커널 매개변수를 사용한다. <br>
+  $ K( \vec{x_i}, \vec{y_j} ) = tanh(k \vec{x_i} \cdot \vec{y_j} - \delta) #
 
 #### ④ 가우시안 RBF 커널
-- RBF 커널은 다양한 데이터의 형태에 잘 적용되기 때문에 많은 학습 태스크의 합리적이다.
-
-$ K( \vec{x_i}, \vec{y_j} ) = e \frac {2 {\sigma}^2 } {- { \Vert \vec{x_i} - \ver{x_j} \Vert }^2 } $
+- RBF 커널은 다양한 데이터의 형태에 잘 적용되기 때문에 많은 학습 태스크의 합리적이다. <br>
+  $ K( \vec{x_i}, \vec{y_j} ) = e \frac {2 {\sigma}^2 } {- { \Vert \vec{x_i} - \vec{x_j} \Vert }^2 } $
 
 - 어떤 커널을 사용할 지 결정하는 합리적인 규칙은 없다. 적합화는 학습할 개념뿐만 아니라 훈련 데이터의 총량, 속성 간의 관계와 매우 관련이 높다.
 - 따라서 시도와 오차는 검증된 데이터 셋에서 훈련과 평가가 필요하다. 대부분의 경우 성능은 차이가 크지 않기 때문에 커널의 선택은 임의적이다.

@@ -128,39 +128,44 @@ $ K( \vec{x_i}, \vec{y_j} ) = tanh(k \vec{x_i} \cdot \vec{y_j} - \delta)
 #### ④ 가우시안 RBF 커널
 - RBF 커널은 다양한 데이터의 형태에 잘 적용되기 때문에 많은 학습 태스크의 합리적이다.
 
-$ K( \vec{x_i}, \vec{y_j} ) = e \frac {2 {\sigma}^2 } {- { \Vert \vec{x_i} - \ver{x_j} \Vert }^2 }
+$ K( \vec{x_i}, \vec{y_j} ) = e \frac {2 {\sigma}^2 } {- { \Vert \vec{x_i} - \ver{x_j} \Vert }^2 } $
 
 - 어떤 커널을 사용할 지 결정하는 합리적인 규칙은 없다. 적합화는 학습할 개념뿐만 아니라 훈련 데이터의 총량, 속성 간의 관계와 매우 관련이 높다.
-
 - 따라서 시도와 오차는 검증된 데이터 셋에서 훈련과 평가가 필요하다. 대부분의 경우 성능은 차이가 크지 않기 때문에 커널의 선택은 임의적이다.
 
 # 2. SVM 실습 : OCR 수행하기
 - 이미지 처리는 머신러닝으로 해결하는 여러 태스크 중 가장 어려운 태스크에 해당한다.
 - 높은 개념에 화소의 연결 패턴 관계는 매우 복잡하고 정의하기 어렵다. 더욱이 이미지 데이터는 노이즈에 영향을 많이 받는다.
-- 때문에 SVM을 사용할 경우, 노이즈에 민감하지 않도록 복잡한 패턴을 학습할 수 있으며, 높은 정확도로 시각 패턴을 인식할 수 도 있다.
+- 때문에 SVM을 사용할 경우, 노이즈에 민감하지 않도록 복잡한 패턴을 학습할 수 있으며, 높은 정확도로 시각 패턴을 인식할 수도 있다.
 
 - 이번 실습은 상형문자들에 대해 인식하고 분류해내는 실습을 진행할 것이다.
 - 사용할 데이터는 UCI Machine Learning Data Repository 에 기부한 데이터 셋을 사용한다.
 
-1) 데이터 수집
+## 1) 데이터 수집
 - OCR 소프트웨어가 문서를 처리할 때는 문서를 격자의 각 칸과 같은 매트릭스로 나눈다.
 - 각 칸에서 소프트웨어는 인식가능한 모든 문자들을 매칭하는 작업을 진행한다.
 - 사용하려는 문서는 A 부터 Z 까지 26개의 영어 알파벳 대문자 20,000개의 예제를 포함한다.
 
-2) 데이터 준비와 탐구
-- 문자를 컴퓨터로 스캔할 때 펙셀을 16개의 통계속성으로 변형하며, 이번예제에서 사용할 데이터 셋이기도하다.
+## 2) 데이터 준비와 탐구
+- 문자를 컴퓨터로 스캔할 때 펙셀을 16개의 통계속성으로 변형하며, 이번 예제에서 사용할 데이터 셋이기도하다.
 - 사용할 속성은 다음과 같다.
 - 문자의 수직 픽셀 비율
 - 문자의 수평 픽셀 비율
 - 문자의 검정 픽셀 비율
 - 픽셀의 수평, 수직의 위치의 평균
 
-- SVM의 특징 중 하나로, 모든 속성은 수치여야하고, 각 속성은 작은 간격 범위로 되어있어야한다.
-  [R code]
-  data <- read.csv("Data/letterdata.csv", header=T)
-  str(data)
+- SVM의 특징 중 하나로, 모든 속성은 수치여야하고, 각 속성은 작은 간격 범위로 되어있어야 한다.
 
+```R
+ [R Code]
+ 
+ data <- read.csv("Data/letterdata.csv", header=T)
+ str(data)
+```
+
+```text
 [실행 결과]
+
 str(data)
 'data.frame': 20000 obs. of 17 variables:
 $ letter: Factor w/ 26 levels "A","B","C","D",..: 20 9 4 14 7 19 2 1 10 13 ...
@@ -180,38 +185,51 @@ $ xedge : int 0 2 3 6 1 0 2 1 1 8 ...
 $ xedgey: int 8 8 7 10 7 8 8 6 6 1 ...
 $ yedge : int 0 4 3 2 5 9 7 2 1 1 ...
 $ yedgex: int 8 10 9 8 10 7 10 7 7 8 ...
+```
 
-- 데이터의 구조를 확인해본 결과 모든 값이 상수로 구성되어 있기 때문에 팩터를 수치로 변환할 필요는 없다.
-  하지만, 일부 값이 꽤 넓은 범위로 되어있으며, 정규화나 표준화를 해줘야 한다.
+- 데이터의 구조를 확인해본 결과 모든 값이 상수로 구성되어 있기 때문에 팩터를 수치로 변환할 필요는 없다. 하지만, 일부 값이 꽤 넓은 범위로 되어있으며, 정규화나 표준화를 해줘야 한다.
 - 위의 데이터 중 80%는 학습용 데이터로, 20%는 테스트용 데이터로 분할한다.
 
-[R code]
+```R
+[R Code]
+
 train <- data[1:16000,]
 test <- data[16001:20000,]
+```
 
-3) 모델링
+## 3) 모델링
 - R 에서 SVM 모델을 사용할 때, e1071 패키지를 많이 이용하지만, 이번 예제에서는 kernlab 패키지를 사용한다.
-- 기존에 만들어진 패키지들은 대부분 C, C++ 로 짜여진데 반해, 해당 패키지는 R로 개발되었다. 때문에 쉽게 변경이 가능하고,
-  여러 자동화된 기법을 사용해 훈련하고 평가할 수 있다.
+- 기존에 만들어진 패키지들은 대부분 C, C++ 로 짜여진데 반해, 해당 패키지는 R로 개발되었다. 때문에 쉽게 변경이 가능하고, 여러 자동화된 기법을 사용해 훈련하고 평가할 수 있다.
 
 - kernlab에서 SVM 모델을 만들려면 ksvm() 함수를 사용하면되며, 사용방법은 다음과 같다.
 
-m <- ksvm(target ~ predictors, data = mydata, kernel = 'rbfdot', C=1)
-- target : 결과 변수
-- predictors : 예측 변수
-- data : 사용 데이터
-- kernel : 사용할 커널, rbfdot(radial basis), polydot(polynomial), tanhdot(hyperbolic tangentsigmoid), vanilladot(linear) 중 하나를
-  입력
-- C : 제약 위반에 대한 비용을 명시하며, soft margin에 대한 벌칙 크기보다 큰 값일 경우 여백을 작게 만든다.
+```R
+[R Code]
 
+m <- ksvm(target ~ predictors, data = mydata, kernel = 'rbfdot', C=1)
+# target : 결과 변수
+# predictors : 예측 변수
+# data : 사용 데이터
+# kernel : 사용할 커널, rbfdot(radial basis), polydot(polynomial), tanhdot(hyperbolic tangentsigmoid), vanilladot(linear) 중 하나를 입력
+# C : 제약 위반에 대한 비용을 명시하며, soft margin에 대한 벌칙 크기보다 큰 값일 경우 여백을 작게 만든다.
+```
+```R
 [R code]
+
 model_ksvm <- ksvm(letter ~ ., data=train, kernel="vanilladot")
+```
 
 - 모델에 대한 정보를 출력해보면 다음과 같이 나온다.
-  [R code]
-  model_ksvm
 
+```R
+[R code]
+
+model_ksvm
+```
+
+```text
 [실행결과]
+
 Support Vector Machine object of class "ksvm"
 
 SV type: C-svc (classification)
@@ -223,33 +241,49 @@ Number of Support Vectors : 7037
 
 Objective Function Value : -14.1746 -20.0072 -23.5628 -6.2009 -7.5524 -32.7694 -49.9786 -18.1824 -62.1111 ...
 Training error : 0.130062
+```
 
-4) 성능 평가
-- 출력된 결과를 통해서 알 수 있듯이, 모델이 얼마나 잘 수행 됬는지에 대한 정보는 Training error 외에는 확인할 방법이 없다.
+## 4) 성능 평가
+- 출력된 결과를 통해서 알 수 있듯이, 모델이 얼마나 잘 수행 됬는지에 대한 정보는 Training error 외에는 확인할 방법이 없다.<br>
   따라서 일반화가 잘 됐는지 확인하기 위해 테스트용 데이터를 이용해 예측을 해보자
-  [R code]
-  y_pred_ksvm <- predict(model_ksvm, test)
-  head(y_pred_ksvm)
 
+```R
+[R code]
+
+y_pred_ksvm <- predict(model_ksvm, test)
+head(y_pred_ksvm)
+```
+
+```text
 [실행결과]
+
 [1] U N V X N H
 Levels: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+```
 
 - 추가적으로 분류기가 예측한 문자와 실제 문자가 얼마나 일치하는 지 갯수로 확인해보자.
-  [R code]
-  table(y_pred_ksvm, test$letter)
 
-[실행결과]
-대표
+```R
+[R Code]
 
-- 위의 결과에서 대각선에 위치한 숫자들은 제대로 예측한 경우의 수이고, 그 외의 위치에 있는 숫자들은 잘못 예측한 경우의 수라고
-  할 수 있다.
+table(y_pred_ksvm, test$letter)
+```
+
+[실행결과]<br>
+![실행 결과](/images/2019-11-24-r_machine_learning-chapter8-svm/5_exercise1.jpg)
+
+- 위의 결과에서 대각선에 위치한 숫자들은 제대로 예측한 경우의 수이고, 그 외의 위치에 있는 숫자들은 잘못 예측한 경우의 수라고 할 수 있다.
 - 하지만 여전히 얼마나 잘 맞았는지 확인이 어렵기 때문에 분류 성공 여부를 비율로 나타내보자.
-  [R code]
-  performance_ksvm <- y_pred_ksvm==test$letter
-  table(performance_ksvm)
-  prop.table(table(performance_ksvm))
 
+```R
+[R Code]
+
+performance_ksvm <- y_pred_ksvm==test$letter
+table(performance_ksvm)
+prop.table(table(performance_ksvm))
+```
+
+```text
 [실행 결과]
 performance_ksvm
 FALSE TRUE
@@ -258,22 +292,29 @@ FALSE TRUE
 performance_ksvm
 FALSE TRUE
 0.16075 0.83925
+```
 
 - 선형 커널 함수로 커널을 설정할 경우 약 80%의 정확도를 갖는 것으로 확인된다.
 
-5) 모델 성능 향상
+## 5) 모델 성능 향상
 - 이번에는 선형 커널 함수가 아닌, 좀 더 복잡한 커널 함수를 사용했을 때 성능이 향상되는지를 확인해보자.
 - 좀 더 복잡한 커널 함수를 사용할 경우, 데이터를 높은 차원 공간으로 연결할 수 있고, 더 적합한 모델을 얻을 수 있다.
 - 이번 예제에서는 가우시안 RBF 커널 함수를 사용하며, 과정은 이전에 선형 커널 함수로 진행한 과정과 동일하다.
-  [R code]
-  model_ksvm <- ksvm(letter ~ ., data=train, kernel="rbfdot")
-  y_pred_ksvm <- predict(model_ksvm, test)
+
+```R 
+[R code]
+
+model_ksvm <- ksvm(letter ~ ., data=train, kernel="rbfdot")
+y_pred_ksvm <- predict(model_ksvm, test)
 
 performance_ksvm <- y_pred_ksvm==test$letter
 table(performance_ksvm)
 prop.table(table(performance_ksvm))
+```
 
+```text
 [실행 결과]
+
 performance_ksvm
 FALSE TRUE
 277 3723
@@ -281,7 +322,7 @@ FALSE TRUE
 performance_ksvm
 FALSE TRUE
 0.06925 0.93075
+```
 
 - 실행 결과를 비교해보면, 가우시안 RBF 커널 함수를 사용했을 때가 93%로 성능 향상이 된 것을 확인할 수 있다.
 - 만약 추가적으로 성능을 높이고 싶다면, 결정 경계선인 C의 값을 변경해주면 된다.
-

@@ -96,6 +96,15 @@
             {% endfor %}
          </ul>
 
+       <!-- Hadoop -->
+       <span class="nav__sub-title">Hadoop</span>
+         <ul>
+            {% for category in site.categories %}
+                {% if category[0] == "Spark" %}
+                    <li><a href="/categories/spark" class="">Spark({{category[1].size}})</a></li>
+                {% endif %}
+            {% endfor %}
+         </ul>
 
     </li>
 </ul>

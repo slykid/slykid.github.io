@@ -15,7 +15,7 @@ author_profile: true
 sidebar_main: true
 ---
 
-
+![Hadoop](/assets/images/blog_template/hadoop.jpg)
 
 # 1. Hadoop 이 나오기까지
 - 빅데이터: 최소 1TB인 대용량의 데이터를 의미

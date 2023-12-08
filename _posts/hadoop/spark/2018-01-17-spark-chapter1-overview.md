@@ -15,7 +15,7 @@ author_profile: true
 sidebar_main: true
 ---
 
-
+![Spark](/assets/images/blog_template/spark.jpg)
 
 # 1. Apache Spark
 - 하둡 기반의 맵리듀스 작업이 가진 단점들을 보완하기 위해서 만들어 진 프레임워크로, 하둡과 달리 인메모리(In-Memory) 기법을 활용한 데이터 저장 방식을 제공함으로써 머신러닝 등 반복적인 데이터 처리가 필요한 분야에서 높은 성능을 보여준다.

@@ -280,12 +280,293 @@ res1: Long = 3
 - Help - Install New Software - Add - Name 에 "PyDev" 입력 - PyDev 플러그인 설치
 - Preference - PyDev - Interpreters - Python Interpreter 에서 새로운 인터프리터를 설치
 - 바로 아래의 Libraries 탭을 눌러 스파크 라이브러리를 추가한다.
-  - New Egg/Zip(s) - [python 설치 경로]/lib/py4j-0.10.4-src.zip 을 설치한다.
+  - New Egg/Zip(s)-[python 설치 경로]/lib/py4j-0.10.4-src.zip 을 설치한다.
 
 - 마지막으로 Environment 에서 SPARK_HOME과 PYSPARK_PYTHON 변수를 생성한다.<br>
   SPARK_HOME 은 스파크 설치 위치, PYSPARK-PYTHON은 파이썬 설치 위치를 입력한다.
 
-# 3. 스파크 실행해보기
+# 3. 설정파일 수정하기
+## 1) StandAlone 모드로 수정하기
+- 다음으로 설정파일을 수정해주기로 하자. Spark 는 크게 StandAlone 모드와 Cluster 모드 방식으로 동작한다고도 볼 수 있는데, 우선은 StandAlone 모드 방식으로 동작하도록 설정해주자.
+- 아래 나오는 설정은 Master 기준이며, slave 의 경우 .bashrc 에서 Python, Maven, Scala는 지정하지 않아도 됨
+
+```shell
+[~/.bashrc]
+
+export JAVA_HOME=/usr/local/BigDataPlatform/jdk1.8.0_161
+export PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+
+export HADOOP_HOME=/usr/local/BigDataPlatform/hadoop-2.8.3
+export PATH=$PATH:$HADOOP_HOME/bin
+
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+export YARN_CONF_DIR=$HADOOP_HOME/etc/hadoop
+export PATH=$PATH:$HADOOP_CONF_DIR
+
+export SCALA_HOME=/usr/local/BigDataPlatform/scala-2.11.8
+export PATH=$PATH:$SCALA_HOME/bin
+
+export MAVEN_HOME=/usr/local/BigDataPlatform/apache-maven-3.5.2
+export PATH=$PATH:$MAVEN_HOME/bin
+
+export PYTHON_HOME=/usr/local/BigDataPlatform/anaconda3
+export PATH=$PATH:$PYTHON_HOME/bin
+
+export SPARK_HOME=/usr/local/BigDataPlatform/spark-2.3.0-bin-hadoop2.7
+export SPARK_CONF_DIR=/usr/local/BigDataPlatform/spark-2.3.0-bin-hadoop2.7/conf
+export PATH=$PATH:$SPARK_HOME/bin:$SPARK_CONF_DIR
+....
+```
+
+```shell
+[conf/spark-env.sh]
+
+export HADOOP_CONF_DIR=${HADOOP}/etc/hadoop
+export PSPARK_PYTHON=[파이썬 설치 경로]/bin/python
+...
+
+```
+
+```shell
+[conf/slaves]
+
+slave1
+slave2
+````
+
+```shell
+[conf/spark-defaults.conf]
+
+spark.yarn.am.memory=1g
+spark.executor.instances=3
+```
+
+## 2) slave 에 배포
+root 계정으로 spark 설치 위치에서 다음 명령 수행
+```shell
+# $  rsync -av . [도메인] : [설치 경로]
+
+ex. $rsync -av . hadoop@slave1:/usr/local/BigDataPlatform/spark-2.3.0-bin-hadoop2.7
+```
+
+## 3) 실행
+```shell
+master : [스파크 경로]/sbin/start-master.sh
+slave : [스파크 경로]/sbin/start-slave.sh spark://master:7077
+    * 중지 는 start -> stop으로 변경하면 됨
+```
+
+- 실행 시, start-all.sh 명령어로 실행하면 전체 실행이 가능하다.
+- 
+```shell
+
+[스파크 경로]/sbin/start-all.sh
+```
+
+## 2) 모드에 따른 spark-submit 
+### (1) Client mode (기본값)
+
+```shell
+$ ./bin/spark-submit --class com.spark.WordCount \
+                     --master spark://master:7077 \
+                     ~/workspace/deploy/WordCount.jar \
+                     hdfs://master:9000/sample/README.md \
+                     hdfs://master:9000/sample/output/
+```
+
+### (2) Cluster mode
+- 수행 조건 :  .jar 파일이 모든 노드에 존재해야한다(Cluster 모드 의 정의)
+- 배포 방법 <br>
+  1) scp , rsync 를 사용해 master 및 slave 노드에 배포한다. <br>
+  2) .jar 파일을 HDFS 에 업로드 한 후  명령어 옵션에서 파일 위치를 HDFS에 업로드한 위치로 변경한다. <br>
+  
+  ```shell
+  $ ./bin/spark-submit --class com.spark.WordCount \
+                         --master spark://master:6066 \
+                         --deploy-mode cluster \
+                         hdfs://master:9000/sample/WordCount.jar \
+                         hdfs://master:9000/sample/README.md \
+                         hdfs://master:9000/sample/output1/
+  ```
+
+## 3) Cluster 모드로 수정하기 (Spark On Yarn)
+- Cluster 구성은 MasterNode 1대 , DataNode 2대 기준으로 설정한 내용임
+
+```shell
+[spark-env.sh]
+
+* PSPARK_PYTHON, SCALA_HOME 내용은 Master만 (slave에는 적용 안해도 됨)
+
+export PSPARK_PYTHON=/usr/local/BigDataPlatform/anaconda3/bin/python
+export SCALA_HOME=/usr/local/BigDataPlatform/scala-2.11.8
+export JAVA_HOME=/usr/local/BigDataPlatform/jdk1.8.0_161
+export SPARK_HOME=/usr/local/BigDataPlatform/spark-2.3.0-bin-hadoop2.7
+export HADOOP_HOME=/usr/local/BigDataPlatform/hadoop-2.8.3
+
+export SPARK_MASTER_IP=master
+export SPARK_EXECUTOR_URI=hdfs://master:9000/spark-2.3.0-bin-hadoop2.7.tgz
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+export YARN_CONF_DIR=$HADOOP_HOME/etc/hadoop
+```
+
+```shell
+[spark-default.conf]
+
+spark.master    spark://master:7077
+spark.driver.memory     5g
+
+spark.yarn.am.memory    1g
+spark.yarn.access.hadoopFileSystems=hdfs://master:9000,webhdfs://master:50070
+spark.yarn.archive            hdfs://master:9000/spark-yarn/spark-libs.jar
+
+spark.executor.instances        2
+spark.executor.extraJavaOptions -Dlog4j.configuration=file:/usr/local/BigDataPlatform/spark-2.3.0-bin-hadoop2.7/conf/log4j.properties
+
+spark.driver.extraJavaOptions   -Dlog4j.configuration=file:/usr/local/BigDataPlatform/spark-2.3.0-bin-hadoop2.7/conf/log4j.properties
+
+spark.eventLog.enabled  true
+spark.eventLog.dir      hdfs://master:9000/spark-logs
+
+spark.history.fs.logDirectory   hdfs://master:9000/spark-logs // 실행 전에 해당 폴더는 생성해주어야한다.
+
+spark.acls.enable       false
+```
+
+```shell
+[log4j.properties]
+# 아래 부분 찾아서 다음과 같이 변경해줄 것
+
+# Set everything to be logged to the console
+log4j.rootCategory=WARN, console
+log4j.appender.console=org.apache.log4j.ConsoleAppender
+log4j.appender.console.target=System.err
+log4j.appender.console.layout=org.apache.log4j.PatternLayout
+log4j.appender.console.layout.ConversionPattern=%d{yy/MM/dd HH:mm:ss} %p %c{1}: %m%n
+log4j.logger.org.apache.spark.repl.Main=INFO
+```
+
+```shell
+[slaves]
+
+datanode1
+datanode2
+```
+
+- 기본 설정파일 이외에 추가적으로 "metrics.properties" 파일 생성
+  - metrics.properties.templete 설정 해제
+
+- $SPARK_HOME/yarn/spark-<스파크버전>-yarn-shuffle.jar <br>
+  -> 각 노드의 $HADOOP_HOME/share/hadoop/yarn/lib로 복사
+
+
+## 4) 히스토리 서버 실행
+```shell
+./sbin/start-history-server.sh 
+```
+
+- 정상적으로 실행되는지 확인을 위해 아래 URL에서 조회 <br>
+  [http://master:18080](http://master:18080)
+
+## 5) spark-libs.jar 파일 생성 및 HDFS 업로드
+- spark에서 사용되는 jar 파일은 $SPARK_HOME/jars 안에 위치한다.
+- 아래의 명령어를 사용하여 새로운 jar 파일을 생성하자.
+
+```shell
+jar cv0f spark-libs.jar -C $SPARK_HOME/jars/ .
+```
+
+- 실행이 완료가 되면 현재 작업한 디렉터리에 spark-libs.jar 파일이 생성되었을 것이다.
+- HDFS 에 업로드 하기 위해 다음의 명령어를 실행시킨다.
+
+```shell
+hadoop fs -put ./spark-libs.jar  [spark.yarn.archive 에 정의한 위치] 
+```
+
+## 6) shuffle 서비스 실행
+
+```shell
+$ ./sbin/start-shuffle-service.sh
+$ ./bin/spark-shell --master yarn
+```
+
+```shell
+[실행 결과]
+
+[hadoop@master spark-2.1.0-bin-hadoop2.7]$ yarn application -list
+18/04/13 16:23:57 INFO client.RMProxy: Connecting to ResourceManager at /192.168.0.33:8035
+Total number of applications (application-types: [] and states: [SUBMITTED, ACCEPTED, RUNNING]):1
+                Application-Id        Application-Name        Application-Type          User         Queue                 State           Final-State           Progress                           Tracking-URL
+application_1523603667406_0001             Spark shell                   SPARK        hadoop       default               RUNNING             UNDEFINED                10%               http://masterIP:4040 
+```
+
+![yarn application 실행결과](/images/2018-01-17-spark-chapter1-overview/8_spark_on_yarn_execution.jpg)
+
+- 위의 설정대로 실행한 결과 WebUI (master:4040)은 정상적으로 열리지만 위의 사진과 같이 그래픽적인 요소는 보이지 않는다. 따라서 반드시 히스토리 서버를 같이 열어주고 spark-shell 종료시 생성된 Job을 확인할 수 있도록 한다.
+
+## 7) Spark Dynamic Allocation 설정
+
+- 설정 이유
+  - Spark Shell 이나 웹 기반의 애플리케이션인 경우와 같이 장시간 동작하면서 사람 혹은 외부 프로세스가 제공하는 이벤트가 있을 때만 작업을 처리하는 형태의 애플리케이션인 경우 명령을 대기하는 동안 자원적으로 손실이 발생할 수 있다.
+  - 작업을 수행하는 동안에만 동작시키는 것이 할당 측면에서 유리하며, 해당 작업이 대기하는 동안 해당 자원을 회수해서 자원이 부족한 다른 애플리케이션에 추가로 할당해주는 것이 더 합리적이다.
+
+```shell
+[yarn-site.xml]
+...
+<property>
+<name>yarn.nodemanager.aux-services</name>
+<value>mapreduce_shuffle,spark_shuffle</value>
+</property>
+
+....
+
+<property>
+<name>yarn.nodemanager.aux-services.spark_shuffle.class</name>
+<value>org.apache.spark.network.yarn.YarnShuffleService</value>
+</property>
+...
+<property>
+<name>spark.yarn.shuffle.stopOnFailure</name>
+<value>false</value>
+</property>
+```
+
+```shell
+[yarn-env.sh]
+
+# For setting YARN specific HEAP sizes please use this
+# Parameter and set appropriately
+YARN_HEAPSIZE=2000
+```
+
+```shell
+[spark-default.xml]
+
+spark.dynamicAllocation.enabled true
+spark.dynamicAllocation.schedulerBacklogTimeout 3s
+spark.dynamicAllocation.sustainedSchedulerBacklogTimeout 3s
+
+spark.shuffle.service.enabled true  // slave(worker) 들은 false 로 설정해줘야함
+```
+
+- 설정 변경 후 아래 과정을 수행하면 된다.
+  - yarn 재실행 -> spark 재실행 -> standalone 모드를 제외하고 나머지 모드에 한해서 $SPARK_HOME/sbin/start-shuffle-service.sh 를 실행 -> Application 실행
+
+```shell
+[Scala Code]
+
+val inputPath = "hdfs://<namenode_host:port>/sample/README.md"
+val outputPath = "hdfs://<namenode_host:port>/sample/output"
+
+sc.textFile(inputPath) flatMap { line => line.split( " ") map (word => (word,1L)) } reduceByKey (_ + _) saveAsTextFile (outputPath)
+```
+
+[결과]<br>
+
+![실행결과](/images/2018-01-17-spark-chapter1-overview/9_exercise1.jpg) <br>
+![실행결과2](/images/2018-01-17-spark-chapter1-overview/10_exercise2.jpg) <br>
+![실행결과3](/images/2018-01-17-spark-chapter1-overview/11_exercise3.jpg) <br>
+
+# 4. 예제 - WordCount
 - 아래의 코드를 이용하여 spark 를 실행해보자
 
 ```java
@@ -444,3 +725,5 @@ public class WordCount {
 (several,1)
 .....
 ```
+
+

@@ -33,11 +33,11 @@ sidebar_main: true
 - 다수의 서버에 나눠져서 처리되기 때문에 유실이 발생할 수 있지만 이를 위해 원래 상태로 복구할 수 있도록 RDD의 생성과정을 기록해 뒀다가 다시 복구해주는 기능을 가지고 있다.
 - 또한 문제가 발생 시 전체작업을 처음부터 다시 실행하는 대신 문제가 발생한 RDD를 생성했던 작업만 다시 수행해서 복구를 진행한다.
 
-- 리니지(Lineage): 스파크에서 RDD 생성 작업을 기록해 두는 것
+- 리니지(Lineage): 스파크에서 RDD 생성 작업을 기록해 두는 것을 의미하며, DAG 형태로 저장된다. RDD 를 생성하는 모든 과정이 저장되기 때문에, 메모리에서 데이터가 유실되면, lineage 의 기록에 따라 유실된 RDD를 복구할 수 있다.
 
 ### (1) 생성 방법
-- List, Set 같은 기존 프로그램의 메모리에 생성된 데이터를 이용하는 것 <br>
-  ->즉시 테스트해 볼 수 있어 테스트 코드 작성 등에 유용하게 사용됨
+- List, Set 같은 기존 프로그램의 메모리에 생성된 데이터를 이용하는 것을 의미한다. <br>
+  → 즉시 테스트해 볼 수 있어 테스트 코드 작성 등에 유용하게 사용됨
 
 ex. Collection 을 이용
 
@@ -85,8 +85,8 @@ val rdd = sc.textFile("<path_to_file>")
 rdd = sc.textFile("<path_to_file>")
 ```
 
-- 기존에 생성돼 있는 RDD로부터 또 다른 RDD를 생성하는 방법
-- createRDD 같은 함수가 제공되는 것은 아니지만 기존 RDD의 모든 요소에 1을 더하는 등의 연산을 적용하면 "한 번 만들어지면 수정불가하다" 는 성질을 이용해 새로운 RDD 가 생성되는 것
+- 기존에 생성돼 있는 RDD로부터 또 다른 RDD를 생성하는 방법으로 연산의 결과를 저장한다.
+  - createRDD 같은 함수가 제공되는 것은 아니지만 기존 RDD의 모든 요소에 1을 더하는 등의 연산을 적용하면 "한 번 만들어지면 수정불가하다" 는 성질을 이용해 새로운 RDD 가 생성되는 것이다.
 
 ex. 기존 RDD로부터 새로운 RDD 생성
 
@@ -168,9 +168,9 @@ rdd1 = rdd.map(lambda s : s.upper())
     -> 일괄 처리 작업을 통해 데이터를 처리하되 아직 배치 처리가 수행되지 않은 부분은 실시간 처리를 통해 보완한다는 개념이다.<br>
     -> 이 경우 속도 계층의 처리 결과는 다소 정확하지 않을 수 있지만 추후에 일괄 처리 작업을 통해 다시 보정하는 형태로 운영될 수 있다.<br>
 
-# 2. Spark 설치
+# 2. Maven 프로젝트로 개발환경 구성하기
 ## 1) JDK
-- 우선 open-jdk를 먼저 제거한 후 http://java.oracle.com 에서 jdk를 다운로드 받는다.
+- 리눅스의 경우에는, open-jdk를 먼저 제거한 후 http://java.oracle.com 에서 jdk를 다운로드 받는다.
 - Java8 의 경우 람다식을 사용하므로 이 후에 다뤄질 예정이기 때문에 Java8 버전이상으로 설치한다. (최신버전의 스파크는 Java 17 버전을 사용함)
 - 설치 후 설치 위치(PATH)를 환경 변수에 적용시켜준다.
 
@@ -229,10 +229,10 @@ ex.
 ```
 
 - maven 빌드 전에 최신의 상태를 유지하기 위해 repository를 재설치 혹은 업데이트 해준다.
-  * 참고 자료: http://scala-ide.org/docs/tutorials/m2eclipse
 
 ## 3) Spark 설치
-- http://spark.apache.org 에서 다운로드 받을 수 있으며 Hadoop-2.8.3 버전을 사용하고 있기 때문에 다음과 같이 받았다.
+- http://spark.apache.org 에서 다운로드 받을 수 있으며, 설치한 하둡 버전에 맞춰 설치해주면 된다.
+- 현 단계에서는 앞서 설정한 Maven 프로젝트를 통해 실행할 때, 정상적으로 실행되는지 확인하기 위한 작업이므로, 별도의 설정파일 수정 없이 실행이 잘 되는지만 확인해 볼 예정이다.
 
 ![Spark 설치1](/images/2018-01-17-spark-chapter1-overview/2_download_spark.jpg)
 
@@ -247,6 +247,7 @@ ex.
 ![Spark Shell 실행2](/images/2018-01-17-spark-chapter1-overview/5_spark_shell.jpg)
 
 - 아래 결과에 대한 실행 결과는 다음과 같다.
+
 ```scala
 [Scala code]
 val file = sc.textFile("file://[스파크 설치 위치(절대경로로 입력할 것!)]/README.md")
@@ -286,9 +287,12 @@ res1: Long = 3
   SPARK_HOME 은 스파크 설치 위치, PYSPARK-PYTHON은 파이썬 설치 위치를 입력한다.
 
 # 3. 설정파일 수정하기
+- Spark 는 크게 StandAlone 모드와 Cluster 모드 방식으로 동작한다고 볼 수 있다. 
+- 이번 장에서는 StandAlone 모드에서 Cluster 모드 순으로 설정파일을 어떻게 수정하는 지를 설명할 예정이며, 사용 유형에 따라 불필요한 부분은 넘어가도 좋다.
+
 ## 1) StandAlone 모드로 수정하기
-- 다음으로 설정파일을 수정해주기로 하자. Spark 는 크게 StandAlone 모드와 Cluster 모드 방식으로 동작한다고도 볼 수 있는데, 우선은 StandAlone 모드 방식으로 동작하도록 설정해주자.
-- 아래 나오는 설정은 Master 기준이며, slave 의 경우 .bashrc 에서 Python, Maven, Scala는 지정하지 않아도 됨
+- 다음으로 설정파일을 수정해주기로 하자. 
+- 아래 나오는 설정은 Master 기준이며, Datanode 의 경우 .bashrc 에서 Python, Maven, Scala는 지정하지 않아도 된다.
 
 ```shell
 [~/.bashrc]
@@ -330,8 +334,8 @@ export PSPARK_PYTHON=[파이썬 설치 경로]/bin/python
 ```shell
 [conf/slaves]
 
-slave1
-slave2
+datanode1
+datanode2
 ````
 
 ```shell
@@ -341,18 +345,18 @@ spark.yarn.am.memory=1g
 spark.executor.instances=3
 ```
 
-## 2) slave 에 배포
+## 2) datanode 에 배포
 root 계정으로 spark 설치 위치에서 다음 명령 수행
 ```shell
 # $  rsync -av . [도메인] : [설치 경로]
 
-ex. $rsync -av . hadoop@slave1:/usr/local/BigDataPlatform/spark-2.3.0-bin-hadoop2.7
+ex. $rsync -av . hadoop@datanode1:/usr/local/BigDataPlatform/spark-2.3.0-bin-hadoop2.7
 ```
 
 ## 3) 실행
 ```shell
 master : [스파크 경로]/sbin/start-master.sh
-slave : [스파크 경로]/sbin/start-slave.sh spark://master:7077
+datanode : [스파크 경로]/sbin/start-slave.sh spark://master:7077
     * 중지 는 start -> stop으로 변경하면 됨
 ```
 
@@ -377,7 +381,7 @@ $ ./bin/spark-submit --class com.spark.WordCount \
 ### (2) Cluster mode
 - 수행 조건 :  .jar 파일이 모든 노드에 존재해야한다(Cluster 모드 의 정의)
 - 배포 방법 <br>
-  1) scp , rsync 를 사용해 master 및 slave 노드에 배포한다. <br>
+  1) scp , rsync 를 사용해 master 및 datanode 노드에 배포한다. <br>
   2) .jar 파일을 HDFS 에 업로드 한 후  명령어 옵션에서 파일 위치를 HDFS에 업로드한 위치로 변경한다. <br>
   
   ```shell
@@ -395,7 +399,7 @@ $ ./bin/spark-submit --class com.spark.WordCount \
 ```shell
 [spark-env.sh]
 
-* PSPARK_PYTHON, SCALA_HOME 내용은 Master만 (slave에는 적용 안해도 됨)
+* PSPARK_PYTHON, SCALA_HOME 내용은 Master만 (datanode에는 적용 안해도 됨)
 
 export PSPARK_PYTHON=/usr/local/BigDataPlatform/anaconda3/bin/python
 export SCALA_HOME=/usr/local/BigDataPlatform/scala-2.11.8
@@ -483,6 +487,7 @@ hadoop fs -put ./spark-libs.jar  [spark.yarn.archive 에 정의한 위치]
 ```
 
 ## 6) shuffle 서비스 실행
+- 파티션 간의 물리적인 데이터 이동을 할 수 있도록 셔플링(Shuffling) 서비스를 실행한다.
 
 ```shell
 $ ./sbin/start-shuffle-service.sh
@@ -545,7 +550,7 @@ spark.dynamicAllocation.enabled true
 spark.dynamicAllocation.schedulerBacklogTimeout 3s
 spark.dynamicAllocation.sustainedSchedulerBacklogTimeout 3s
 
-spark.shuffle.service.enabled true  // slave(worker) 들은 false 로 설정해줘야함
+spark.shuffle.service.enabled true  // datanode(worker) 들은 false 로 설정해줘야함
 ```
 
 - 설정 변경 후 아래 과정을 수행하면 된다.

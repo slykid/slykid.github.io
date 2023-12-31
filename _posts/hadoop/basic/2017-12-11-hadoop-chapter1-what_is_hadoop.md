@@ -45,14 +45,16 @@ sidebar_main: true
 
 # 3. Hadoop 설치
 - 환경: VMware 12 / CentOS 7 / JDK-1.8.x / Eclipse Oxygen / Hadoop-2.7.4
-- Master는 RAM 2GB 서버-GUI , Slave는 RAM 1GB 인프라 서버로 설치한다.
+- Namenode는 RAM 2GB 서버-GUI, Datanode는 RAM 1GB 인프라 서버로 설치한다.
 - 일반 사용자 계정은 hadoop으로 통일한다.
 
+- <b>아래 내용은 하둡 바닐라 버전을 설치하는 것이니, 개인적으로 필요한 분은 참고하셔서 사용 부탁드립니다. </b>
+
 ## 1) 가상환경
-- VMware에서 CentOS 설치(총 3대 / Master 1대 , Slave 2대)
-- Master는 한글 키보드로 설치할 것
+- VMware에서 CentOS 설치(총 3대 / Namenode 1대 , Datanode 2대)
+- Namenode는 한글 키보드로 설치할 것
 - VMware tool 설치
-- Slave에서는 yum을 사용해서 wget, vim, openssh-clients, rsync 패키지를 설치한다.
+- Datanode에서는 yum을 사용해서 wget, vim, openssh-clients, rsync 패키지를 설치한다.
 
 ```bash
 # yum -y install [설치 패키지 명]
@@ -98,11 +100,10 @@ LAST_CONNECT=1512857123
 ```
 
 ## 2) JDK 설치
-###(1) Master의 경우
+### (1) Namenode의 경우
 - 일반계정으로 http://java.oracle.com 에서 Java SE -> jdk-8u151 kit 를 다운로드 받는다.
 
 ```bash
-
 $ su -
   root's Password:
 
@@ -136,7 +137,7 @@ $ java -version // 현재 설치한 자바 버전인 1.8.0_151이 나오면 성�
 $ javac -version
 ```
 
-### (2) Slave의 경우
+### (2) Datanode의 경우
 - 설치하기 전에 hadoop 계정을 우선 생성한다.
 ```bash
 
@@ -162,22 +163,22 @@ $ javac -version
 # su hadoop
 ```
 
-이 후 내용은 Master의 경우와 동일함
+이 후 내용은 Namenode의 경우와 동일함
 
 ## 3) Eclipse
-- Master 만 설치
+- Namenode 만 설치
 - 일반 계정으로 설치 진행
 
 ```bash
-[hadoop@master ~]$ mkdir jar
+[hadoop@Namenode ~]$ mkdir jar
 
 # 설치
-[hadoop@master ~]$ cd /usr/local/eclipse-installer/
-[hadoop@master eclipse-installer]$ ./eclipse-inst
+[hadoop@Namenode ~]$ cd /usr/local/eclipse-installer/
+[hadoop@Namenode eclipse-installer]$ ./eclipse-inst
 
 실행
-[hadoop@master ~]$ cd eclipse/java-oxygen/eclipse
-[hadoop@master ~]$ ./eclipse
+[hadoop@Namenode ~]$ cd eclipse/java-oxygen/eclipse
+[hadoop@Namenode ~]$ ./eclipse
 Workspace : /home/hadoop/workspace
 ```
 + 바탕화면에 실행 파일 만들기<br>
@@ -205,21 +206,21 @@ ln –s [eclipse 실행파일 경로] [hadoop 바탕화면 경로]
 ```bash
 # vi /etc/hosts
 
-[master IP주소] master
-[master IP주소] backup
-[slave1 IP주소] slave1
-[slave2 IP주소] slave2
+[Namenode IP주소] Namenode
+[Namenode IP주소] backup
+[Datanode1 IP주소] Datanode1
+[Datanode2 IP주소] Datanode2
 
 # service network restart
-# ping slave1 // ping test 실시
+# ping Datanode1 // ping test 실시
 ```
 
 ## 5) 방화벽 설정
 - 모든 노드에 동일하게 설정
 
 ```bash
-[hadoop@master 바탕화면]$ su -
-[root@master ~]# vi /etc/sysconfig/iptables
+[hadoop@Namenode 바탕화면]$ su -
+[root@Namenode ~]# vi /etc/sysconfig/iptables
 
 # Firewall configuration written by system-config-firewall
 # Manual customization of this file is not recommended.
@@ -241,7 +242,7 @@ ln –s [eclipse 실행파일 경로] [hadoop 바탕화면 경로]
 
 COMMIT
 
-[root@master ~]# service iptables restart
+[root@Namenode ~]# service iptables restart
 ```
 
 * CentOS 7의 경우 방화벽이 firewalld 이다.
@@ -251,25 +252,25 @@ COMMIT
 ### (1) 각 노드별 공개키 생성
 
 ```bash
-[hadoop@master ~]$ ssh-keygen -t rsa
-[hadoop@master 바탕화면]$ cd /home/hadoop
-[hadoop@master ~]$ ls -la (.ssh 만 있나 확인)
+[hadoop@Namenode ~]$ ssh-keygen -t rsa
+[hadoop@Namenode 바탕화면]$ cd /home/hadoop
+[hadoop@Namenode ~]$ ls -la (.ssh 만 있나 확인)
 .....
-drwx------. 2 master master 4096 2017-12-11 00:09 .ssh
+drwx------. 2 Namenode Namenode 4096 2017-12-11 00:09 .ssh
 ......
-[hadoop@master ~]$ cd .ssh
+[hadoop@Namenode ~]$ cd .ssh
 
-[hadoop@master .ssh]$ ls -l
+[hadoop@Namenode .ssh]$ ls -l
 합계 12
 -rw-------. 1 hadoop hadoop 1675 2014-12-23 11:46 id_rsa //개인키
 -rw-r--r--. 1 hadoop hadoop 394 2014-12-23 11:46 id_rsa.pub //공개키
 ```
 
-### (2) master 공개키를 authorized_keys에 추가
+### (2) Namenode 공개키를 authorized_keys에 추가
 
 ```bash
-[hadoop@master .ssh]$ cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
-[hadoop@master .ssh]$ ls -l
+[hadoop@Namenode .ssh]$ cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
+[hadoop@Namenode .ssh]$ ls -l
 합계 16
 -rw-r--r--. 1 hadoop hadoop 394 2014-12-23 11:50 authorized_keys
 -rw-------. 1 hadoop hadoop 1675 2014-12-23 11:46 id_rsa
@@ -279,57 +280,57 @@ drwx------. 2 master master 4096 2017-12-11 00:09 .ssh
 ### (3) 각 노드별 공개키 재분배 및 공유
 
 ```bash
-[hadoop@master .ssh]$ ssh hadoop@slave1 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-The authenticity of host 'slave1 (192.168.164.131)' can't be established.
+[hadoop@Namenode .ssh]$ ssh hadoop@Datanode1 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+The authenticity of host 'Datanode1 (192.168.164.131)' can't be established.
 RSA key fingerprint is 8e:6b:98:d8:cd:c2:a4:00:25:ea:32:28:02:76:ba:b9.
 Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added 'slave1,192.168.164.131' (RSA) to the list of known hosts.
-hadoop@slave1's password:
+Warning: Permanently added 'Datanode1,192.168.164.131' (RSA) to the list of known hosts.
+hadoop@Datanode1's password:
 
-[hadoop@master .ssh]$ ssh hadoop@backup cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-[hadoop@master .ssh]$ ssh hadoop@slave2 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+[hadoop@Namenode .ssh]$ ssh hadoop@backup cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+[hadoop@Namenode .ssh]$ ssh hadoop@Datanode2 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 ```
 
 ### (4) 모든 node에 공개키 재분배 한다
 - 모든 노드에서 서로의 공개키를 공유한다.
 
 ```bash
-[hadoop@master .ssh]$ scp authorized_keys hadoop@slave1:~/.ssh/
-[hadoop@master .ssh]$ scp authorized_keys hadoop@backup:~/.ssh/
-[hadoop@master .ssh]$ scp authorized_keys hadoop@slave2:~/.ssh/
+[hadoop@Namenode .ssh]$ scp authorized_keys hadoop@Datanode1:~/.ssh/
+[hadoop@Namenode .ssh]$ scp authorized_keys hadoop@backup:~/.ssh/
+[hadoop@Namenode .ssh]$ scp authorized_keys hadoop@Datanode2:~/.ssh/
 
-[hadoop@master .ssh]$ ssh-add //master에서만 해주면 된다
+[hadoop@Namenode .ssh]$ ssh-add //Namenode에서만 해주면 된다
 Identity added: /home/hadoop/.ssh/id_rsa (/home/hadoop/.ssh/id_rsa)
 ```
 
 ### (5) 권한을 644로 수정
 
 ```bash
-[hadoop@master .ssh]$ ls -la /home/hadoop/
-[hadoop@master .ssh]$ chmod 644 ~/.ssh/authorized_keys
+[hadoop@Namenode .ssh]$ ls -la /home/hadoop/
+[hadoop@Namenode .ssh]$ chmod 644 ~/.ssh/authorized_keys
 
 [실습]
-[hadoop@master .ssh]$ ssh hadoop@master date
-[hadoop@master .ssh]$ ssh hadoop@backup date
-[hadoop@master .ssh]$ ssh hadoop@slave1 date
-[hadoop@master .ssh]$ ssh hadoop@slave2 date
+[hadoop@Namenode .ssh]$ ssh hadoop@Namenode date
+[hadoop@Namenode .ssh]$ ssh hadoop@backup date
+[hadoop@Namenode .ssh]$ ssh hadoop@Datanode1 date
+[hadoop@Namenode .ssh]$ ssh hadoop@Datanode2 date
 
-[hadoop@slave1 .ssh]$ ssh hadoop@master date
-[hadoop@slave1 .ssh]$ ssh hadoop@backup date
-[hadoop@slave1 .ssh]$ ssh hadoop@slave1 date
-[hadoop@slave1 .ssh]$ ssh hadoop@slave2 date
+[hadoop@Datanode1 .ssh]$ ssh hadoop@Namenode date
+[hadoop@Datanode1 .ssh]$ ssh hadoop@backup date
+[hadoop@Datanode1 .ssh]$ ssh hadoop@Datanode1 date
+[hadoop@Datanode1 .ssh]$ ssh hadoop@Datanode2 date
 
 [실습]
-※ master에서 slave1으로 로그인
-[hadoop@master ~]$ ssh slave1
-Last login: Wed Feb 17 13:57:38 2016 from master
-[hadoop@slave1 ~]$
+※ Namenode에서 Datanode1으로 로그인
+[hadoop@Namenode ~]$ ssh Datanode1
+Last login: Wed Feb 17 13:57:38 2016 from Namenode
+[hadoop@Datanode1 ~]$
 
-※ slave1에서 master으로 로그인
-[hadoop@slave1 ~]$ ssh master
-hadoop@master's password:
-Last login: Wed Feb 17 14:55:15 2016 from slave1
-[hadoop@master ~]$
+※ Datanode1에서 Namenode으로 로그인
+[hadoop@Datanode1 ~]$ ssh Namenode
+hadoop@Namenode's password:
+Last login: Wed Feb 17 14:55:15 2016 from Datanode1
+[hadoop@Namenode ~]$
 ```
 
 <b> ※ could not open a connection to your authentication agent. 에러 발생 시 조치 </b>
@@ -337,14 +338,14 @@ Last login: Wed Feb 17 14:55:15 2016 from slave1
 - ssh-add
 
 ## 7) 하둡 환경 설정 파일 수정
-- master에서 진행
+- Namenode에서 진행
 - /usr/local/hadoop-2.7.4/etc/hadoop 아래에 위치한 파일들로 다음 순서대로 설정한다.
 
 ### (1) hadoop-env.sh
 - 하둡에게 JDK설치 경로 등록 -> 하둡도 자바에 의해서 컴파일 되기 때문
 
 ```bash
-[hadoop@master hadoop]$ vi hadoop-env.sh
+[hadoop@Namenode hadoop]$ vi hadoop-env.sh
 export JAVA_HOME=/usr/local/jdk1.8.0_151
 ...
 export HADOOP_PID_DIR=/usr/local/hadoop-2.8.2/pids
@@ -357,28 +358,28 @@ export HADOOP_OPTS="$HADOOP_OPTS-Djava.library.path=/usr/local/hadoop-2.7.4/lib/
 #  -> 설치한 os가 64bit 여서 native 에러가 발생하는 것을 막기 위해서 추가하는 것
 ```
 
-### (2) masters
+### (2) Namenodes
 -보조 네임노드를 실행할 서버 등록하는 파일
 -한 대로 하려면 localhost로 지정.
 
 ```bash
-[hadoop@master hadoop]$ vi masters
+[hadoop@Namenode hadoop]$ vi Namenodes
 
 backup
 ```
 
-### (3) slaves
+### (3) Datanodes
 - 데이터 노드를 실행할 서버 설정
 - 한 대로 하려면 localhost 지정. (default로 지정되어 있음)
 - 데이터 노드가 여러 개이면 라인단위로 서버이름을 설정하면 된다
 ```
-[hadoop@master hadoop]$ cat slaves
+[hadoop@Namenode hadoop]$ cat Datanodes
 localhost->삭제
 
-[hadoop@master hadoop]$ vi slaves
+[hadoop@Namenode hadoop]$ vi Datanodes
 
-slave1
-slave2
+Datanode1
+Datanode2
 ```
 
 ### (4) core-site.xml 파일 수정
@@ -391,12 +392,12 @@ slave2
   → http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/core-default.xml
 
 ```bash
-[hadoop@master hadoop]$ vi core-site.xml
+[hadoop@Namenode hadoop]$ vi core-site.xml
 ...
 <configuration>
   <property>
     <name>fs.default.name</name>
-    <value>hdfs://master:9000</value>
+    <value>hdfs://Namenode:9000</value>
   </property>
   <property>
     <name>hadoop.tmp.dir</name>
@@ -415,7 +416,7 @@ slave2
   [http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml)
 
 ```bash
-[hadoop@master hadoop]$ vi hdfs-site.xml
+[hadoop@Namenode hadoop]$ vi hdfs-site.xml
 ...
 <configuration>
   <property>
@@ -432,7 +433,7 @@ slave2
   </property>
   <property>
     <name>dfs.namenode.http.address</name>
-    <value>master:50070</value>
+    <value>Namenode:50070</value>
   </property>
   <property>
     <name>dfs.secondary.http.address</name>
@@ -448,14 +449,14 @@ slave2
   만약 mapred-site.xml이 존재하지 않을 경우 mapred-site.xml.template를 복사하여 사용
 
 ```bash
-[hadoop@master hadoop]$ cp mapred-site.xml.template mapred-site.xml
-[hadoop@master hadoop]$ vi mapred-site.xml
+[hadoop@Namenode hadoop]$ cp mapred-site.xml.template mapred-site.xml
+[hadoop@Namenode hadoop]$ vi mapred-site.xml
 
 ...
 <configuration>
     <property>
         <name>mapred.job.tracker</name>
-        <value>master:9001</value>
+        <value>Namenode:9001</value>
     </property>
     <property>
         <name>mapreduce.framework.name</name>
@@ -470,7 +471,7 @@ slave2
 * yarn: spark 등의 프레임워크가 동작할 수 있도록 만들어주는 일종의 마더보드 역할을 수행
 
 ```bash
-[hadoop@master hadoop]$ vi yarn-site.xml
+[hadoop@Namenode hadoop]$ vi yarn-site.xml
 
 ...
 <configuration>
@@ -484,22 +485,22 @@ slave2
     </property>
     <property>
         <name>yarn.resourcemanager.hostname</name>
-        <value>[Master의 IP]</value>
+        <value>[Namenode의 IP]</value>
     </property>
 </configuration>
 ```
 
-## 8) Master 에서 배포
-- Slave 에서는 root 계정으로 로그인 후 /usr/local의 위치에 hadoop-2.7.4 폴더 생성
-- Master의 경우 다음의 과정을 진행한다.
+## 8) Namenode 에서 배포
+- Datanode 에서는 root 계정으로 로그인 후 /usr/local의 위치에 hadoop-2.7.4 폴더 생성
+- Namenode의 경우 다음의 과정을 진행한다.
 
 * rsync : 지정한 폴더 아래의 모든 파일을 네트워크를 통해 전송시키는 원격접속 서비스
 
 ```bash
 # cd /usr/local/hadoop-2.7.4
 # rsync -av . hadoop@backup:/usr/local/hadoop-2.7.4/
-# rsync -av . hadoop@slave1:/usr/local/hadoop-2.7.4/
-# rsync -av . hadoop@slave2:/usr/local/hadoop-2.7.4/
+# rsync -av . hadoop@Datanode1:/usr/local/hadoop-2.7.4/
+# rsync -av . hadoop@Datanode2:/usr/local/hadoop-2.7.4/
 ```
 
 ## 9) NameNode 초기화
@@ -507,54 +508,55 @@ slave2
 - 네임노드는 최초 한 번만 실행하면 되며 만약 에러메세지가 있을 경우 환경설정파일이 잘못된 것이므로 수정후에 다시 실행해야된다.
 
 ```bash
-[hadoop@master ~]$ cd /usr/local/hadoop-2.7.4/bin
-[hadoop@master bin]$
-[hadoop@master bin]$ ./hdfs namenode -format
+[hadoop@Namenode ~]$ cd /usr/local/hadoop-2.7.4/bin
+[hadoop@Namenode bin]$
+[hadoop@Namenode bin]$ ./hdfs namenode -format
 ```
 
 ### (1) 프로세스 실행
 
 ```bash
-[hadoop@master sbin]$ pwd
+[hadoop@Namenode sbin]$ pwd
 /usr/local/hadoop-2.7.3/sbin
-[hadoop@master sbin]$ ./start-dfs.sh
-[hadoop@master sbin]$ ./start-yarn.sh
+[hadoop@Namenode sbin]$ ./start-dfs.sh
+[hadoop@Namenode sbin]$ ./start-yarn.sh
 
-[hadoop@master sbin]$ jps
-4147 DataNode -----------------------> backup(slaves 에 설정된 backup)
+[hadoop@Namenode sbin]$ jps
+4147 DataNode -----------------------> backup(Datanodes 에 설정된 backup)
 12373 NameNode
-12703 SecondaryNameNode ----------> backup(masters 에 설정된 backup)
+12703 SecondaryNameNode ----------> backup(Namenodes 에 설정된 backup)
 12851 ResourceManager
 13451 Jps
 9590 NodeManager
 13392 JobHistoryServer
 
-[hadoop@slave1 sbin]$ jps
+[hadoop@Datanode1 sbin]$ jps
 6001 DataNode
 6103 NodeManager
 6350 Jps
 ```
 - 브라우저에서도 확인
-  - http://master:50070 또는 http://master:50070/dfshealth.html 실행후 파일 시스템 상태 보여야 함
-  - 1.x의 JobTracker는 http://master:8088/cluster 에서 확인할 수 있음
+  - http://Namenode:50070 또는 http://Namenode:50070/dfshealth.html 실행후 파일 시스템 상태 보여야 함
+  - 1.x의 JobTracker는 http://Namenode:8088/cluster 에서 확인할 수 있음
 
 - 콘솔에서도 확인
 
 ```bash
 
-[hadoop@master hadoop]$ hdfs dfsadmin -refreshNodes
+[hadoop@Namenode hadoop]$ hdfs dfsadmin -refreshNodes
 Refresh nodes successful
 
-[hadoop@master sbin]$ hdfs dfsadmin –report
+[hadoop@Namenode sbin]$ hdfs dfsadmin –report
 ```
 
 [결과]<br>
-사진 설명을 입력하세요.
+![Namenode 실행결과](/images/2017-12-11-hadoop-chapter1-what_is_hadoop/2_Namenode_실행결과.jpg)
 
-사진 설명을 입력하세요.
+![DataNode1 실행결과](/images/2017-12-11-hadoop-chapter1-what_is_hadoop/3_datanode1_실행결과.jpg)
 
-사진 설명을 입력하세요.
+![DataNode2 실행결과](/images/2017-12-11-hadoop-chapter1-what_is_hadoop/4_datanode2_실행결과.jpg)
 
-사진 설명을 입력하세요.
+![하둡 클러스터 상태확인](/images/2017-12-11-hadoop-chapter1-what_is_hadoop/5_hadoop_cluster_healthcheck.jpg)
 
-대표
+
+# 4. Docker 로 설치하기
